@@ -1,0 +1,218 @@
+
+body {
+  background-color: #e8f5ff;
+
+  overflow: hidden;
+}
+
+
+/* Main */
+.main {
+  margin-top: 2%;
+  margin-left: 15%;
+  /* font-size: 25px; */
+  padding: 0 10px;
+  width: 70%;
+}
+.col.btn-btn {
+  /* margin-top: 30px; */
+  padding-top: 50px;
+}
+
+.main h2 {
+  color: #EE9C13;
+  font-family: Kumbh Sans;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+    text-align: center;
+}
+
+.main .card {
+  padding: 50px 50px;
+  width: 59%;
+  /* left: 50px; */
+  margin-left: 20%;
+  box-shadow: var(--default_box_shaddow);
+  background: var(--secondary);
+  margin-top: 27px;
+  border-radius: 25px;
+  border: 2px solid rgba(255, 255, 255, 0.09);
+  background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.12) 0%, rgba(255, 255, 255, 0.1) 100%);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  color: #fff;
+}
+
+
+.main .card table {
+  border: none;
+  font-size: 16px;
+  height: 270px;
+  width: 80%;
+}
+
+.edit {
+  position: absolute;
+  color: #e7e7e8;
+  right: 29%;
+  background: #5E3A7D;
+  color: white;
+  padding: 13px 50px;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 100px;
+  font-size: 12px;
+  transition: all 0.5s;
+  margin: 38px 40px 0px 0px;
+  z-index: 9999999999;
+  border-radius: 146px;
+  border: 4px solid #201F25;
+  background: #5E3A7D;
+  box-shadow: -4px -5px 13px rgba(109, 109, 109, 0.33);
+  border: 4px solid #201F25;
+  background: #5E3A7D;
+  box-shadow: 5px 7px 7px #1716165e, -5px -6px 13px #6d6d6d54;
+}
+
+.social-media {
+  text-align: center;
+  width: 90%;
+}
+
+.social-media span {
+  margin: 0 10px;
+}
+
+
+/* End */
+
+
+.popup-update-profile {
+  // position: absolute;
+  // left: 50%;
+  // transform: translateX(-50%);
+  // top: -40px;
+  // bottom: 50px;
+  // border-radius: 20px;
+  // padding: 15px;
+  // width: 50%;
+  // height: 100%;
+  // z-index: 9999999999999;
+  // box-shadow: 1px 1px 31px rgba(0, 0, 0, 0.4);
+  // border-radius: 30px;
+  // border: 4px solid rgba(255, 255, 255, 0.09);
+  // background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(125, 97, 166, 0.48) 0%, rgba(255, 255, 255, 0.15) 100%);
+  // -webkit-backdrop-filter: blur(5px);
+  // backdrop-filter: blur(5px);
+
+
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    border-radius: 20px;
+    padding: 15px;
+    width: 50%;
+    z-index: 9999999999999;
+    box-shadow: 1px 1px 31px rgba(0, 0, 0, 0.4);
+    border-radius: 30px;
+    border: 4px solid rgba(255, 255, 255, 0.09);
+    background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(125, 97, 166, 0.48) 0%, rgba(255, 255, 255, 0.15) 100%);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  
+}
+button.close {
+  background-color: #5E3A7D;
+ 
+  border: none;
+  color: white;
+  float: right;
+  font-size: 14px;
+  padding-top: 3px;
+}
+
+button.submitt {
+  background: #864DD9;
+
+  margin-top: 40px;
+  width: 100%;
+  color: #fff;
+  
+  border: none;
+  border-radius: 100px;
+  padding: 14px 25px;
+  text-transform: uppercase;
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all .5s;
+  cursor: pointer;
+  border-radius: 146px;
+    border: 4px solid #201F25;
+    background: #5E3A7D;
+    box-shadow: -4px -5px 13px rgba(109, 109, 109, 0.33);
+}
+
+form.input-fld {
+
+  padding: 40px;
+}
+
+.input-field-box {
+  line-height: 40px;
+  flex-direction: column;
+  display: flex;
+}
+
+.txtbox {
+  border-radius: 10px;
+  background-color: #22252a;
+}
+.txtbox::placeholder{
+  color: #fff;
+}
+.txtbox{
+  /* padding: 10px; */
+  /* width: 100%; */
+  border: none;
+  /* box-shadow: inset 0px 0px 11px 2px rgba(0, 0, 0, 0.7490196078); */
+  background: #22252a;
+  outline: none;
+  /* border-radius: 8px; */
+  color: white;
+  margin-bottom: 0;
+  border-radius: 10px;
+  background: radial-gradient(49.93% 90% at 49.93% 0%,rgba(255,255,255,.08) 0%,rgba(255,255,255,.05) 100%);
+  -webkit-backdrop-filter: blur(17px);
+  backdrop-filter: blur(17px);
+  width: 100%;
+  padding: 13px 16px;
+}
+label {
+  color: white;
+}
+
+
+input{
+  border: 1px solid #a2a2a2 !important;
+}
+input:focus {
+  border: 2px solid #ffffff !important;
+}
+
+.bg-popup {
+  background: rgba(8, 8, 8, 0.6509803922);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -120px;
+  top: -120px;
+  z-index: 99999999999;
+}
+
+

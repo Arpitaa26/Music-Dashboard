@@ -1,0 +1,108 @@
+<!-- <p>course-buy works!</p> -->
+
+
+<div class="course-detail">
+ 
+    <div class="detail-box">
+      
+        <div class="dashboard_option"id="" *ngFor="let price of this.courses_response">
+          <div class="column_heasding">
+            <div class="inner_cols_heading">
+              <h4>{{price.name}}</h4>
+            </div>
+          </div>
+            <div class="dashBoardText" >
+<div class="about-course">
+  <div class="course-head">
+    <h3>About Course:</h3>
+    <h3 class="des"   [innerHTML]="price.description"></h3>
+   </div>
+</div>
+   <div class="rest-four">
+    <div class="price">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31" fill="none">
+        <path d="M22.2401 10.0176L22.2325 6.26763C22.2318 5.93611 22.0995 5.61844 21.8646 5.38449C21.6297 5.15054 21.3115 5.01949 20.98 5.02016L8.47998 5.04542C7.81694 5.04676 7.18158 5.31144 6.71369 5.78123C6.2458 6.25102 5.98369 6.88743 5.98503 7.55047M5.98503 7.55047C5.98637 8.21351 6.25105 8.84886 6.72084 9.31675C7.19062 9.78465 7.82704 10.0468 8.49008 10.0454L23.4901 10.0151C23.8216 10.0144 24.1398 10.1455 24.3747 10.3794C24.6096 10.6134 24.7419 10.931 24.7426 11.2626L24.7502 15.0126M5.98503 7.55047L6.01535 22.5504C6.01669 23.2135 6.28137 23.8488 6.75115 24.3167C7.22094 24.7846 7.85736 25.0467 8.5204 25.0454L23.5204 25.0151C23.8519 25.0144 24.1696 24.8821 24.4035 24.6472C24.6375 24.4123 24.7685 24.0941 24.7678 23.7625L24.7603 20.0126M26.0002 15.01L26.0103 20.01L21.0103 20.0201C20.3472 20.0215 19.7108 19.7594 19.241 19.2915C18.7712 18.8236 18.5066 18.1882 18.5052 17.5252C18.5039 16.8621 18.766 16.2257 19.2339 15.7559C19.7018 15.2862 20.3371 15.0215 21.0002 15.0201L26.0002 15.01Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>Price</h3>
+      <h3>{{price.price}}/-</h3>
+    </div>
+    <div class="price">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+        <path d="M12 5.03027C12 4.49984 11.7893 3.99113 11.4142 3.61606C11.0391 3.24099 10.5304 3.03027 10 3.03027H4C3.73478 3.03027 3.48043 3.13563 3.29289 3.32317C3.10536 3.5107 3 3.76506 3 4.03027V18.0303C3 18.2955 3.10536 18.5498 3.29289 18.7374C3.48043 18.9249 3.73478 19.0303 4 19.0303H10C10.5304 19.0303 11.0391 19.241 11.4142 19.6161C11.7893 19.9911 12 20.4998 12 21.0303M12 5.03027C12 4.49984 12.2107 3.99113 12.5858 3.61606C12.9609 3.24099 13.4696 3.03027 14 3.03027H20C20.2652 3.03027 20.5196 3.13563 20.7071 3.32317C20.8946 3.5107 21 3.76506 21 4.03027V18.0303C21 18.2955 20.8946 18.5498 20.7071 18.7374C20.5196 18.9249 20.2652 19.0303 20 19.0303H14C13.4696 19.0303 12.9609 19.241 12.5858 19.6161C12.2107 19.9911 12 20.4998 12 21.0303M12 5.03027V21.0303M7 7.03027H8M7 11.0303H8M16 7.03027H17M16 11.0303H17M16 15.0303H17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>Course Type</h3>
+      <h3>{{price.type}}</h3>
+    </div>
+    <div class="price">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+        <path d="M21.4736 2.91028V21.1503" stroke="white" stroke-opacity="0.3" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.7134 7.71027V21.1503" stroke="white" stroke-opacity="0.3" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9.95361 12.5103V21.1503" stroke="white" stroke-opacity="0.3" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4.19336 16.3503V21.1503" stroke="white" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>Level</h3>
+      <h3>{{price.level}}</h3>
+    </div>
+    <div class="price">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none">
+        <path d="M9.37516 15.1136L15.6252 8.86361M10.4168 9.38444C10.4168 9.67209 10.1836 9.90527 9.896 9.90527C9.60835 9.90527 9.37516 9.67209 9.37516 9.38444C9.37516 9.09679 9.60835 8.86361 9.896 8.86361C10.1836 8.86361 10.4168 9.09679 10.4168 9.38444ZM15.6252 14.5928C15.6252 14.8804 15.392 15.1136 15.1043 15.1136C14.8167 15.1136 14.5835 14.8804 14.5835 14.5928C14.5835 14.3051 14.8167 14.0719 15.1043 14.0719C15.392 14.0719 15.6252 14.3051 15.6252 14.5928ZM5.2085 22.4053V5.73861C5.2085 5.18607 5.42799 4.65617 5.81869 4.26547C6.20939 3.87477 6.73929 3.65527 7.29183 3.65527H17.7085C18.261 3.65527 18.7909 3.87477 19.1816 4.26547C19.5723 4.65617 19.7918 5.18607 19.7918 5.73861V22.4053L16.6668 20.3219L14.5835 22.4053L12.5002 20.3219L10.4168 22.4053L8.3335 20.3219L5.2085 22.4053Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>Desideritum</h3>
+      <h3>none</h3>
+    </div>
+<!--    
+    <h3>  </h3>
+    <h3 >Price: Level:  </h3>
+   
+    <h3>Tax:</h3> -->
+   </div>
+   <ng-container *ngFor="let price of this.courses_response">
+
+   <!-- <h2 >{{ this.selectedOption*price.price}}</h2> -->
+   <div class="coupounn">
+    <form #myForm="ngForm" (ngSubmit)="apply_cuppon(myForm)">
+   <div class="courses_price_area">
+    <div class="inner_courses_price_area">
+      <!-- <select name="" id="">
+        <option value="">test 1</option>
+        <option value="">test 1</option>
+        <option value="">test 1</option>
+        <option value="">test 1</option>
+      </select> -->
+      <h2>Please select class number:</h2>
+      <select name="price_qut" ngModel  id="" class="dp_id" (change)="onSelectChange($event)" >
+        <!-- <option  disabled="disabled">Pleasew select class number:</option> -->
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+
+    <h2>Your total price : {{ price.price*this.selectedOption }}</h2>
+   </div>
+   
+    <div class="apply_btn"> 
+        <input type="text" id="coupon_code" name="coupon_code"  ngModel required>
+        <button class="apply_btns">Apply</button>
+    </div>
+  </form>
+   </div>
+   <h2 >Discount Price:{{this.final_price}}</h2>  
+             <div class="btn-btn-t">
+              <button class="button_primary enroll" (click)="course_buy_api({payment_id:'125',course_id:price.course_id,course_level_id:price.course_level_id,session_type_id:price.session_type_id,no_of_class:this.selectedOption,per_class_price:price.price,coupon_code:6655,discount:10,card_no:852585585585,exp_year:2023,exp_month:02,total_price:price.price*this.selectedOption,payment_status:1})"   >Buy Now</button>
+
+             </div>
+            
+   </ng-container>
+            </div>
+          </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="page_wrapper">
+  <h1 class="page_heading">Assignments</h1>
+
+  <div class="inner_tab_filter">
+    <select
+      [(ngModel)]="studentId"
+      #myselect
+      (change)="onSelectStudent(myselect.value)"
+      class="theme_select col-m-100"
+      name="studentname.value"
+    >
+      <option value="">Select Student Name</option>
+      <option *ngFor="let data of  sortedItems()" [value]="data.id">
+        {{ data.user_fullname }} | ({{data.course_name}})
+      </option>
+    </select>
+  </div>
+  <div class="tab_container" *ngIf="this.toDisplay">
+    <div class="tab_button">
+      <button
+        class="button_secondary button_tab raise"
+        [routerLink]="['homework_notes']"
+        routerLinkActive="active"
+      >
+        Homework and Teachers Notes
+      </button>
+      <button
+        class="button_secondary button_tab raise"
+        routerLink="audio_archive"
+        routerLinkActive="active"
+      >
+        Abhyasa Archive
+      </button>
+    </div>
+    <div class="tab_body">
+      <router-outlet ></router-outlet>
+    </div>
+  </div>
+</div>

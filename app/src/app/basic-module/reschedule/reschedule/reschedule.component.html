@@ -1,0 +1,22 @@
+<div class="schedule_slacc_radio_cont">
+  <div class="arrow" (click)="close()"></div>
+  <div class="schedule_button_cont">
+    <button class="close_schedule" (click)="close()">
+      <i class="fa fa-close"></i>
+    </button>
+  </div>
+  <div class="schedule_ind">
+    <ng-container *ngFor="let item of rescheduleData">
+      <label class="radio_cont">
+        {{ item.time }}
+        <input
+          type="radio"
+          [checked]="[item.checked]"
+          name="radio"
+          
+        />
+        <span class="checkmark"></span>
+      </label>
+    </ng-container>
+  </div>
+</div>

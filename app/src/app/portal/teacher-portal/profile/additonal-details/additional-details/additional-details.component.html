@@ -1,0 +1,71 @@
+<div class="card">
+  <h2>Additional Details</h2>
+  <div class="col  sbmt-button">
+    <label class="resume" for="file">Upload your resume:</label><br>
+    <input type="file" class="resume-btn "id="file" formControlName="file_name" (change)="onFileSelected($event)" required>
+
+  </div>
+  <form [formGroup]='additiona_ldetails' #usersupdateFrom="ngForm"  (ngSubmit)="add_details(usersupdateFrom)">
+  <div class="row">
+
+
+    <div class="col   doj">
+      <div class="form-group">
+        <label for="concerts">Date of joining:</label>
+        <input type="date"  formControlName="date_of_joining" required>
+      </div>
+    </div>
+        <div class="col  acheive">
+      <div class="form-group">
+
+        <label for="concerts">Achivements:</label>
+        <textarea id="concerts" formControlName="achivements" required></textarea>
+      </div>
+    </div>
+
+    <div class="col   concert">
+      <div class="form-group">
+        <label for="concerts">Concerts:</label>
+        <textarea id="concerts" formControlName="concerts" required></textarea>
+      </div>
+    </div>
+
+  <div class="col  acheive">
+    <div class="form-group">
+
+      <label for="Contract">Date of contract sent by the academy:</label>
+      <input type="date" id="Contract" formControlName="date_of_contract_teacher" required>
+    </div>
+  </div>
+
+  <div class="col  training">
+    <div class="form-group">
+
+      <label for="concerts">Date Of training period:</label>
+      <input type="date" id="concerts" formControlName="date_of_training_period" required>
+    </div>
+  </div>
+
+  <div class="col  signing">
+    <div class="form-group">
+
+      <label for="concerts">Date of teacher singing the contract:</label>
+      <input type="date" id="concerts" formControlName="date_of_contract_Academy" required>
+    </div>
+  </div>
+
+
+  <!-- <div class="col   doj">
+    <div class="form-group">
+      <label for="concerts">category:</label>
+      <input type="text"  formControlName="category" required>
+    </div>
+  </div> -->
+    <div class="col  btn-btn">
+      <input   type="submit" value="Submit">
+    </div>
+
+
+  </div>
+</form>
+</div>

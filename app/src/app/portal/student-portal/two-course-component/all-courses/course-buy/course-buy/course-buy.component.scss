@@ -1,0 +1,217 @@
+.dashboard_option {
+  display: block;
+  margin-top: 20px;
+  padding-bottom: 75px;
+  box-shadow: 1px 1px 31px rgba(0, 0, 0, 0.4);
+  border-radius: 30px;
+  border: 4px solid rgba(255, 255, 255, 0.09);
+  background: radial-gradient(
+    113.36% 56.13% at 67.56% 56.53%,
+    rgba(88, 49, 146, 0.18) 0%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border-radius: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: radial-gradient(
+    113.36% 56.13% at 67.56% 56.53%,
+    rgba(88, 49, 146, 0.12) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  backdrop-filter: blur(5px);
+}
+
+h3 {
+  color: #fff;
+  line-height: 30px;
+}
+.dashboard_option {
+}
+.inner_cols_heading > h4 {
+  padding: 0;
+  margin: 0;
+}
+.inner_cols_heading {
+  border-radius: 28px 28px 0px 0px;
+  background: rgba(23, 25, 28, 0.4);
+  backdrop-filter: blur(5px);
+  padding: 30px 60px;
+}
+
+.inner_cols_heading > h4 {
+  color: #ee9c13;
+  font-family: Kumbh Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 30px */
+}
+
+.dashBoardText {
+  padding-top: 25px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+h3.des {
+  color: #fff;
+  font-family: Kumbh Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%;
+}
+
+.rest-four {
+  border-radius: 24px;
+  background: rgba(23, 25, 28, 0.81);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+}
+
+.price {
+  padding: 25px 30px;
+  align-items: center;
+  text-align: center;
+}
+.apply_btn > input {
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: #232428;
+    padding: 12px 10px;
+    width: 100%;
+    color: #fff;
+}
+button.apply_btns {
+    outline: none;
+    border-radius: 0px 24px 24px 0px;
+    background: var(--59339170, #5e3a7d);
+    padding: 9px 12px;
+    color: #fff;
+    font-family: Kumbh Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 180%;
+    letter-spacing: 0.28px;
+    text-transform: uppercase;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+.apply_btn {
+  position: relative;
+  width: 200px;
+}
+.coupounn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.inner_courses_price_area > select {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 3px 13px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: radial-gradient(
+    113.36% 56.13% at 67.56% 56.53%,
+    rgba(88, 49, 146, 0.12) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  color: #fff;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 180%;
+  letter-spacing: 0.28px;
+  margin-left: 10px;
+  margin-top: 18px;
+
+  border: 1px solid #fff;
+  background: radial-gradient(
+    49.93% 90% at 49.93% 0%,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+  -webkit-backdrop-filter: blur(17px);
+  backdrop-filter: blur(17px);
+  border-radius: 90px;
+}
+
+.inner_courses_price_area {
+  display: flex;
+  /* padding-left: 8px; */
+}
+.dp_id {
+  margin-left: 0px;
+  margin-bottom: 12px;
+}
+
+.parents_wrapes {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.imgs_buy_box {
+  width: 30%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.imgs_buy_box > img {
+  width: 100%;
+}
+
+.all_column_wrape {
+  width: 68%;
+}
+h2.coupon-msg {
+    color: red;
+    font-weight: 400;
+    font-size: 15px;
+    /* display: flex; */
+}
+.prices_icon {
+  height: 40px;
+}
+// .coupounn {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// }
+
+.all_wraper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-btn-t {
+  display: flex;
+  justify-content: end;
+}
+.next_rest {
+  border-radius: 24px;
+  background: rgba(23, 25, 28, 0.81);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  padding: 15px;
+  margin-top: 20px;
+}
+.coupounn {
+  display: flex;
+  justify-content: space-between;
+  align-content: end;
+  height: 100%;
+}
+select.dp_id {
+  margin-bottom: 18px !important;
+}

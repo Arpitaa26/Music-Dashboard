@@ -1,0 +1,44 @@
+<!-- <p>completed-class works!</p> -->
+
+
+
+<div class="approve-box">
+    <div class="re-schedule">
+   
+       <h2 class="schedule-txt">Completed Classes</h2>
+       <p class="col col-100 tab_heading_name"></p>
+       <!-- <h2 class="no-class">No classes to reschedule</h2> -->
+     
+       <div class="parent-box-wraper" >
+          <ng-container >
+             <div class="class-box"  *ngFor="let item of this.scheduleList?.data">
+                <div class="bxx">
+                   <h2 class="boxx-txt">Class Id: {{item.id}} </h2>
+                   <p class="nt-started">status: {{item.status}}</p>
+                </div>
+                <!-- <h2> Reschedule date</h2> -->
+
+                <p class="type"> Reschedule date: {{item.rescheduled_date |  date:'medium'}}</p>
+                <p class="type"> Start Time: {{item.start_time  |  date:'medium'}} </p>
+                <p class="type"> Start Time: {{item.end_time  |  date:'medium'}} </p>
+                <p class="type"> Actual Start Time: {{item.actual_start_time  |  date:'medium'}} </p>
+                <p class="type"> Actual End Time: {{item.actual_end_time  |  date:'medium'}} </p>
+                
+                <!-- butttons  -->
+                <div class="button-box">
+                    <ng-container >
+                      <!-- <div class="combo">
+                         <a class="approve">
+                         <button class="button_secondary join-btn"  >Approve</button>
+                         </a>
+                         <a class="cancle">
+                         <button class="button_secondary" >Cancle</button>
+                         </a>
+                      </div> -->
+                   </ng-container>
+                </div>
+             </div>
+          </ng-container>
+       </div>
+    </div>
+ </div>

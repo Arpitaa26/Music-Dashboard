@@ -1,0 +1,660 @@
+<danger *ngIf="this.false_sucess" [msg]="st_msg"></danger>
+<danger *ngIf="this.rc_false_status" [msg]="all_msgs"></danger>
+<sucess *ngIf="this.rc_status" [msg]="this.all_msgs"></sucess>
+<sucess *ngIf="this.staus_sucess" [msg]="st_msg"></sucess>
+<div class="after-event">
+  <div class="schedule">
+    <h2 class="schedule-txt">My Upcoming Schedule</h2>
+    <!-- <p class="col col-100 tab_heading_name"></p> -->
+    <h2
+      *ngIf="
+        !isLoading &&
+        (this.dash_board_status === null ||
+          (scheduleList | getScheduleByStatus : scheduleStatus.COMPLETED)
+            .length)
+      "
+      class="no-class"
+    >
+      No classes this week..
+    </h2>
+
+    <div class="parent-box-wraper">
+      <div *ngFor="let item of this.scheduleList">
+
+   
+        <!----------------NOT_STARTED-->
+        <ng-container [ngSwitch]="item.status">
+          <ng-container *ngSwitchCase="scheduleStatus.NOT_STARTED">
+            <div class="clas s-box">
+              <!-- <h2>{{item.status}}</h2> -->
+
+              <div
+                class="bxx"
+                *ngIf="
+                  item.status == scheduleStatus.NOT_STARTED ||
+                  item.status == scheduleStatus.STARTED ||
+                  item.status == scheduleStatus.PENDING
+                "
+              >
+                <h2 class="boxx-txt">{{ item.batch_code }}</h2>
+
+                <h2 class="boxx-txt">#{{ item.class_no }}</h2>
+
+                <!-- <p class="active-data {{item.status}}">{{item.status}}</p> -->
+              </div>
+              <div
+                class="bxx"
+                *ngIf="
+                  item.status == scheduleStatus.NOT_STARTED ||
+                  item.status == scheduleStatus.STARTED ||
+                  item.status == scheduleStatus.PENDING
+                "
+              ></div>
+              <h2 class="start-time">
+                {{
+                  item.start_time | customdatedate | date : "d MMM y, HH:mm a"
+                }}
+              </h2>
+              <p class="type">{{ item.level }}</p>
+
+              <div class="button-box">
+                <div class="all-three">
+                  <div class="button-duo">
+                    <!-- <h4>{{item.id}}</h4>  -->
+                    <span
+                      class="schedule_button"
+                      (click)="
+                        user_class_get({
+                          classId: item.id,
+                          user_id: item.user_id
+                        })
+                      "
+                    >
+                      <a>
+                        <button
+                          class="button_secondary schedule_button join-btn"
+                          (click)="
+                            joinclass({
+                              id: item.id,
+                              link: item.link,
+                              class_status: item.status
+                            })
+                          "
+                        >
+                          Join
+                        </button>
+                      </a>
+                    </span>
+                    <span
+                      class="schedule_button"
+                      (click)="
+                        user_class_get({
+                          classId: item.id,
+                          user_id: item.user_id
+                        })
+                      "
+                    >
+                      <a>
+                        <button
+                          class="button_secondary reschedule"
+                          (click)="schedule_open()"
+                        >
+                          Reschedule
+                        </button>
+                        <!-- <button class="button_secondary"  (click)="schedule_close = !schedule_close">Reschedule</button> -->
+                      </a>
+                    </span>
+                  </div>
+
+                  <div class="question-mark">
+                    <div
+                      class="question-mark"
+                      (click)="redirectToSupport(item)"
+                    >
+                      <span class="for-hover">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="22"
+                          height="22"
+                          viewBox="0 0 22 22"
+                          fill="none"
+                        >
+                          <path
+                            d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M11 16H11.01"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                      <div class="question_tooltip">
+                        <span> Support </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div></ng-container
+          >
+          <ng-container *ngSwitchCase="scheduleStatus.PENDING">
+            <div class="clas s-box">
+              <div
+                class="bxx"
+                *ngIf="
+                  item.status == scheduleStatus.NOT_STARTED ||
+                  item.status == scheduleStatus.STARTED ||
+                  item.status == scheduleStatus.PENDING
+                "
+              >
+                <h2 class="boxx-txt">{{ item.batch_code }}</h2>
+
+                <h2 class="boxx-txt">#{{ item.class_no }}</h2>
+
+                <!-- <p class="active-data {{item.status}}">{{item.status}}</p> -->
+              </div>
+              <h2 class="start-time">
+                {{
+                  item.start_time | customdatedate | date : "d MMM y, HH:mm a"
+                }}
+              </h2>
+              <p class="type">{{ item.level }}</p>
+
+              <div class="button-box">
+                <div class="all-three">
+                  <div class="button-duo">
+                    <!-- <h4>{{item.id}}</h4>  -->
+                    <!-- <span
+                      class="schedule_button"
+                      (click)="
+                        user_class_get({ classId: item.id, user_id: item.user_id })
+                      "
+                    >
+                      <a>
+                        <button
+                          class="button_secondary reschedule"
+                          (click)="schedule_open()"
+                        >
+                          Reschedule
+                        </button>
+                      </a>
+                    </span> -->
+                    <span
+                      class="schedule_button"
+                      (click)="
+                        user_class_get({
+                          classId: item.id,
+                          user_id: item.user_id
+                        })
+                      "
+                    >
+                      <a>
+                        <button
+                          class="button_secondary schedule_button join-btn"
+                          (click)="
+                            joinclass({
+                              id: item.id,
+                              link: item.link,
+                              class_status: item.status
+                            })
+                          "
+                        >
+                          Join
+                        </button>
+                      </a>
+                      <a>
+                        <button class="button_secondary pending-btn">
+                          Reschedule Pending
+                        </button>
+                      </a>
+                    </span>
+
+                    <div class="question-mark">
+                      <div
+                        class="question-mark"
+                        (click)="redirectToSupport(item)"
+                      >
+                        <span class="for-hover">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            viewBox="0 0 22 22"
+                            fill="none"
+                          >
+                            <path
+                              d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z"
+                              stroke="white"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12"
+                              stroke="white"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              d="M11 16H11.01"
+                              stroke="white"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        </span>
+                        <div class="question_tooltip">
+                          <span> Support </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div></ng-container
+          >
+          <ng-container *ngSwitchCase="scheduleStatus.STARTED">
+            <div class="clas s-box">
+              <div
+                class="bxx"
+                *ngIf="
+                  item.status == scheduleStatus.NOT_STARTED ||
+                  item.status == scheduleStatus.STARTED ||
+                  item.status == scheduleStatus.PENDING
+                "
+              >
+                <h2 class="boxx-txt">{{ item.batch_code }}</h2>
+
+                <h2 class="boxx-txt">#{{ item.class_no }}</h2>
+
+                <!-- <p class="active-data {{item.status}}">{{item.status}}</p> -->
+              </div>
+              <h2 class="start-time">
+                {{
+                  item.start_time | customdatedate | date : "d MMM y, HH:mm a"
+                }}
+              </h2>
+              <p class="type">{{ item.level }}</p>
+
+              <div class="button-box">
+                <div class="all-three">
+                  <div class="button-duo">
+                    <!-- <h4>{{item.id}}</h4>  -->
+                    <span
+                      class="schedule_button"
+                      (click)="
+                        user_class_get({
+                          classId: item.id,
+                          user_id: item.user_id
+                        })
+                      "
+                    >
+                      <a>
+                        <button
+                          class="button_secondary schedule_button join-btn"
+                          (click)="
+                            joinclass({
+                              id: item.id,
+                              link: item.link,
+                              class_status: item.status
+                            })
+                          "
+                        >
+                          Join
+                        </button>
+                      </a>
+                    </span>
+                    <!-- <span
+                      class="schedule_button"
+                      (click)="
+                        user_class_get({ classId: item.id, user_id: item.user_id })
+                      "
+                    >
+                      <a>
+                        <button
+                          class="button_secondary reschedule"
+                          (click)="schedule_open()"
+                        >
+                          Reschedule
+                        </button>
+                      </a>
+                    </span> -->
+
+                    <div class="question-mark">
+                      <div
+                        class="question-mark"
+                        (click)="redirectToSupport(item)"
+                      >
+                        <span class="for-hover">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            viewBox="0 0 22 22"
+                            fill="none"
+                          >
+                            <path
+                              d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z"
+                              stroke="white"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12"
+                              stroke="white"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              d="M11 16H11.01"
+                              stroke="white"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        </span>
+                        <div class="question_tooltip">
+                          <span> Support </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div></ng-container
+          >
+          <ng-container *ngSwitchCase="scheduleStatus.RESCHEDULED">
+            <div class="clas s-box d_none"></div>
+          </ng-container>
+          <!-- <ng-container *ngSwitchCase="scheduleStatus.COMPLETED">
+            <div class="no-class">No classes this week</div>
+          </ng-container> -->
+          <!-- <ng-container *ngSwitchDefault> No classes this week </ng-container> -->
+        </ng-container>
+      </div>
+      <!-- buttons  -->
+
+      <!-- butons end -->
+    </div>
+    <div class="msg_box">
+      <h4>{{ this.msg }}</h4>
+    </div>
+  </div>
+  <div class="renewal reminder">
+    <div class="reminder-inner-section">
+      <h2 class="reminder-text">Renewal reminder</h2>
+      <div class="text-para" *ngIf="this.level_graphs.length === 1">
+        <!-- <p class="txt-box">
+          {{
+            this.level_graphs[0].class_purchased -
+              this.level_graphs[0].class_used
+          }}
+        </p> 
+        <h3 class="reminder-text">more classes to go....</h3> -->
+      </div>
+      <!-- graph -->
+      <!----------------------------Not reminder found------------------------->
+      <div class="not_reminder_found" *ngIf="this.renew_status == '203'">
+        <div class="inner_not_reminder_found">
+          <div class="bar-btn">
+            <h4>Your Course Not found , Please Course Buy</h4>
+            <a routerLink="course_info/all-courses">
+              <button class="button_secondary enroll-btn">Course Enrol</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="lavel_count_sections" *ngFor="let level of this.level_graphs">
+        <div class="inner_lavel_counts_sections">
+          <div class="lavel_courses_name_header">
+            <h4>{{ level.course_name }}</h4>
+            <span>({{ level.classes_purchased - level.class_used }})</span>
+          </div>
+
+          <div class="bar_wraper">
+            <app-bar-group
+              [classNum]="level.class_purchased - level.class_used"
+            ></app-bar-group>
+
+            <div class="bar-btn">
+              <!-- <div class="bar-graph bar-graph-horizontal bar-graph-one">
+          <div class="bar-one">
+            <div class="bar"></div>
+          </div>
+          <div class="bar-two">
+            <div class="bar"></div>
+          </div>
+          <div class="bar-three">
+            <div class="bar"></div>
+          </div>
+          <div class="bar-four">
+            <div class="bar"></div>
+          </div>
+
+        </div> -->
+              <!-- label_bar -->
+              <!--  <div class="chart_bar">
+          <div class="inner_chart_bar">
+            <canvas id="pie_chart">
+
+            </canvas> -->
+              <!-- <div class="percentage-bar-container">
+              <div
+                *ngFor="let percentage of class_lavel"
+                class="percentage-bar"
+                [ngClass]="{ inactive: percentage.isInactive }"
+                [style.width.%]="percentage.width"
+              >
+                {{ percentage.width.toFixed(2) }}%
+              </div>
+            </div> 
+          </div>
+        </div>-->
+              <!-- <div  *ngIf="level_graphs.length === 1"> -->
+              <!-- <ng-container *ngFor="let item of level_graphs">
+            {{ item.class_purchased - item.class_used }} -->
+              <!-- <app-bar-group
+         
+          [classNum]="
+            item.class_purchased -
+            item.class_used
+          "
+        ></app-bar-group> -->
+              <!-- </ng-container> -->
+              <!-- </div> -->
+              <!-- <div class="label_bar">
+          <div class="inner_label_ber" >
+
+            <div class="line_label active_label" *ngFor="let index of boxArray" [style.height.px]="(index + 1) * 20"></div>
+
+            <div class="line_label " *ngFor="let indexss of class_used_boxArray" [style.height.px]="(indexss+1) * 140"></div>
+
+          </div>
+        </div> -->
+              <a>
+                <button
+                  class="button_secondary enroll-btn"
+                  (click)="onEnrollClick(level)"
+                >
+                  Renew Now
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- graph end -->
+      <!-- reschedule side bar  -->
+      <!--
+				<div class="schedule_pop_cont" *ngIf="schedule_close">
+				  <div class="arrow" (click)="close()"></div>oin
+				  <div class="schedule_button_cont">
+				    <button class="close_schedule" (click)="close()">
+				      <i class="fa fa-close"></i>
+				    </button>
+				  </div>
+				  <form #usersregisterFrom="ngForm" (ngSubmit)="class_rd_request_save(usersregisterFrom.value)">
+				    <ng-container *ngFor="let item of this.UserAvailableInterface?.data">
+				      <div class="schedule_ind">
+				        <label class="radio_cont">
+				          <input ngModel
+				            type="radio"
+				            [checked]="[item]"
+				            name="availability_id"
+
+				            value="{{ item.user_id }}"
+				          />
+
+				          {{ item.from }}
+				          <input type="hidden" name="start_time" ngModel="{{item.from}}">
+				          <span class="checkmark"></span>
+				        </label>
+				      </div>
+
+
+				    <div class="reasn">
+				      <textarea id="reason" ngModel name="reason_for_reschedule"></textarea>
+				    </div>
+
+				    <div class="submit-class-data">
+				      <button
+				        class="button_secondary">
+				        Submit
+				      </button>
+				    </div>
+				  </ng-container>
+				  </form>
+				  <ng-container  *ngIf="!this.UserAvailableInterface?.data;">
+				  <h2 class="null data">User Availability not found</h2>
+				</ng-container>
+
+				</div> -->
+    </div>
+    <!---------------------Bulletin---------------------->
+
+    <div class="bulletin">
+      <!-- <p>hfvhvjbvjdf</p> -->
+      <div class="bulletin-box carousel__list blur">
+        <div class="bullet-head">Bulletin</div>
+        <div class="main-box">
+          <div class="slider" *ngIf="this.event_status == null; else eventok">
+            <h4>No Event Found</h4>
+          </div>
+          <ng-template #eventok>
+            <div class="slider">
+              <div
+                class="context-box carousel__item"
+                *ngFor="let item of this.BulletinEventInterface?.data"
+              >
+                <div class="bullet-img">
+                  <img
+                    src="{{ this.urlbase }}/{{ item.slug }}"
+                    class="bull-img"
+                  />
+                </div>
+                <div class="img-text">
+                  <h2 class="bull-txt">
+                    {{ item.title }}
+                  </h2>
+                  <h4 class="small-bull-txt">
+                    {{ item.description }}
+                  </h4>
+                  <ng-container
+                    *ngIf="item.event_link == ''; else else_condition"
+                  >
+                  </ng-container>
+                  <ng-template #else_condition>
+                    <a
+                      class="readd"
+                      href="{{ item.event_link }}"
+                      target="_blank"
+                    >
+                      <h3 class="read-more">Read More..</h3>
+                    </a>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="schedule_pop_cont" *ngIf="schedule_close">
+    <div class="arrow" (click)="close()"></div>
+    <div class="schedule_button_cont">
+      <button class="close_schedule" (click)="close()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <form
+      #usersregisterFrom="ngForm"
+      (ngSubmit)="class_rd_request_save(usersregisterFrom.value)"
+    >
+      <div class="reschedule-msg">
+        <ng-container *ngIf="this.msgs == '0'"> </ng-container>
+        <ng-container *ngIf="this.msgs == '1'">
+          <h4 class="msg-txt">
+            This will be charged as you have used 1 free reschedule
+          </h4>
+        </ng-container>
+        <ng-container *ngIf="this.msgs == '2'">
+          <h4 class="msg-txt">
+            This will be charged as this is a consecutive reschedule
+          </h4>
+        </ng-container>
+      </div>
+      <div class="total-reasn">
+        <div class="reasn">
+          <h2 class="reason">Reason For your Reschedule</h2>
+          <textarea id="reason" ngModel name="reason_for_reschedule"></textarea>
+        </div>
+        <div class="submit-class-data">
+          <button class="button_secondary reason-submit">Submit</button>
+        </div>
+      </div>
+      <ng-container *ngFor="let item of this.UserAvailableInterface?.data">
+        <div class="schedule_ind">
+          <label class="radio_cont">
+            {{ item.from | date : "d MMM y, HH:mm a" }}</label
+          >
+          <input
+            ngModel
+            class="checkmark"
+            type="radio"
+            [checked]="[item]"
+            name="availability_id"
+            value="{{ item.id }}"
+          />
+          <!-- (change)="change_radio(item.id)" -->
+          <input type="hidden" name="start_time" ngModel="{{ item.from }}" />
+        </div>
+      </ng-container>
+    </form>
+    <ng-container *ngIf="!this.UserAvailableInterface?.data">
+      <h2 class="null data">User Availability not found</h2>
+    </ng-container>
+  </div>
+</div>
+
+<div class="second-div"></div>

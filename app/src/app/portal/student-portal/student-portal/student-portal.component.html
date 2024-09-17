@@ -1,0 +1,13 @@
+<div class="top_nav {{ nav_status_data ? 'expand' : '' }}">
+  <app-nav (navDataPassforOpenOrClose)="nav_status($event)"></app-nav>
+</div>
+<div class="body_sidebar_cont">
+  <div class="sidebar  {{ nav_status_data ? 'expand' : '' }}">
+    <app-sidebar [menu]="menuStudent"></app-sidebar>
+  </div>
+  <div class="body {{ nav_status_data ? 'expand' : '' }}">
+    <!-- body
+    <i class="fa fa-car"></i> -->
+    <router-outlet></router-outlet>
+  </div>
+</div>

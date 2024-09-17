@@ -1,0 +1,12 @@
+.descBody {
+  display: flex;
+  justify-content: space-between;
+}
+.detailsDesc {
+  width: 80%;
+}
+@media only screen and (max-width: 999px) and (min-width: 320px) {
+  .descBody {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,14 @@
+<!-- <p>quest-ans works!</p> -->
+
+<div class="questAnsSec">
+  <div class="topInp">
+    <ng-container *ngFor="let item of courseDetails">
+      <div class="detailsHead">
+        <h3>{{ item.name }}</h3>
+      </div>
+      <div class="descBody">
+        <p  [innerHTML]="item.description"></p>
+      </div>
+    </ng-container>
+  </div>
+</div>

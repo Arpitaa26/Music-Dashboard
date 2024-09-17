@@ -1,0 +1,47 @@
+<div class="page_wrapper">
+  <h1 class="page_heading">Assignments</h1>
+
+  <div class="filte_drop_down">
+    <form [formGroup]="courseFilterForm" class="inner_tab_filter">
+      <select
+        class="theme_select col-m-100"
+        formControlName="item"
+        (ngModelChange)="onChangeCourse()"
+      >
+        <option [value]="null">Select Course Name</option>
+        <option
+          *ngFor="let data of this.CourseEnrollment_uniq"
+          [value]="[data.course_id , data.batch_id]"
+        >
+          {{ data.course_name }}
+        </option>
+      </select>
+      <!-- <select class="theme_select col-m-100" formControlName="course_level_id">
+    <option selected value="">Select Level</option>
+    <option *ngFor="let datas of this.all_level" [value]="datas.id">
+      {{ datas.level }}
+    </option>
+  </select>
+  <button [disabled]="courseFilterForm.invalid" class="button_primary">
+    Apply Filter
+  </button> -->
+    </form>
+  </div>
+
+  <div class="tab_container">
+    <div class="tab_button">
+      <ng-container *ngFor="let menu of assignmnetsMenu">
+        <button
+          class="button_secondary button_tab raise"
+          routerLink="{{ menu.link }}"
+          routerLinkActive="active"
+        >
+          {{ menu.text }}
+        </button>
+      </ng-container>
+    </div>
+    <div class="tab_body">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

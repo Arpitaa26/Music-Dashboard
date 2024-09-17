@@ -1,0 +1,31 @@
+/*toast*/
+.tose_body {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    padding: 5px 26px;
+    height: 67px;
+    z-index: 9999999999999999;
+    border-radius: 12px;
+  }
+  .sucess_bg{
+    background: #34473c;
+  }
+  .msg_tost_box>span>img {
+    width: 30px;
+  }
+  
+  
+  
+  .msg_tost_box {display: flex;align-items: center;justify-content: center;}
+  
+  .msg_tost_box>span>h4 {
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 8px;
+    
+  }
+  .sucess>span>h4 {
+   
+    color: rgba(28, 148, 40, 1);
+  }

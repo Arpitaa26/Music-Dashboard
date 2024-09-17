@@ -1,0 +1,96 @@
+.dashboard_option {
+    width: 100%;
+    background: var(--secondary);
+    padding: 0px 0px 20px;
+    text-align: left;
+    border-radius: 13px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.5s;
+    border: 1px solid transparent;
+    box-shadow: var(--default_box_shaddow);
+}
+
+.dashboard_option:hover {
+    background: var(--secondary);
+    color: var(--interactive);
+    transition: all 0.5s;
+    border: 1px solid var(--interactive);
+}
+
+.dashboard_option i {
+    font-size: 45px;
+    color: var(--text_color);
+    transition: all 0.5s;
+}
+
+.dashboard_option:hover i {
+    transition: all 0.5s;
+    color: var(--interactive);
+}
+
+.dashboard_option p {
+    font-size: 15px;
+    margin: 0;
+    margin-top: 25px;
+    margin-bottom: 8px;
+    color: var(--text_color);
+}
+
+.dashBoardText {
+    padding-inline: 2rem;
+    text-align: center;
+    padding-block: 1rem;
+}
+
+.tab_body {
+    margin-top: 2rem;
+}
+
+.tab_button {
+    margin-left: 10px;
+}
+
+.tab_button button.button_tab {
+    background: transparent;
+    color: var(--border-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.5s;
+    margin-inline: 5px;
+    margin-block: 5px;
+}
+
+.tab_button button.button_tab.active {
+    background: var(--interactive);
+    color: white;
+    padding: 11px 20px;
+    border: 1px solid var(--interactive);
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 200px;
+    font-size: 12px;
+    transition: all 0.5s;
+}
+
+.message_box {
+    width: 100%;
+    text-align: center;
+}
+
+.dashboard_option{
+    width: 100%;
+    background: var(--secondary);
+    padding: 0px 0px 20px;
+    text-align: left;
+    border-radius: 13px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.5s;
+    border: 1px solid transparent;
+    box-shadow: var(--default_box_shaddow);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.09);
+    background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.12) 0%, rgba(255, 255, 255, 0.10) 100%);
+    backdrop-filter: blur(5px);
+    color: #fff;
+}

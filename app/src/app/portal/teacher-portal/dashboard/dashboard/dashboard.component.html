@@ -1,0 +1,630 @@
+<!-- top dashboard -->
+<div class="head-txt">
+  <h2 class="schedule-txt">My Stats:</h2>
+</div>
+
+<!-- <danger></danger> -->
+<!-- <sucess *ngIf="this.st_msg "></sucess> -->
+<danger *ngIf="this.st_msg" [msg]="st_msg"></danger>
+<danger *ngIf="this.rc_false_status" [msg]="all_msgs"></danger>
+<sucess *ngIf="this.rc_status" [msg]="all_msgs"></sucess>
+
+<div class="top-part">
+  <div class="max_wrape">
+    <div class="round_graph_heading">
+      <h4>Class / Day</h4>
+    </div>
+    <div *ngIf="!isUserHave && !isLoading">
+      <h2 class="mt-5">No classes completed</h2>
+    </div>
+    <div
+      class="long-long-graph"
+      [ngClass]="{ 'd-none': !isUserHave && !isLoading }"
+    >
+      <div class="long-graph">
+        <div class="chart_areas">
+          <canvas id="bar_charts"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="max_wrape">
+    <div class="dashboard-top">
+      <div class="round-graph">
+        <!-- <p>hfvhvjbvjdf</p> -->
+        <div class="pie_chat_box">
+          <div class="round_graph_heading">
+            <h4>Class / Month</h4>
+          </div>
+          <div *ngIf="isArrayEmpty()">
+            <h2 class="mt-5">No Class !</h2>
+          </div>
+          <div class="inner_pie_chart">
+            <canvas id="pie_chart" width="320" height="320"> </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="renewal reminder">
+    <div class="reminder-inner-section">
+      <h2 class="reminder-text">Cookie and Cutnip</h2>
+      <div class="textParaSec">
+        <div class="text-para">
+          <ul *ngFor="let item of this.teacher_gread.performance">
+            <li>{{ item }}</li>
+          </ul>
+          <table style="width: 100%">
+            <tr>
+              <th style="width: 60%"></th>
+              <th class="cokkie-txt">Cookie</th>
+              <th class="cokkie-txt">Cutnip</th>
+            </tr>
+            <tr>
+              <td>
+                <p class="txt-box">Renewals and Concerns</p>
+              </td>
+              <td style="text-align: center">
+                <h3 class="reminder-text">
+                  {{ this.all_gd.renewals_concerns_cookie }}
+                </h3>
+              </td>
+              <td style="text-align: center">
+                <h3 class="reminder-text">
+                  {{ this.all_gd.renewals_concerns_cutnip }}
+                </h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="txt-box">Attendance and Reschedules</p>
+              </td>
+              <td style="text-align: center">
+                <h3 class="reminder-text">
+                  {{ this.all_gd.attendance_reschedule_cookie }}
+                </h3>
+              </td>
+              <td style="text-align: center">
+                <h3 class="reminder-text">
+                  {{ this.all_gd.attendance_reschedule_cutnip }}
+                </h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="txt-box">Punctuality</p>
+              </td>
+              <td style="text-align: center">
+                <h3 class="reminder-text">
+                  {{ this.all_gd.punctuality_cutnip }}
+                </h3>
+              </td>
+              <td style="text-align: center">
+                <h3 class="reminder-text">
+                  {{ this.all_gd.punctuality_cookie }}
+                </h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="txt-box">Virtual Background Consistencies</p>
+              </td>
+              <td style="text-align: center">
+                <h3 class="reminder-text">
+                  {{ this.all_gd.virtual_background_consistencies_cookie }}
+                </h3>
+              </td>
+              <td style="text-align: center">
+                <h3 class="reminder-text">
+                  {{ this.all_gd.virtual_background_consistencies_cutnip }}
+                </h3>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <p class="txt-box">Disciplinary Compliances</p>
+              </td>
+              <td style="text-align: center">
+                <h3 class="reminder-text">
+                  {{ this.all_gd.disciplinary_compliances_cookie }}
+                </h3>
+              </td>
+              <td style="text-align: center">
+                <h3 class="reminder-text">
+                  {{ this.all_gd.disciplinary_compliances_cutnip }}
+                </h3>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- <div class="text-para fade-item">
+					<p class="txt-box">Attendance</p>
+					<h3 class="reminder-text">Yes</h3>
+					<img
+					  class="checkTheMark"
+					  src="../../../../../assets/redCross.png"
+					  alt=""
+					/>
+					</div>
+					<div class="text-para fade-item">
+					<p class="txt-box">Svp Virtual Background</p>
+					<h3 class="reminder-text">Yes</h3>
+					<img
+					  class="checkTheMark"
+					  src="../../../../../assets/greenTik.png"
+					  alt=""
+					/>
+					</div>
+					<div class="text-para fade-item">
+					<p class="txt-box">Re-scheduling Classes</p>
+					<h3 class="reminder-text">Yes</h3>
+					<img
+					  class="checkTheMark"
+					  src="../../../../../assets/redCross.png"
+					  alt=""
+					/>
+					</div> -->
+        <!-- <div class="text-para fade-item">
+					<p class="txt-box">Re-enrollment</p>
+					<h3 class="reminder-text">Yes</h3>
+					<img
+					  class="checkTheMark"
+					  src="../../../../../assets/greenTik.png"
+					  alt=""
+					/>
+					</div> -->
+      </div>
+      <!-- graph -->
+      <!-- <div class="bar-btn">
+				<div class="bar-graph bar-graph-horizontal bar-graph-one">
+				  <div class="bar-one">
+				    <div class="bar"></div>
+				  </div>
+				  <div class="bar-two">
+				    <div class="bar"></div>
+				  </div>
+				  <div class="bar-three">
+				    <div class="bar"></div>
+				  </div>
+				  <div class="bar-four">
+				    <div class="bar"></div>
+				  </div>
+				</div>
+
+				<a>
+				  <button class="button_secondary enroll-btn">Re-Enroll Now</button>
+				</a>
+				</div> -->
+      <!-- graph end -->
+      <!-- reschedule side bar  -->
+    </div>
+
+    <!-- end -->
+    <div class="after-cookie">
+      <div class="two-partt">
+        <div class="reshedule-btm">
+          <h2 class="total">Total Reschedules</h2>
+        </div>
+        <h2 class="nmbr-count">{{ this.all_rd }}</h2>
+      </div>
+      <div class="two-partt payment-part">
+        <div class="reshedule-btm">
+          <h2 class="total">Current Payment</h2>
+        </div>
+        <h2 class="nmbr-count">{{ this.Salary }} {{ this.currency }}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  -->
+
+<!-- <div class="msg_box">
+  <h4>{{ this.all_msgs }}</h4>
+</div> -->
+
+<div class="msg_box">
+  <!-- <h4>{{ this.msg }}</h4> -->
+</div>
+<!-- after event part -->
+<div class="after-event">
+  <div class="schedule">
+    <h2 class="schedule-txt">My upcoming schedule</h2>
+    <p class="col col-100 tab_heading_name"></p>
+    <!-- <h4 *ngIf="this.com_status == '200'">Class is Completed</h4> -->
+    <h2
+      *ngIf="
+        !loading &&
+        (this.scheduleList === null ||
+          (scheduleList | getScheduleByStatusTwo : scheduleStatus.COMPLETED)
+            .length)
+      "
+      class="no-class"
+    >
+      No classes this week
+    </h2>
+    <div class="parent-box-wraper" *ngFor="let item of this.scheduleList">
+      <ng-container
+        *ngIf="
+          item.status == scheduleStatus.NOT_STARTED ||
+          item.status == scheduleStatus.STARTED ||
+          item.status == scheduleStatus.PENDING
+        "
+      >
+        <div class="class-box">
+          <div class="bxx">
+            <h2 class="boxx-txt">{{ item.batch_code }}</h2>
+
+            <h2 class="boxx-txt">#{{ item.class_no }}</h2>
+
+            <!-- <div class="condition">
+              <p
+                class="active-data {{ item.status }}"
+                *ngIf="item.status == 'NOT_STARTED'"
+              >
+                Not Started
+              </p>
+              <p
+                class="active-data {{ item.status }}"
+                *ngIf="item.status == 'STARTED'"
+              >
+                Started
+              </p>
+            </div> -->
+          </div>
+          <h2 class="student-name">{{ item.students }}</h2>
+          <h2 class="start-time">
+            {{ item.start_time | customdate | date : "d MMM y, HH:mm a" }}
+          </h2>
+          <p class="type">{{ item.level }}</p>
+
+          <!-- butttons  -->
+          <div class="button-box">
+            <ng-container [ngSwitch]="item.status">
+              <ng-container *ngSwitchCase="scheduleStatus.RESCHEDULED">
+                <button class="question-mark" (click)="redirectToSupport(item)">
+                  <span class="for-hover">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 22 22"
+                      fill="none"
+                    >
+                      <path
+                        d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M11 16H11.01"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <div class="question_tooltip">
+                    <span> Support </span>
+                  </div>
+                </button>
+              </ng-container>
+              <ng-container *ngSwitchCas="scheduleStatus.PENDING">
+                <div class="combo">
+                  <!-- <p class="type">{{ item.status }}</p> -->
+                  <a>
+                    <button
+                      class="button_secondary join-btn"
+                      (click)="
+                        joinclass({
+                          id: item.id,
+                          link: item.link,
+                          class_status: item.status
+                        })
+                      "
+                    >
+                      Join
+                    </button>
+                  </a>
+                  <a>
+                    <button class="button_secondary pending-btn">
+                      Reschedule Pending
+                    </button>
+                  </a>
+                </div>
+                <button class="question-mark" (click)="redirectToSupport(item)">
+                  <span class="for-hover">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 22 22"
+                      fill="none"
+                    >
+                      <path
+                        d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M11 16H11.01"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <div class="question_tooltip">
+                    <span> Support </span>
+                  </div>
+                </button>
+              </ng-container>
+              <ng-container *ngSwitchCas="scheduleStatus.NOT_STARTED">
+                <div class="combo">
+                  <!-- <p class="type">{{ item.status }}</p> -->
+                  <a>
+                    <button
+                      class="button_secondary join-btn"
+                      (click)="
+                        joinclass({
+                          id: item.id,
+                          link: item.link,
+                          class_status: item.status
+                        })
+                      "
+                    >
+                      Join
+                    </button>
+                  </a>
+                </div>
+                <div class="combo-2">
+                  <span
+                    class="schedule_button"
+                    (click)="
+                      user_class_get({
+                        classId: item.id,
+                        user_id: item.user_id
+                      })
+                    "
+                  >
+                    <a>
+                      <button
+                        class="button_secondary reschedule"
+                        (click)="schedule_open()"
+                      >
+                        Reschedule
+                      </button>
+                      <!-- <button class="button_secondary"  (click)="schedule_close = !schedule_close">Reschedule</button> -->
+                    </a>
+                  </span>
+                </div>
+                <button class="question-mark" (click)="redirectToSupport(item)">
+                  <span class="for-hover">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 22 22"
+                      fill="none"
+                    >
+                      <path
+                        d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M11 16H11.01"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <div class="question_tooltip">
+                    <span> Support </span>
+                  </div>
+                </button>
+              </ng-container>
+              <ng-container *ngSwitchCas="scheduleStatus.STARTED">
+                <div class="combo">
+                  <a>
+                    <button
+                      class="button_secondary join-btn"
+                      (click)="joinclass({ id: item.id, link: item.link })"
+                    >
+                      Join
+                    </button>
+                  </a>
+                  <a>
+                    <button
+                      class="button_secondary complete"
+                      (click)="user_complete({ end: 'END', id: item.id })"
+                    >
+                      Complete
+                    </button>
+                  </a>
+                </div>
+                <button class="question-mark" (click)="redirectToSupport(item)">
+                  <span class="for-hover">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 22 22"
+                      fill="none"
+                    >
+                      <path
+                        d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M11 16H11.01"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <div class="question_tooltip">
+                    <span> Support </span>
+                  </div>
+                </button>
+              </ng-container>
+            </ng-container>
+          </div>
+
+          <!-- buttons end -->
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="right_widget">
+    <!-- here was the total payment part -->
+    <div class="bulletin">
+      <!-- <p>hfvhvjbvjdf</p> -->
+      <div class="bulletin-box carousel__list blur">
+        <div class="bullet-head">Bulletin</div>
+        <div class="main-box">
+          <div class="slider" *ngIf="this.event_status == null; else eventok">
+            <h4>No updates at the moment</h4>
+          </div>
+          <ng-template #eventok>
+            <div class="slider">
+              <div
+                class="context-box carousel__item"
+                *ngFor="let item of this.BulletinEventInterface?.data"
+              >
+                <div class="bullet-img">
+                  <img
+                    src="{{ this.urlbase }}/{{ item.slug }}"
+                    class="bull-img"
+                  />
+                </div>
+                <div class="img-text">
+                  <h2 class="bull-txt">
+                    {{ item.title }}
+                  </h2>
+                  <h4 class="small-bull-txt">
+                    {{ item.description }}
+                  </h4>
+                  <ng-container
+                    *ngIf="item.event_link == ''; else else_condition"
+                  >
+                  </ng-container>
+                  <ng-template #else_condition>
+                    <a
+                      class="readd"
+                      href="{{ item.event_link }}"
+                      target="_blank"
+                    >
+                      <h3 class="read-more">Read More..</h3>
+                    </a>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="schedule_pop_cont" *ngIf="schedule_close">
+    <div class="arrow" (click)="close()"></div>
+    <div class="schedule_button_cont">
+      <button class="close_schedule" (click)="close()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <form
+      #usersregisterFrom="ngForm"
+      (ngSubmit)="class_rd_request_save(usersregisterFrom.value)"
+    >
+      <div class="reschedule-msg">
+        <ng-container *ngIf="this.msg == '0'"> </ng-container>
+        <ng-container *ngIf="this.msg == '1'">
+          <h4 class="msg-txt">
+            This will be charged as you have used 1 free reschedule
+          </h4>
+        </ng-container>
+        <ng-container *ngIf="this.msg == '2'">
+          <h4 class="msg-txt">
+            This will be charged as this is a consecutive reschedule
+          </h4>
+        </ng-container>
+      </div>
+      <div class="total-reasn">
+        <div class="reasn">
+          <h2 class="reason">Reason For your Reschedule</h2>
+          <textarea id="reason" ngModel name="reason_for_reschedule"></textarea>
+        </div>
+        <div class="submit-class-data">
+          <button class="button_secondary reason-submit">Submit</button>
+        </div>
+      </div>
+      <ng-container *ngFor="let item of this.UserAvailableInterface?.data">
+        <div class="schedule_ind">
+          <label class="radio_cont">
+            {{ item.from | date : "d MMM y, HH:mm a" }}</label
+          >
+          <input
+            ngModel
+            class="checkmark"
+            type="radio"
+            [checked]="[item]"
+            name="availability_id"
+            value="{{ item.id }}"
+          />
+          <!-- (change)="change_radio(item.id)" -->
+          <input type="hidden" name="start_time" ngModel="{{ item.from }}" />
+        </div>
+      </ng-container>
+    </form>
+    <ng-container *ngIf="!this.UserAvailableInterface?.data">
+      <h2 class="null data">User Availability not found</h2>
+    </ng-container>
+  </div>
+</div>

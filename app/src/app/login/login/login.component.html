@@ -1,0 +1,117 @@
+<!-- <p>login works!</p> -->
+<danger *ngIf="this.st_msg "  [msg]="st_msg"></danger>
+<!-- <app-alert *ngIf="is_logedInError"></app-alert>
+<app-loader *ngIf="login_loader"></app-loader> -->
+<div class="login_signup_outer_cont">
+  <div class="log_sign_cont">
+    <div class="log_sign_cont_left">
+      <div class="inner_log_sign_cont_left">
+        <img alt="logo" src="./assets/img/logo1.png" class="logp" />
+        <!-- <h2>
+          Start your free <br />
+          trial.
+        </h2> -->
+        <p>"Unlock the melody within you and <br>
+          embark on a harmonious journey.</p>
+<!-- 
+        <button class="button_primary white" (click)="redirect()">
+          Register
+        </button> -->
+        <!-- <button class="button_primary white" (click)="redirectCourse()">
+          All Courses
+        </button> -->
+      </div>
+    </div>
+    <div class="log_sign_input_cont">
+      <div class="inner_log_sign_input_cont">
+        <h3>Sign in</h3>
+        <p>
+          <!-- Have a Account? Now you can explore<br /> our vast
+          options of customisation of QR. <br /><br />
+          <span>Login from here.</span> -->
+        </p>
+        <div class="form_cont_log_sign">
+          <form [formGroup]="usersFrom" (ngSubmit)="getuserData()">
+            <div class="form_col col_hundred">
+              <label class="user-txt">USERNAME</label>
+              <input
+                type="text"
+                placeholder="Enter username or email address"
+                name="username"
+                formControlName="username"
+                id="username"
+                ng-required="Myvar"
+                [ngClass]="{
+                  error:
+                    getControl('username')?.errors &&
+                    getControl('username')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  getControl('username')?.errors &&
+                  getControl('username')?.touched
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('username')?.errors?.['required']"
+                  >Username/Email is required</small
+                >
+              </div>
+            </div>
+            <div class="form_col col_hundred">
+              <label class="user-txt">PASSWORD</label>
+              <input
+                type="password"
+                placeholder="Enter your Password"
+                name="password"
+                id="password"
+                formControlName="password"
+                required
+                [ngClass]="{
+                  error:
+                    getControl('password')?.errors &&
+                    getControl('password')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  getControl('password')?.errors &&
+                  getControl('password')?.touched
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('password')?.errors?.['required']"
+                  >Password is required</small
+                >
+              </div>
+            </div>
+           <div class="user_name_pass_not_matched">
+            <span>{{this.error_msg}}</span>
+           </div>
+            <div class="form_col col_hundred submit_button_cont">
+              <a routerLink="/forgot_password" class="forgot_password"
+              >Forgot Password?</a>
+            </div>
+           
+            <div class="form_col col_hundred submit_button_cont">
+              <button class="button_primary  login_btn {{login_color}}" >{{login_text}}
+                <img src="./assets/loaderss.svg" alt="" srcset="" class="login_loader" *ngIf="active_loader">
+              </button>
+              
+            </div>
+<div class="signup">
+  <P class="account_text">Don't have an account?  <a class="sign_up_click" (click)="redirect()">Sign Up</a></P> 
+
+</div>
+          
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

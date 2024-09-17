@@ -1,0 +1,114 @@
+<!-- <p>performance-repo works!</p> -->
+<!-- <danger *ngIf="this.audio_danger" [msg]=""></danger>
+<sucess *ngIf="this.audio_sucess" [msg]=""></sucess> -->
+
+<div class="tab_container cont-tab" [formGroup]="audioItemForm">
+  <hr class="linee" />
+
+  <div formArrayName="listItems">
+    <div class="music-lists">
+      <div class="audio-wrapper">
+        <div class="adio-title image-path">
+          <div class="audio-txt">
+            <div class="audio-box">
+              <!-- <img class="profile-image" src="https://thesvpacademy.com/admin/file/open/{{item.slug}}" alt="" srcset=""> -->
+              <h4>Submission Date</h4>
+            </div>
+          </div>
+        </div>
+        <div class="adio-title">
+          <div class="audio-txt heading-h2">
+            <h4>Title</h4>
+          </div>
+        </div>
+        <div class="audio-main">
+          <div class="audio-name">
+            <h4>Audio</h4>
+          </div>
+        </div>
+        <div class="comments-main" style="width: 15%">
+          <div class="comments">
+            <h2 class="textt">Feedback Date</h2>
+          </div>
+        </div>
+        <div class="feedback-main">
+          <div class="Feedback">
+            <h2 class="textt">Feedback</h2>
+          </div>
+        </div>
+      </div>
+      <hr />
+<ng-container *ngIf="this.allStatus==200; else elsetemplate" ></ng-container>
+<ng-template #elsetemplate>
+      <h1 >No File Found</h1>
+    </ng-template>
+    </div>
+    <div
+      class="music-lists"
+      [formGroupName]="i"
+      *ngFor="let controls of this.audioItemLists.controls; let i = index"
+    >
+      <div class="audio-wrapper">
+        <div class="adio-title image-path">
+          <div class="audio-txt">
+            <div class="audio-box">
+              <!-- <img class="profile-image" src="https://thesvpacademy.com/admin/file/open/{{item.slug}}" alt="" srcset=""> -->
+              <p class="audio-date">
+                {{ controls.value.created_on | date : "d MMM y, HH:mm a" }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="adio-title">
+          <div class="audio-txt heading-h2">
+            <p>{{ controls.value.description }}</p>
+          </div>
+        </div>
+        <div class="audio-main">
+          <div class="container-audio">
+            <audio controls loop muted paused>
+              <source
+                src="https://thesvpacademy.com/admin/file/open/{{
+                  controls.value.slug
+                }}"
+                type="audio/ogg"
+              />
+              Your browser dose not Support the audio Tag
+            </audio>
+          </div>
+        </div>
+        <div class="comments-main">
+          <div class="comments">
+            <h2 class="textt">
+              {{ controls.value.updated_on | date : "d MMM y, HH:mm a" }}
+            </h2>
+          </div>
+        </div>
+        <div class="feedback-main">
+          <div class="Feedback">
+              <div *ngIf="!controls.value.ifFeedbackDone; else noFeedback">
+                {{ controls.value.feedback }}
+              </div>
+              <ng-template #noFeedback>
+                <div class="input">
+                <input
+                  type="text"
+                  formControlName="feedback"
+                  [disabled]="!controls.value.ifFeedbackDone"
+                  placeholder="Type your feedback"
+                />
+                <button (click)="submitFeedback(i)">Submit</button>
+                </div>
+              </ng-template>
+
+              <!-- <div class="progressbar">
+                <div class="bar"></div>
+              </div> -->
+
+              <!-- <div class="submitted"   >Submitted!</div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

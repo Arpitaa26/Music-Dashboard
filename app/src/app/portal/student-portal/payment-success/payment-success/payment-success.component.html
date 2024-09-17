@@ -1,0 +1,81 @@
+<!-- <h2>{{this.message}}</h2> -->
+
+<div class="first-box">
+  <button class="close_msg_popup" routerLink="/portal/students/dashboard"><i class="fa-solid fa-xmark"></i></button>
+
+  <div class="second-box">
+    <div class="final-box">
+      <div [ngSwitch]="isPaymentStatus">
+        <div *ngSwitchCase="paymentStatusTypes.PENDING">
+          <h2 class="done">{{ this.message }}</h2>
+        </div>
+        <div *ngSwitchCase="paymentStatusTypes.PAID">
+          <h2 class="great">Great!</h2>
+          <svg
+            width="92"
+            height="92"
+            viewBox="0 0 92 92"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="0.195801"
+              y="0.411865"
+              width="91.0002"
+              height="91.0002"
+              rx="45.5001"
+              fill="#5E3A7D"
+              fill-opacity="0.2"
+            />
+            <rect
+              x="10.1232"
+              y="10.3392"
+              width="71.1455"
+              height="71.1455"
+              rx="35.5728"
+              fill="#5E3A7D"
+              fill-opacity="0.35"
+            />
+            <rect
+              x="20.4857"
+              y="20.7614"
+              width="50.4204"
+              height="50.4204"
+              rx="25.2102"
+              fill="#5E3A7D"
+            />
+            <path
+              d="M35.9261 45.9716L43.1396 53.185L57.5666 38.7581"
+              stroke="white"
+              stroke-width="4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <h2 class="done">{{ this.message }}</h2>
+        </div>
+        <div *ngSwitchDefault>
+          <div class="loader">
+            <div class="lds-spinner">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div>
+              <h3 class="payment-pending">Payment Pending.... Please wait....</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

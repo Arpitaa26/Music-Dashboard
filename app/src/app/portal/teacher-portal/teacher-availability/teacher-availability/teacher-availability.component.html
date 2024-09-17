@@ -1,0 +1,290 @@
+<!-- <h4>{{this.st_msg}}</h4>
+<sucess *ngIf="this.st_msg "  [msg]="st_msg"></sucess> -->
+<danger *ngIf="this.rc_status "  [msg]="all_msgs"></danger>
+<sucess *ngIf="this.rc_false_status" [msg]="all_msgs"></sucess>
+<div class="teacher-container-area">
+  <div class="inner-teacher-container">
+    <div class="teacher-main-section">
+      <div class="teacher-header-section">
+        <h4>Availability of teachers</h4>
+      </div>
+      <div class="teacher-main-content-section">
+        <div class="section-th">
+          <label for="">Time Slots<span style="color: red">*</span></label>
+          <!-- <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ut
+            recusandae aliquid eum ipsam ratione, eaque cumque sapiente,
+            inventore cum aut veniam, officiis distinctio voluptatum laborum
+            porro assumenda nostrum quisquam?
+          </p> -->
+        </div>
+        <div class="acess">
+          <form
+            [formGroup]="checkBoxform"
+            (ngSubmit)="onSubmit()"
+            class="customs-ff"
+          >
+            <table>
+              <tbody>
+                <tr>
+                  <th style="position: sticky; left: -1px">Weekdays</th>
+                  <th><strong>Day Off</strong></th>
+                  <ng-container *ngFor="let time of timeSlots">
+                    <th>
+                      <strong>{{ time.time }}</strong>
+                    </th>
+                  </ng-container>
+                </tr>
+
+                <!-- sunday -->
+
+                <!-- <tr class="day-week">
+  <td>Sunday</td>
+  <ng-container *ngFor="let day_time of this.date_time">
+    <ng-container *ngFor="let day of day_time">
+      <td *ngFor="let time of day.Monday">
+        <span>
+          <input
+            id="{{ time }}"
+            type="checkbox"
+            name="Mon_Day{{ time }}"
+            value="{{ time }}"
+            (change)="onChangeMon($event)"
+          />
+        </span>
+      </td>
+    </ng-container>
+  </ng-container>
+</tr> -->
+                <!-- Sunday     -->
+                <tr class="day-week">
+                  <td>Sunday</td>
+                  <td>
+                    <input
+                      id="sun_Dayoff"
+                      type="checkbox"
+                      name="Sunday-dayoff"
+                      value="Sunday"
+                      (change)="onDayOffSelectSun($event, 'Sunday')"
+                    />
+                  </td>
+                  <ng-container *ngFor="let day_time of this.date_time">
+                    <ng-container *ngFor="let day of day_time">
+                      <td *ngFor="let time of day.Saturday">
+                        <span>
+                          <input
+                            id="sun_{{ time }}"
+                            type="checkbox"
+                            name="Sunday-{{ time }}"
+                            value="{{ time }}"
+                            [disabled]="weekdayDisable['Sunday']"
+                            (change)="onChangeWeekDays($event, 'Sunday')"
+                          />
+                        </span>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+
+                <!-- monday -->
+
+                <tr class="day-week">
+                  <td>Monday</td>
+                  <td>
+                    <input
+                      id="mon_Dayoff"
+                      type="checkbox"
+                      name="Monday-dayoff"
+                      value="Monday"
+                      (change)="onDayOffSelectMon($event, 'Monday')"
+                    />
+                  </td>
+                  <ng-container *ngFor="let day_time of this.date_time">
+                    <ng-container *ngFor="let day of day_time">
+                      <td *ngFor="let time of day.Monday">
+                        <span>
+                          <input
+                            id="{{ time }}"
+                            type="checkbox"
+                            name="Mon_Day{{ time }}"
+                            value="{{ time }}"
+                            [disabled]="weekdayDisable['Monday']"
+                            (change)="onChangeWeekDays($event, 'Monday')"
+                          />
+                        </span>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+
+                <!-- Tuesday -->
+                <tr class="day-week">
+                  <td>Tuesday</td>
+                  <td>
+                    <input
+                      id="tue_Dayoff"
+                      type="checkbox"
+                      name="Tuesday-dayoff"
+                      value=""
+                      (change)="onDayOffSelectTue($event, 'Tuesday')"
+                    />
+                  </td>
+                  <ng-container *ngFor="let day_time of this.date_time">
+                    <ng-container *ngFor="let day of day_time">
+                      <td *ngFor="let time of day.Tuesday">
+                        <span>
+                          <input
+                            id="tue_{{ time }}"
+                            type="checkbox"
+                            name="Tuesday-{{ time }}"
+                            value="{{ time }}"
+                            [disabled]="weekdayDisable['Tuesday']"
+                            (change)="onChangeWeekDays($event, 'Tuesday')"
+                          />
+                        </span>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+
+                <!-- Wednesday  -->
+                <tr class="day-week">
+                  <td>Wednesday</td>
+                  <td>
+                    <input
+                      id="wed_Dayoff"
+                      type="checkbox"
+                      name="Wednesday-dayoff"
+                      value=""
+                      (change)="onDayOffSelectWed($event, 'Wednesday')"
+                    />
+                  </td>
+                  <ng-container *ngFor="let day_time of this.date_time">
+                    <ng-container *ngFor="let day of day_time">
+                      <td *ngFor="let time of day.Wednesday">
+                        <span>
+                          <input
+                            id="wed_{{ time }}"
+                            type="checkbox"
+                            name="Wednesday-{{ time }}"
+                            value="{{ time }}"
+                            [disabled]="weekdayDisable['Wednesday']"
+                            (change)="onChangeWeekDays($event, 'Wednesday')"
+                          />
+                        </span>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+
+                <!-- Thursday -->
+                <tr class="day-week">
+                  <td>Thursday</td>
+                  <td>
+                    <input
+                      id="thrs_Dayoff"
+                      type="checkbox"
+                      name="Thursday-dayoff"
+                      value=""
+                      (change)="onDayOffSelectThu($event, 'Thursday')"
+                    />
+                  </td>
+                  <ng-container *ngFor="let day_time of this.date_time">
+                    <ng-container *ngFor="let day of day_time">
+                      <td *ngFor="let time of day.Thursday">
+                        <span>
+                          <input
+                            id="thrs_{{ time }}"
+                            type="checkbox"
+                            name="Thursday-{{ time }}"
+                            value="{{ time }}"
+                            [disabled]="weekdayDisable['Thursday']"
+                            (change)="onChangeWeekDays($event, 'Thursday')"
+                          />
+                        </span>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+
+                <!-- Friday -->
+                <tr class="day-week">
+                  <td>Friday</td>
+                  <td>
+                    <input
+                      id="fri_Dayoff"
+                      type="checkbox"
+                      name="Friday-dayoff"
+                      value=""
+                      (change)="onDayOffSelectFri($event, 'Friday')"
+                    />
+                  </td>
+                  <ng-container *ngFor="let day_time of this.date_time">
+                    <ng-container *ngFor="let day of day_time">
+                      <td *ngFor="let time of day.Friday">
+                        <span>
+                          <input
+                            id="fri_{{ time }}"
+                            type="checkbox"
+                            name="Friday-{{ time }}"
+                            value="{{ time }}"
+                            [disabled]="weekdayDisable['Friday']"
+                            (change)="onChangeWeekDays($event, 'Friday')"
+                          />
+                        </span>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+
+                <!-- Saturday     -->
+                <tr class="day-week">
+                  <td>Saturday</td>
+                  <td>
+                    <input
+                      id="sat_Dayoff"
+                      type="checkbox"
+                      name="Saturday-dayoff"
+                      value=""
+                      (change)="onDayOffSelectSat($event, 'Saturday')"
+                    />
+                  </td>
+                  <ng-container *ngFor="let day_time of this.date_time">
+                    <ng-container *ngFor="let day of day_time">
+                      <td *ngFor="let time of day.Saturday">
+                        <span>
+                          <input
+                            id="sat_{{ time }}"
+                            type="checkbox"
+                            name="Saturday-{{ time }}"
+                            value="{{ time }}"
+                            [disabled]="weekdayDisable['Saturday']"
+                            (change)="onChangeWeekDays($event, 'Saturday')"
+                          />
+                        </span>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+            <button class="btn-submit" type="submit">Submit</button>
+            <!-- <div class="list_btn">
+              <ul class="w_name">
+                <li><span>Sunday</span></li>
+                <li><span>Monday</span></li>
+                <li><span>Tuesday</span></li>
+                <li><span>Wednesday</span></li>
+                <li><span>Thursday</span></li>
+                <li><span>Friday</span></li>
+                <li><span>Saturday</span></li>
+              </ul>
+
+             
+            </div> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

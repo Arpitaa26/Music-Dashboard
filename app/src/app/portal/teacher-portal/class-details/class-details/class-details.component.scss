@@ -1,0 +1,29 @@
+.full-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab_body.dropdon {
+    position: relative;
+    top: -70px;
+}
+
+.tab_button.right-butn {
+    position: relative;
+    z-index: 999;
+}
+.tab_button.right-butn.left_side_area {
+    // width: 100%;
+    margin-bottom: 0px !important;
+}
+
+
+@media only screen and (max-width:600px) and (min-width: 300px) {
+.tab_button.right-butn.left_side_area {
+    margin-bottom: 45px !important;
+}
+
+}
+@media only screen and (max-width: 999px) and (min-width: 601px) {
+
+}

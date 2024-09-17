@@ -1,0 +1,42 @@
+<div class="course_user_page">
+    <div class="page_wrapper">
+        <h1 class="page_heading">User List</h1>
+        <!-- <div class="tab_container">
+          <select class="theme_select col-m-100"  name="studentname.value" #myselect (change)="onSelectStudent(myselect.value)">
+            <option value="">Select Student Name</option>
+              <option *ngFor="let data of this.userList.data" [value]="data.user_id">
+              {{ data.user_fullname }}
+              </option>
+          </select>
+
+          </div> -->
+
+
+          <div class="row listItem">
+            <ng-container  *ngFor="let data of this.courseListAll_uniq">
+            <div class="courses_redi_card col-25" 
+            [routerLink]="['module-list',data.user_id,data.batch_id, data.course_id]"
+            >
+              <!-- <div class="tag_label">
+                <h4>Registered</h4>
+              </div> -->
+              <div class="inner_redi_card" >
+               
+                <div class="title">
+                  <h2>{{ data.user_fullname }}</h2>
+                </div>
+                <!-- <div class="card_crd_txt">
+                  <div class="card_crd_inner_txt">
+                    <h2 class="course-name">{{ item.name }}</h2>
+                    <p  class="course-description" [innerHTML]="item.description"></p>
+                    
+                 
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </ng-container>
+          </div>
+          </div>
+</div>
+

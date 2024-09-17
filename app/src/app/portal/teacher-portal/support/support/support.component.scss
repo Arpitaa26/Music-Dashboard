@@ -1,0 +1,230 @@
+.topHead {
+  display: flex;
+  justify-content: space-between;
+}
+.createBtn {
+  margin-top: 1.5rem;
+}
+
+.content {
+  margin-block: 1rem;
+  //   margin-inline: 1rem;
+}
+.dateTab {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 15px;
+  letter-spacing: 5px;
+}
+
+// Table
+
+h2 {
+  text-align: center;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  padding: 30px 0;
+}
+
+/* Table Styles */
+.logged-in {
+  color: green;
+}
+
+.logged-out {
+  color: red;
+}
+table {
+  border-collapse: collapse;
+  // border-radius: 5px;
+  overflow: hidden;
+}
+
+table {
+  border-radius: 1em;
+  font-size: 12px;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  background-color: #2d3035;border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.10);
+  background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.12) 0%, rgba(255, 255, 255, 0.10) 100%);
+  backdrop-filter: blur(5px);
+}
+
+td,
+th {
+  border-bottom: 1px solid #8a8d93;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #2d3035;
+}
+
+.table-wrapper {
+  // margin: 10px 70px 70px;
+  box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+}
+
+.fl-table {
+  border-radius:0;
+  font-size: 12px;
+  font-weight: normal;
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  background-color: #2d3035;
+}
+
+.fl-table td,
+.fl-table th {
+  text-align: center;
+  padding: 8px;
+  background-color: #17191c;
+}
+
+.fl-table td {
+  // border-right: 1px solid #8a8d93;
+  font-size: 15px;
+  padding: 1.3rem;
+}
+
+.fl-table thead th {
+  color: #ffffff;
+  // background: #4fc3a1;
+  border-radius: 0px;
+  
+}
+.fl-table thead th {
+  padding: 1.2rem;
+  font-size: 15px;
+  border-radius: 0px;
+
+}
+.fl-table thead th {
+
+  background: #5E3A7D !important;
+}
+
+.fl-table thead th:nth-child(odd) {
+  color: #ffffff;
+  border-radius: 0px;
+background: var(--59339170, #5E3A7D);
+
+  background: var(--interactive);
+}
+
+.fl-table tr:nth-child(even) {
+  background: #2d3035;
+}
+
+.fl-table tr:nth-child(even):hover {
+  background-color: #3b3e44;
+}
+.fl-table tr:nth-child(odd):hover {
+  background-color: #3b3e44;
+}
+
+tr:hover {
+  background-color: #3b3e44;
+}
+
+tr:hover td {
+  background-color: #3b3e44; /* or #3b3e44 */
+}
+span.ticketId {
+  border: 1px solid white;
+  padding: 2px 22px;
+  background-color: #434953;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.rightHead {
+  margin-bottom: 20px;
+}
+/* Responsive */
+
+@media (max-width: 767px) {
+  .fl-table {
+    display: block;
+    width: 100%;
+  }
+  .table-wrapper:before {
+    content: "Scroll horizontally >";
+    display: block;
+    text-align: right;
+    font-size: 11px;
+    // color: white;
+    padding: 0 0 10px;
+  }
+  .fl-table thead,
+  .fl-table tbody,
+  .fl-table thead th {
+    display: block;
+  }
+  .fl-table thead th:last-child {
+    border-bottom: none;
+  }
+  .fl-table thead {
+    float: left;
+  }
+  .fl-table tbody {
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+  }
+  .fl-table td,
+  .fl-table th {
+    padding: 20px 0.625em 0.625em 0.625em;
+    height: 60px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 120px;
+    font-size: 13px;
+    text-overflow: ellipsis;
+  }
+  .fl-table thead th {
+    text-align: left;
+    border-bottom: 1px solid #f7f7f9;
+  }
+  .fl-table tbody tr {
+    display: table-cell;
+  }
+  .fl-table tbody tr:nth-child(odd) {
+    background: none;
+  }
+  .fl-table tr:nth-child(even) {
+    background: transparent;
+  }
+  .fl-table tr td:nth-child(odd) {
+    background: #2d3035;
+    border-right: 1px solid #8a8d93;
+  }
+  .fl-table tr td:nth-child(even) {
+    border-right: 1px solid #8a8d93;
+  }
+  .fl-table tbody td {
+    display: block;
+    text-align: center;
+  }
+  .topHead {
+    flex-direction: column;
+  }
+  .createBtn {
+    margin-top: 0.5rem;
+  }
+}

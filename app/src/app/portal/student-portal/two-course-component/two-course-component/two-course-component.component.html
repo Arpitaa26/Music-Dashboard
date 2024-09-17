@@ -1,0 +1,24 @@
+<div class="page_wrapper">
+  <h1 class="page_heading">Courses</h1>
+
+  <div class="tab_container">
+    <div class="tab_button">
+      <button
+        class="button_secondary button_tab raise"
+        [routerLink]="'my-course'"
+        routerLinkActive="active"
+      >
+        My Courses 
+      </button>
+      <button
+        class="button_secondary button_tab raise"
+        routerLink="all-courses"
+        routerLinkActive="active"
+      >
+        All Courses
+      </button>
+    </div>
+
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,15 @@
+<div class="courseList">
+  <h1 class="page_heading">List of Courses</h1>
+  <div class="row listItem">
+    <ng-container *ngFor="let item of courseList">
+      <div routerLinkActive="active" class="col-25 col-m-50">
+        <div class="dashboard_option">
+          <div class="dashBoardText" id="{{ item.id }}">
+            <h3>{{ item.courseName }}</h3>
+            <h3>Price: ₹{{ item.price }}</h3>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

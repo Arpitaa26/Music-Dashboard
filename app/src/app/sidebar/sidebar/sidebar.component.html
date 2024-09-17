@@ -1,0 +1,31 @@
+<!-- <p>sidebar works!</p> -->
+
+<img class="sidebar_logo" src="./assets/img/logo.png"/>
+<!-- <div class="nav_overlay_mob" (click)="close_mob_nav()"></div> -->
+<div class="nav">
+  <ng-container *ngFor="let item of menu; let i = index" >
+    <!-- <a class="menu {{menu_ind==i?'active':''}}" (click)="menu_select(item,i)" routerLink="{{item.link}}" routerLinkActive="router-link-active"  >
+      <i class="fa {{item.icon}}"></i>
+      <p>{{item.text}}</p>
+    </a> -->
+    <a class="menu" routerLinkActive="active" routerLink="{{item.link}}" (click)="menu_select(item,i)" aria-label="item.text" >
+      <!-- <i class="fa {{item.icon}}"></i> -->
+    <img src="{{item.svg}}"  class="img-icon"> 
+      <p>{{item.text}}</p>
+      <div class="tooltip" >{{item.text}}</div>
+    </a>
+  </ng-container>
+
+
+
+  <!-- <div class="handel" (click)="handel_close_data()"
+  class="{{ nav_toggle_status ? 'open' : '' }}">
+    <div class="box_handel">
+      <span class="indicate">
+        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="32" viewBox="0 0 11 32" fill="none">
+          <path d="M0 32V2V0L11 16L0 32Z" fill="#EE9C13"/>
+        </svg>
+      </span>
+    </div>
+  </div> -->
+</div>

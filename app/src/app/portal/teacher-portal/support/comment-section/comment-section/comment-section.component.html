@@ -1,0 +1,80 @@
+<div class="chatsDiv">
+  <ng-container *ngFor="let data of commentData">
+    <div
+      class="msg"
+      [ngClass]="data.user_id == user_id ? 'right-msg' : 'left-msg'"
+    >
+      <div
+        class="msg-img"
+        style="
+          background-image: url(../../../../../../assets/dummt_profile.png);
+        "
+      ></div>
+      <div class="msg-bubble">
+        <div class="msg-info">
+          <div class="msg-info-name">{{ data.full_name }}</div>
+          <div class="msg-info-time">
+            {{ data.created_on | date : "short" }},
+          </div>
+        </div>
+        <div class="msg-text">
+          {{ data.task_comment }}
+        </div>
+        <div class="card_image">
+          <img [src]="base_url + data.slug" alt="" class="card_imgs" />
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="sendText" *ngIf="status == '0'; else all_active">
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <!-- <div class="Inpmessage">
+      <textarea
+        name=""
+        id="message"
+        cols="30"
+        rows="10"
+        class="theme_textarea"
+        placeholder="Message"
+        formControlName="task_comment"
+        required
+      ></textarea>
+    </div>
+
+    <div class="subBtn">
+      <button class="button_primary createBtn">Submit</button>
+    </div> -->
+  </form>
+</div>
+<ng-template #all_active>
+  <div class="sendText">
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <div class="attachment">
+        <input
+          #inputFile
+          type="file"
+          id="file"
+          (change)="onFileSelect($event)"
+        />
+      </div>
+      <div class="Inpmessage">
+        <textarea
+          name=""
+          id="message"
+          cols="30"
+          rows="10"
+          class="theme_textarea"
+          placeholder="Message"
+          formControlName="task_comment"
+          required
+        ></textarea>
+      </div>
+
+      <div class="subBtn">
+        <button class="button_primary createBtn">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

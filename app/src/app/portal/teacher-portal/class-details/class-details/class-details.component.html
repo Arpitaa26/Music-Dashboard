@@ -1,0 +1,54 @@
+<!-- <p>class-details works!</p> -->
+<div class="page_wrapper">
+  <h1 class="page_heading">Class Details</h1>
+ 
+  <div class="tab_container">
+    <div class="full-btn">
+    <div class="tab_button">
+     
+      <!-- <button
+        class="button_secondary button_tab raise"
+        routerLink="schedule_class"
+        routerLinkActive="active"
+      >
+        Scheduled Class
+      </button>
+  <button
+        class="button_secondary button_tab raise"
+        routerLink="completed_class"
+        routerLinkActive="active"
+      >
+        Completed Classes
+      </button> -->
+     
+      </div>
+  
+      <div class="tab_button right-butn left_side_area">
+        <button
+        class="button_secondary button_tab  right-btn raise"
+        routerLink="summary"
+        routerLinkActive="active"
+      >
+        summary
+      </button>
+  
+       <button
+          class="button_secondary button_tab   right-btn  raise"
+          routerLink="calender_view"
+          routerLinkActive="active"
+        >
+          Calender View
+        </button>
+      </div>
+
+
+
+
+  </div>
+    
+    <div class="tab_body   dropdon">
+      <router-outlet></router-outlet>
+    </div>
+  
+  </div>
+</div>

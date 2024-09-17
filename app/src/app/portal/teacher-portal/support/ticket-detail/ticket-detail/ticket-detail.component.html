@@ -1,0 +1,38 @@
+<div class="page_wrapper">
+  <div class="topHead">
+    <div class="leftHead">
+      <h1 class="page_heading">Ticket Details</h1>
+     
+    </div>
+  </div>
+  <div class="tab_container">
+    <div class="for_summary_tab_content">
+      <div class="ticketDet">
+        <ng-container *ngFor="let data of ticketDetails">
+          <div class="ticketHead">
+            <h2>
+              <span style="color: #864dd9">#{{ data.task_title }}</span>
+            </h2>
+           
+          </div>
+          <p *ngIf="data.status == 1" class="tab_heading_name">
+            Active <span class="logged-in">●</span>
+          </p>
+          <p *ngIf="data.status == 0" class="tab_heading_name">
+            Closed<span class="logged-out">●</span>
+          </p>
+          <p class="tab_heading_name">
+            {{ data.created_on | date : "fullDate" }}
+          </p>
+          <!-- <p class="tab_heading_name">{{data.description}}</p> -->
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="container_forum for_summary_tab_content" *ngFor="let data of ticketDetails">
+      <h2 class="page_heading">Forum</h2>
+
+      <app-comment-section [status]="data.status"></app-comment-section>
+    </div>
+  </div>
+</div>

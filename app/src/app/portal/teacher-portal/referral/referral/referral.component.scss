@@ -1,0 +1,462 @@
+input {
+    border: 1px solid #8a8d93;
+    color-scheme: dark;
+  }
+  .for_scheduled_tab_content {
+    border-radius: 13px;
+    padding: 32px 20px;
+    box-shadow: var(--default_box_shaddow);
+    background: var(--secondary);
+    margin-top: 27px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.10);
+    background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.12) 0%, rgba(255, 255, 255, 0.10) 100%);
+    backdrop-filter: blur(5px);
+  }
+  button.button_primary.sharing_btn {
+    display: inline-flex;
+    padding: 15px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 117px;
+    background: #EE9C13;
+    color: #fff;
+}
+button.button_primary.sharing_btn:hover{
+  background: transparent;
+    color: white;
+}
+  .inner_schedule_tiles {
+    padding: 0px 17px 20px;
+    border: 1px solid var(--interactive);
+    border-radius: 13px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 8rem;
+  }
+  .inner_schedule_tiles .button_secondary {
+    padding: 9px 16px;
+    border-radius: 5px;
+    font-size: 8.5px;
+    margin-right: 6px;
+  }
+  .tab_heading_name {
+    margin-bottom: 20px;
+  }
+  .class_time {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .type {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: var(--interactive);
+  }
+  .button_secondary.disabled {
+    opacity: 0.3;
+  }
+  .button_secondary.disabled:hover {
+    background: var(--interactive);
+    color: white;
+    border: 1px solid var(--border-color);
+  }
+  .schedule_pop_cont {
+    width: 29%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: var(--secondary);
+    box-shadow: var(--default_box_shaddow);
+  }
+  .theme_input {
+    margin-top: 20px;
+    background: var(--primary);
+    color: var(--text_color);
+    width: 100%;
+    min-height: 50px;
+    padding: 12px;
+    font-size: 16px;
+  }
+  /* The container */
+  .radio_cont {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 17px;
+    -webkit-user-select: none;
+    user-select: none;
+    text-align: left;
+  }
+  
+  /* Hide the browser's default radio button */
+  .radio_cont input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .radio_cont:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .radio_cont input:checked ~ .checkmark {
+    background-color: var(--interactive);
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .radio_cont input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .radio_cont .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--secondary);
+  }
+  .schedule_slacc_radio_cont .schedule_ind {
+    background: var(--secondary);
+    // box-shadow: var(--default_box_shaddow);
+    width: 400px;
+    z-index: 2;
+    padding: 20px;
+    color: var(--text_color);
+    max-height: 100vh;
+    overflow: auto;
+    border-radius: 0;
+  }
+  
+  .schedule_slacc_radio_cont .arrow {
+    position: fixed;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: var(--secondary);
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    // isolation: isolate;
+  }
+  .close_schedule {
+    position: absolute;
+    left: -27px;
+    top: 0px;
+    cursor: pointer;
+    background: var(--interactive);
+    border: none;
+    color: var(--secondary);
+    width: 26px;
+    height: 26px;
+    border-radius: 0;
+    z-index: 5;
+    isolation: isolate;
+  }
+  .schedule_pop_cont {
+    padding: 20px;
+  }
+  
+  a.button_secondary {
+    float: left;
+  }
+  button.close_schedule {
+    cursor: pointer;
+  }
+  
+  h2.no-class {
+    padding-left: 10px;
+  }
+  
+  .textMid h3 {
+    font-size: 24px;
+    color: #FFF;
+    font-family: Kumbh Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+  }
+  .textExplain {
+    width: 70%;
+  }
+  .rwd-table {
+    margin: auto;
+    min-width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .rwd-table tr:first-child {
+    border-top: none;
+    background: #5E3A7D;;
+    color: #fff;
+  }
+  
+  .rwd-table tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    // background-color: #f5f9fc;
+  }
+  
+  .rwd-table tr:nth-child(odd):not(:first-child) {
+    background-color: #ebf3f927;
+  }
+  
+  .rwd-table th {
+    display: none;
+  }
+  
+  .rwd-table td {
+    display: block;
+  }
+  
+  .rwd-table td:first-child {
+    margin-top: .5em;
+  }
+  
+  .rwd-table td:last-child {
+    margin-bottom: .5em;
+  }
+  
+  .rwd-table td:before {
+    content: attr(data-th) ": ";
+    font-weight: bold;
+    width: 120px;
+    display: inline-block;
+    color: #000;
+  }
+  
+  .rwd-table th,
+  .rwd-table td {
+    text-align: left;
+  }
+  
+  .rwd-table {
+    color: #333;
+    border-radius: .4em;
+    overflow: hidden;
+  }
+  
+  .rwd-table tr {
+    border-color: #bfbfbf;
+  }
+  
+  .rwd-table th,
+  .rwd-table td {
+    padding: .5em 1em;
+  }
+
+  .button_primary {
+    border: none;
+    border-radius: 100px;
+    padding: 14px 25px;
+    text-transform: uppercase;
+
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+    cursor: pointer;
+    border-radius: 117px;
+    background: var(--brand_yellow, #EE9C13);
+    border-radius: 146px;
+    border: 4px solid #201F25;
+   
+    box-shadow: 5px 7px 7px rgba(23, 22, 22, 0.368627451), -5px -6px 13px rgba(109, 109, 109, 0.33);
+}
+  @media screen and (max-width: 601px) {
+    .rwd-table tr:nth-child(2) {
+      border-top: none;
+    }
+  }
+  @media screen and (min-width: 600px) {
+    .rwd-table tr:hover:not(:first-child) {
+      background-color: #d8e7f346;
+    }
+    .rwd-table td:before {
+      display: none;
+    }
+    .rwd-table th,
+    .rwd-table td {
+      display: table-cell;
+      padding: .25em .5em;
+    }
+    .rwd-table th:first-child,
+    .rwd-table td:first-child {
+      padding-left: 0;
+    }
+    .rwd-table th:last-child,
+    .rwd-table td:last-child {
+      padding-right: 0;
+    }
+    .rwd-table th,
+    .rwd-table td {
+      padding: 1em !important;
+    }
+  }
+  
+  
+  /* THE END OF THE IMPORTANT STUFF */
+  
+  /* Basic Styling */
+  body {
+  background: #4B79A1;
+  background: -webkit-linear-gradient(to left, #4B79A1 , #283E51);
+  background: linear-gradient(to left, #4B79A1 , #283E51);        
+  }
+  h1 {
+    text-align: center;
+    font-size: 2.4em;
+    color: #f2f2f2;
+  }
+  .container {
+    display: block;
+    text-align: center;
+  }
+  h3 {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-size: 1.5em;
+    color: #cecece;
+  }
+  
+  .table_sections {
+    margin-top: 50px;
+  }
+  
+  /* for custom scrollbar for webkit browser*/
+  
+  ::-webkit-scrollbar {
+      width: 6px;
+  } 
+  ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  } 
+  ::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  }
+  @media only screen and (max-width: 999px) and (min-width: 320px) {
+    .schedule_slacc_radio_cont .schedule_ind {
+      width: 100%;
+      padding: 38px 20px;
+      height: 100vh;
+    }
+    .close_schedule {
+      left: unset;
+      right: 0;
+      position: absolute;
+    }
+    .schedule_pop_cont {
+      width: 100%;
+      height: calc(100vh - 63px);
+      position: fixed;
+      top: unset;
+      bottom: 0;
+      right: 0%;
+    }
+  }
+  
+
+  @media only screen and (max-width: 999px) and (min-width: 320px) {
+    .schedule_slacc_radio_cont .schedule_ind {
+      width: 100%;
+      padding: 38px 20px;
+      height: 100vh;
+    }
+    .close_schedule {
+      left: unset;
+      right: 0;
+      position: absolute;
+    }
+    .schedule_pop_cont {
+      width: 100%;
+      height: calc(100vh - 63px);
+      position: fixed;
+      top: unset;
+      bottom: 0;
+      right: 0%;
+    }
+  }
+  .active {
+    display: block;
+  }
+  
+  .inactive {
+ display: none;
+  }
+  .clip_copy_to {
+    background: #000;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: -15px;
+}
+
+.clip_copy_to::after {
+    content: '';
+    position: absolute;
+    height: 12px;
+    top: -6px;
+    width: 12px;
+    transform: rotate(45deg);
+    background: black;
+}
+@media only screen and (max-width: 600px) and (min-width: 320px) {
+  .textMid h3 {
+    line-height: 20px !important;
+    font-size: 12px !important;
+}
+h3 {
+
+  margin-bottom: 10px  !important;
+  margin-top: 0 !important;
+}
+.for_scheduled_tab_content{
+
+  display: block !important;
+ 
+}
+h4.copy-txt {
+  color: #ee9c13;
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+}

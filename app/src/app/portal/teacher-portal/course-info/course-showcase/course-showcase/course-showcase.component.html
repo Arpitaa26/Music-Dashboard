@@ -1,0 +1,234 @@
+<!-- <p>course-showcase works!</p> -->
+<div class="pageLoad" *ngIf="loading == true">
+  <div class="lds-spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <h3>Loading.... Please wait</h3>
+</div>
+
+<div class="showContSec" *ngIf="loading == false">
+  <h3 *ngIf="tutorialList == null">Please buy the course to view</h3>
+  <ng-container
+    *ngIf="tutorialList != null && selectedItem === allSelected.Tutorial"
+  >
+    <div class="sideBarEnabled">
+      <div class="mainContent">
+        <div class="imageViewSec">
+          <div class="imgViewContent">
+            <owl-carousel-o [options]="customOptions">
+              <ng-container
+                *ngFor="let img of ImageFiles"
+                (click)="openImagePopup(true)"
+              >
+                <ng-template carouselSlide *ngIf="img.slug !== ''">
+                  <div
+                    style="background-image: url('https://thesvpacademy.com/admin/file/open/{{ img.slug }}'); width: 100%;
+                  background-size: contain; background-repeat: no-repeat; background-position: center;"
+                  >
+                    <!-- <span class="view_more"  (click)="openImagePopup(true)"><i class="fa-regular fa-eye"></i></span> -->
+                    <img
+                      class="slideImg"
+                      src="https://thesvpacademy.com/admin/file/open/{{
+                        img.slug
+                      }}"
+                      alt=""
+                      style="visibility: hidden"
+                    />
+                  </div>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </div>
+          <div class="imgViewContent">
+            <!-- <ng-image-slider
+              class="page-slider"
+              *ngIf="this.visibelBanner == true"
+              [images]="imageObject"
+              [infinite]="true"
+              [autoSlide]="1"
+              [imageSize]="{width: '100%', height: 'auto', space: 10}"
+              slideImage="1"
+            ></ng-image-slider> -->
+            <!-- <owl-carousel-o [options]="customOptions">
+              <ng-container *ngFor="let img of ImageFiles" (click)="openImagePopup(img)">
+                <ng-template carouselSlide *ngIf="img.slug !== ''">
+                  <img
+                    class="slideImg"
+                    src="https://thesvpacademy.com/admin/file/open/{{ img.slug }}"
+                    alt=""
+                  />
+                </ng-template>
+
+              </ng-container>
+            </owl-carousel-o> -->
+          </div>
+        </div>
+
+        <div class="detailDesc">
+          <div class="tab_container">
+            <div class="tab_button">
+              <div class="all-btn">
+                <button
+                  class="button_secondary button_tab raise"
+                  [ngClass]="activeTab == 1 ? 'active' : ''"
+                  (click)="showTabContent(1)"
+                >
+                  Overview
+                </button>
+                <button
+                  class="button_secondary button_tab raise"
+                  [ngClass]="activeTab == 2 ? 'active' : ''"
+                  (click)="showTabContent(2)"
+                >
+                  Questions & Answers
+                </button>
+                <!-- <button
+                  class="button_secondary button_tab  raise"
+                  [ngClass]="activeTab == 3 ? 'active' : ''"
+                  (click)="showTabContent(3)"
+                >
+                  Course Description
+                </button> -->
+              </div>
+              <div class="new-button"></div>
+            </div>
+            <div class="tab_body">
+              <ng-container *ngIf="activeTab === 1">
+                <app-overview
+                  [data]="tutorialData"
+                  [dId]="this.toggleId"
+                  [show_node]="this.isActiveData"
+                ></app-overview>
+              </ng-container>
+
+              <ng-container *ngIf="activeTab === 2">
+                <app-questions></app-questions>
+              </ng-container>
+
+              <ng-container *ngIf="activeTab === 3">
+                <app-quest-ans></app-quest-ans>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sideBarSec">
+        <div class="sideBarContent">
+          <div class="accordHeading">
+            <h4>{{ modName }}</h4>
+          </div>
+
+          <div class="accordContent">
+            <div *ngFor="let data of moduleData; let i = index">
+              <!-- <div *ngFor="let history of this.course_history"> -->
+
+              <!-- <h4 *ngIf="data.id==history.module_id; else check_icon">active</h4> -->
+
+              <div
+                id="{{ data.id }}"
+                (click)="toggleAccordian($event, data.id)"
+                [className]="
+                  data.id == this.url_mod_id ? 'open accordion' : ' accordion'
+                "
+              >
+                <button
+                  class=""
+                  [className]="
+                    toggleId == data.id
+                      ? 'toogleAccractiveoo list_parent'
+                      : 'list_parent toogleAccractives'
+                  "
+                >
+                  <!-- {{ data.id }} -->
+                  {{ data.name }}
+                </button>
+                <!-- toggleId == data.id ? 'toogleAccrIncHeight' : 'toogleAccr' -->
+                <div
+                  class="panel"
+                  id="{{ data.id }}"
+                  [className]="
+                    toggleId == data.id ? 'toogleAccrIncHeight' : 'toogleAccr'
+                  "
+                  [className]="data.id == this.url_mod_id ? 'show' : 'hide'"
+                >
+                  <ul class="courseList accordion">
+                    <ng-container
+                      *ngFor="let child of this.tutorialList[data.id]"
+                    >
+                      <li
+                        class="course"
+                        *ngIf="child.h_status == '0'; else lock_acordien"
+                      >
+                        <div class="cirriculam" [class.active]="child.id == tutorial_id">
+                          <div
+                            class="title"
+                            id="{{ child.id }}"
+                            (click)="tutorialClick(child.id)"
+                          >
+                            {{ child.title }}
+                          </div>
+
+                          <div class="action">
+                            <span
+                              class="lock"
+                              *ngIf="child.h_status == '1'"
+                            ></span>
+                            <span
+                              class="lock"
+                              (click)="CompleteTutorial(child)"
+                              *ngIf="!child.h_status || child.h_status === '0'"
+                              ><i class="fa-solid fa-lock"></i
+                            ></span>
+                          </div>
+                        </div>
+                      </li>
+                      <ng-template #lock_acordien>
+                        <li class="course">
+                          <div class="cirriculam" [class.active]="child.id == tutorial_id">
+                            <div
+                              class="title"
+                              id="{{ child.id }}"
+                              (click)="tutorialClick(child.id)"
+                            >
+                              {{ child.title }}
+                            </div>
+                            <div class="action">
+                              <span
+                                class="lock"
+                                *ngIf="child.h_status == '1'"
+                              ></span>
+                              <span
+                                class="lock"
+                                (click)="CompleteTutorial(child)"
+                                *ngIf="
+                                  !child.h_status || child.h_status === '0'
+                                "
+                                ><i class="fa-solid fa-lock"></i
+                              ></span>
+                            </div>
+                          </div>
+                        </li>
+                      </ng-template>
+                    </ng-container>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

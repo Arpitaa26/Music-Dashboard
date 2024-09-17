@@ -1,0 +1,495 @@
+<div class="topBtnHeader">
+  <div class="calBtngrp">
+    <div class="btn-group">
+      <button
+        class="button_secondary button_tab raise"
+        (click)="setView(CalendarView.Month)"
+        [class.active]="view === CalendarView.Month"
+      >
+        Month
+      </button>
+      <button
+        class="button_secondary button_tab raise"
+        (click)="setView(CalendarView.Week)"
+        [class.active]="view === CalendarView.Week"
+      >
+        Week
+      </button>
+      <button
+        class="button_secondary button_tab raise"
+        (click)="setView(CalendarView.Day)"
+        [class.active]="view === CalendarView.Day"
+      >
+        Day
+      </button>
+    </div>
+  </div>
+</div>
+<div class="calView">
+  <button
+    class="button_arr"
+    mwlCalendarPreviousView
+    [view]="view"
+    [(viewDate)]="viewDate"
+    (viewDateChange)="closeOpenMonthViewDay()"
+  >
+    <span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="24"
+        viewBox="0 0 25 24"
+        fill="none"
+      >
+        <path d="M15.5 19L8.5 12L15.5 5" stroke="white" stroke-width="2" />
+      </svg>
+    </span>
+  </button>
+  <h3 mwlCalendarToday [(viewDate)]="viewDate" #myDiv>
+    {{ viewDate | calendarDate : view + "ViewTitle" : "en" }}
+  </h3>
+  <button
+    class="button_arr"
+    mwlCalendarNextView
+    [view]="view"
+    [(viewDate)]="viewDate"
+    (viewDateChange)="closeOpenMonthViewDay()"
+  >
+    <span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="24"
+        viewBox="0 0 25 24"
+        fill="none"
+      >
+        <path d="M9.5 19L16.5 12L9.5 5" stroke="white" stroke-width="2" />
+      </svg>
+    </span>
+  </button>
+</div>
+
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view
+    *ngSwitchCase="CalendarView.Month"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen"
+    (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (dayClicked)="dayClickedPopup($event.day)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngSwitchCase="CalendarView.Week"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="CalendarView.Day"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-day-view>
+</div>
+
+<!-- Popup Start -->
+<div class="pop-uppp" id="popp-up" *ngIf="activeDayIsOpen">
+  <div id="eventDetails">
+    <div class="cross">
+      <span class="close-cross" (click)="emptyDayEvents()"
+        ><i class="fa-solid fa-xmark"></i
+      ></span>
+    </div>
+    <div class="popup_body">
+      <div class="inner_popup">
+        <div class="classes">
+          <div class="completed">
+            <h2 class="extra-text">
+              Please click on the tile for more details.
+            </h2>
+            <h2>Scheduled</h2>
+            <div class="column_row">
+              <div class="loading" *ngIf="loading">Loading...</div>
+              <div
+                class="inner_item"
+                *ngFor="
+                  let item of allScheduleItems
+                    | calendarStatusStudent : calendarStatus.NOT_STARTED
+                "
+              >
+                <div class="full-part">
+                  <div
+                    class="first-part"
+                    routerLink="/portal/students/dashboard"
+                  >
+                  <h2 class="batch__code">Batch Code: {{ item.batch_code }}</h2>
+                  <h2 class="student-name">{{ item.students}}</h2>
+                  
+                    <!-- <h2 class="modul-name">status: {{ item.status }}</h2> -->
+                    <h4 class="datte">
+                      {{ item.start_time | date : "h:mm a" }}
+                    </h4>
+                  </div>
+
+                  <div class="question-mark" (click)="redirectToSupport(item)">
+                    <span class="for-hover">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11 16H11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+
+                    <div class="question_tooltip">
+                      <span> Support </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="
+                  !loading &&
+                  !(
+                    allScheduleItems
+                    | calendarStatusStudent : calendarStatus.NOT_STARTED
+                  ).length
+                "
+              >
+                No Not Start Schedule yet.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="classes">
+          <div class="not_completed">
+            <div class="completed">
+              <h2>Completed</h2>
+              <div class="column_row">
+                <div class="loading" *ngIf="loading">Loading...</div>
+                <div
+                  class="inner_item"
+                  *ngFor="
+                    let item of allScheduleItems
+                      | calendarStatusStudent : calendarStatus.COMPLETED
+                  "
+                >
+                  <div class="full-part">
+                    <div
+                      class="first-part"
+                      routerLink="/portal/students/dashboard"
+                    >
+                    <h2 class="batch__code">Batch Code: {{ item.batch_code }}</h2>
+                  <h2 class="student-name">{{ item.students}}</h2>
+                      <h4 class="datte">
+                        {{ item.start_time | date : "h:mm a" }}
+                      </h4>
+                    </div>
+
+                    <div
+                      class="question-mark"
+                      (click)="redirectToSupport(item)"
+                    >
+                      <span class="for-hover">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+  <path d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M11 16H11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                      </span>
+
+                      <div class="question_tooltip">
+                        <span> Support </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  *ngIf="
+                    !loading &&
+                    !(
+                      allScheduleItems
+                      | calendarStatusStudent : calendarStatus.COMPLETED
+                    ).length
+                  "
+                >
+                  No Complete Schedule yet.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="classes">
+          <div class="completed">
+            <h2>STARTED</h2>
+            <div class="column_row">
+              <div class="loading" *ngIf="loading">Loading... </div>
+              <div
+                class="inner_item"
+                *ngFor="
+                  let item of allScheduleItems | calendarStatusStudent : calendarStatus.STARTED
+                " routerLink="portal/students/dashboard"
+              >
+                <h2 class="modul-name">Module: {{ item.module_name }}</h2>
+                <h2 class="modul-name">status: {{ item.status }}</h2>
+                <h4 class="datte">{{ item.start_time | date : "h:mm a" }}</h4>
+              </div>
+              <div
+                *ngIf="!loading &&  
+                  !(
+                    allScheduleItems
+                    | calendarStatusStudent : calendarStatus.STARTED
+                  ).length
+                "
+              >
+                No Started Schedule yet.
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div class="classes">
+          <div class="completed">
+            <h2>Rescheduled</h2>
+            <div class="column_row">
+              <div class="loading" *ngIf="loading">Loading...</div>
+              <div
+                class="inner_item"
+                *ngFor="
+                  let item of allScheduleItems
+                    | calendarStatusStudent : calendarStatus.RESCHEDULED
+                "
+                routerLink="/portal/teachers/dashboard"
+              >
+                <div class="full-part">
+                  <div
+                    class="first-part"
+                    routerLink="/portal/students/dashboard"
+                  >
+                  <h2 class="batch__code">Batch Code: {{ item.batch_code }}</h2>
+                  <h2 class="student-name">{{ item.students}}</h2>
+                    <h4 class="datte">
+                      {{ item.start_time | date : "h:mm a" }}
+                    </h4>
+                  </div>
+
+                  <div class="question-mark" (click)="redirectToSupport(item)">
+                    <span class="for-hover">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11 16H11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div class="question_tooltip">
+                      <span> Support </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="
+                  !loading &&
+                  !(
+                    allScheduleItems
+                    | calendarStatusStudent : calendarStatus.RESCHEDULED
+                  ).length
+                "
+              >
+                No Rechedule Schedule yet.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="classes">
+          <div class="completed">
+            <h2>Pending</h2>
+            <div class="column_row">
+              <div class="loading" *ngIf="loading">Loading...</div>
+              <div
+                class="inner_item"
+                *ngFor="
+                  let item of allScheduleItems
+                    | calendarStatusStudent : calendarStatus.PENDING
+                "
+                routerLink="/portal/teachers/dashboard"
+              >
+                <div class="full-part">
+                  <div
+                    class="first-part"
+                    routerLink="/portal/students/dashboard"
+                  >
+                  <h2 class="batch__code">Batch Code: {{ item.batch_code }}</h2>
+                  <h2 class="student-name">{{ item.students}}</h2>
+                    <h4 class="datte">
+                      {{ item.start_time | date : "h:mm a" }}
+                    </h4>
+                  </div>
+
+                  <div class="question-mark" (click)="redirectToSupport(item)">
+                    <span class="for-hover">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11 16H11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div class="question_tooltip">
+                      <span> Support </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="
+                  !loading &&
+                  !(
+                    allScheduleItems
+                    | calendarStatusStudent : calendarStatus.PENDING
+                  ).length
+                "
+              >
+                No Panding Schedule yet.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="popup_body" *ngFor="let item of this.scheduleList">
+      <div class="inner_popup" >COMPLETED
+        <h3>{{item.id}}</h3>
+        <a  href="{{item.recorded_link}}">{{item.recorded_link}}</a>
+                </div>
+    </div> -->
+  </div>
+</div>
+<br />
+
+<!-- Everything you see below is just for the demo, you don't need to include it in your app -->
+
+<br /><br /><br />
+
+<!-- <h3>
+  Edit events
+  <button class="btn btn-primary float-end" (click)="addEvent()">
+    Add new
+  </button>
+  <div class="clearfix"></div>
+</h3> -->
+
+<!-- <div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Primary color</th>
+        <th>Secondary + text color</th>
+        <th>Starts at</th>
+        <th>Ends at</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="event.title"
+            (keyup)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="event.color.primary"
+            (change)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="event.color.secondary"
+            (change)="refresh.next()"
+          />
+          <input
+            type="color"
+            [ngModel]="event.color.secondaryText ?? '#1e90ff'"
+            (ngModelChange)="event.color.secondaryText = $event"
+            (change)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            mwlFlatpickr
+            [(ngModel)]="event.start"
+            (ngModelChange)="refresh.next()"
+            [altInput]="true"
+            [convertModelValue]="true"
+            [enableTime]="true"
+            dateFormat="Y-m-dTH:i"
+            altFormat="F j, Y H:i"
+            placeholder="Not set"
+          />
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            mwlFlatpickr
+            [(ngModel)]="event.end"
+            (ngModelChange)="refresh.next()"
+            [altInput]="true"
+            [convertModelValue]="true"
+            [enableTime]="true"
+            dateFormat="Y-m-dTH:i"
+            altFormat="F j, Y H:i"
+            placeholder="Not set"
+          />
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteEvent(event)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+<!-- <ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">Event action occurred</h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      Action:
+      <pre>{{ modalData?.action }}</pre>
+    </div>
+    <div>
+      Event:
+      <pre>{{ modalData?.event | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">
+      OK
+    </button>
+  </div>
+</ng-template> -->

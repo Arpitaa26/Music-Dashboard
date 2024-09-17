@@ -1,0 +1,48 @@
+.first-box{
+    background-color: #000000d1;
+    border-radius: 15px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    transform: translateY(-50%);
+    height: auto;
+    margin-left: -250px;
+}
+.final-box {
+    padding: 30px 20px;
+}
+h2.great {
+    font-weight: 800;
+    font-size: 20px;
+    color: #ee9c13;
+}
+.loader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+button.close_msg_popup {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    color: #fff;
+    background: #5E3A7D;
+    font-size: 18px;
+    right: 15px;
+    border: none;
+    border-radius: 2px;
+    padding: 1px 5px;
+    z-index: 99999999;
+    cursor: pointer;
+}
+h3.payment-pending{
+    margin-left: 40px;
+    padding-left: 40px;
+}
+.payment-pending{
+    margin-left: 40px;
+    padding-left: 40px;
+}

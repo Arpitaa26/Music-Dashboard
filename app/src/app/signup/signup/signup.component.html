@@ -1,0 +1,348 @@
+<!-- <p>login works!</p> -->
+
+<danger *ngIf="this.status_error "  [msg]="st_msg"></danger>
+<sucess *ngIf="this.status_sucess" [msg]="st_msg"></sucess>
+<!-- <app-alert *ngIf="is_logedInError"></app-alert>
+<app-loader *ngIf="login_loader"></app-loader> -->
+<div class="login_signup_outer_cont">
+  <div class="log_sign_cont">
+    <div class="log_sign_cont_left">
+      <div class="inner_log_sign_cont_left">
+        <img alt="logo" src="./assets/img/logo1.png" class="logp" />
+        <!-- <h2>
+          Start your free <br />
+          trial.
+        </h2> -->
+        <!-- <p>Unlock all features with a free 7 day trial</p> -->
+
+        <p>
+          "Unlock the melody within you and <br />
+          embark on a harmonious journey.
+        </p>
+      </div>
+    </div>
+    <div class="log_sign_input_cont">
+      <div class="inner_log_sign_input_cont">
+        <h3>SignUp</h3>
+        <p>
+          <!-- Have a Account? Now you can explore<br /> our vast
+          options of customisation of QR. <br /><br />
+          <span>Login from here.</span> -->
+        </p>
+        <div class="form_cont_log_sign">
+          <form [formGroup]="form" (ngSubmit)="onRegister()">
+            <div class="form_col">
+              <label>Full Name</label>
+              <input
+                type="text"
+                placeholder="Type Your Name"
+                formControlName="name"
+                id="fullname"
+                required
+                [ngClass]="{
+                  error:
+                    getControl('name')?.errors && getControl('name')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  getControl('name')?.errors && getControl('name')?.touched
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('name')?.errors?.['required']"
+                  >First Name is required</small
+                >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('name')?.errors?.['maxlength']"
+                  >First Name is Too big</small
+                >
+              </div>
+            </div>
+            <div class="form_col">
+              <label>User Name</label>
+              <input
+                type="text"
+                placeholder="Type a User Name"
+                formControlName="username"
+                id="uname"
+                [ngClass]="{
+                  error:
+                    getControl('username')?.errors &&
+                    getControl('username')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  getControl('username')?.errors &&
+                  getControl('username')?.touched
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('username')?.errors?.['required']"
+                  >Username is required</small
+                >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('username')?.errors?.['maxlength']"
+                  >Username is Too big</small
+                >
+              </div>
+            </div>
+            <div class="form_col">
+              <label>Date of birth</label>
+              <input
+                type="date"
+                placeholder="dob"
+                formControlName="dob"
+                id="date-inp"
+                [ngClass]="{
+                  error: getControl('dob')?.errors && getControl('dob')?.touched
+                }"
+              />
+              <div
+                *ngIf="getControl('dob')?.errors && getControl('dob')?.touched"
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('dob')?.errors?.['required']"
+                  >Date Of Birth is required</small
+                >
+              </div>
+            </div>
+            <div
+              class="input-gen gender_cols"
+              style="margin-top: 0.5rem; margin-bottom: 6px"
+            >
+              <label>Pronouns : </label>
+
+              <!-- <label>
+                <input type="radio" formControlName="user_pronoun_id" name="user_pronoun_id" ngModel value="male" required> Male
+              </label>
+              <label>
+                <input type="radio" formControlName="user_pronoun_id" name="user_pronoun_id" ngModel value="female" required> Female
+              </label> -->
+
+              <!-- <div
+              *ngIf="getControl('gender')?.errors && getControl('gender')?.touched"
+            >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('gender')?.errors?.['required']"
+                  >Please Select Gender</small
+                >
+              </div> -->
+
+              <div>
+                <ng-container *ngFor="let val of pronoun_type">
+                  <input
+                    type="radio"
+                    class="radioo"
+                    ngModel
+                    [value]="val.id"
+                    formControlName="user_pronoun_id"
+                    id="radio_{{ val.id }}"
+                  />
+                  {{ val.gender }}
+                </ng-container>
+              </div>
+            </div>
+            <div
+              *ngIf="(isSubmitted && getControl('user_pronoun_id')?.errors?.['required']) ||  (getControl('user_pronoun_id')?.invalid && getControl('user_pronoun_id')?.touched)"
+              style="color: red; margin-bottom: 6px"
+            >
+              Gender required.
+            </div>
+
+            <div class="form_col">
+              <label>Phone Number</label>
+
+              <div class="cuntry_code">
+                <select class="form-control" name="country" id="country">
+                  <option value="" disabled selected>Select Country</option>
+                  <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option>
+             </select>
+              
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                formControlName="phone_no"
+                id="phone_no"
+                [ngClass]="{
+                  error:
+                    getControl('phone_no')?.errors &&
+                    getControl('phone_no')?.touched
+                }"
+              />
+            </div>
+              <div
+                *ngIf="
+                  getControl('phone_no')?.errors &&
+                  getControl('phone_no')?.touched
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('phone_no')?.errors?.['required']"
+                  >Phone Number is required</small
+                >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('phone_no')?.errors?.['maxlength']"
+                  >Phone Number is Too big</small
+                >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('phone_no')?.errors?.['minlength']"
+                  >Phone Number is Too small</small
+                ><br />
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('phone_no')?.errors?.['pattern']"
+                  >Invalid Input</small
+                >
+              </div>
+            </div>
+            <div class="form_col">
+              <label>Email Address</label>
+              <input
+                type="email"
+                placeholder="Email@something.com"
+                formControlName="email"
+                id="email"
+                [ngClass]="{
+                  error:
+                    getControl('email')?.errors && getControl('email')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  getControl('email')?.errors && getControl('email')?.touched
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('email')?.errors?.['required']"
+                  >Email is required</small
+                >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('email')?.errors?.['email']"
+                  >Enter Correct Email ID</small
+                >
+              </div>
+            </div>
+            <div class="form_col">
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="Enter your Password"
+                formControlName="password"
+                id="pwd"
+                [ngClass]="{
+                  error:
+                    getControl('password')?.errors &&
+                    getControl('password')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  getControl('password')?.errors &&
+                  getControl('password')?.touched
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('password')?.hasError('required')"
+                  >Password is required</small
+                >
+              </div>
+            </div>
+            <div class="form_col">
+              <label>Re-enter Password</label>
+              <input
+                type="password"
+                placeholder="Re-enter your Password"
+                formControlName="re_type"
+                id="re_typ"
+                [ngClass]="{
+                  error:
+                    getControl('re_type')?.errors &&
+                    getControl('re_type')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  getControl('re_type')?.errors &&
+                  getControl('re_type')?.touched
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('re_type')?.hasError('required')"
+                  >Please re-enter the password</small
+                >
+                <small
+                  class="text-danger"
+                  *ngIf="getControl('re_type')?.hasError('passwordMismatch')"
+                  >Passwords do not match</small
+                >
+              </div>
+            </div>
+            <br />
+            <div class="tacbox">
+              <input
+                id="checkbox"
+                type="checkbox"
+                formControlName="agreeCheckbox"
+                required
+              />
+              <span></span>
+              <label for="checkbox" class="agree" required>
+                By continuing, you agree to SVP
+                <a
+                  href="https://thesvpacademy.com/terms-of-services/"
+                  class="agree-link"
+                  
+                  >Terms of Services</a
+                >
+                and <a href="https://thesvpacademy.com/privacy-policy/" class="agree-link">Privacy Policy</a>.</label
+              >
+              <small
+                class="text-danger"
+                *ngIf="isSubmitted && getControl('agreeCheckbox')?.errors?.['required']"
+                >Please agree to the T&C to sign up</small
+              >
+            </div>
+            <div class="form_col submit_button_cont">
+              <button class="button_primary sign_up">
+                {{ login_text }}
+                <img
+                  src="./assets/loaders.svg"
+                  alt=""
+                  srcset=""
+                  class="login_loader"
+                  *ngIf="active_loader"
+                />
+              </button>
+              <!-- <img src="../../../assets/loaders.svg" alt="" srcset="" class="login_loader" *ngIf="active_loader"> -->
+              <!-- <a routerLink="/forgot_password" class="forgot_password"
+                >Forgot Password?</a
+              > -->
+            </div>
+
+            <div class="signup">
+              <P class="account_text"
+                >Already have an account?
+                <a class="login-text" (click)="onRegisterpass()">Login</a>
+              </P>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

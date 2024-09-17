@@ -1,0 +1,111 @@
+<!-- <p>questions works!</p> -->
+
+<div class="container">
+  <!--    
+    <div *ngIf="null_data==false;">
+      <h2 class=""> No quiz available.</h2>
+  </div> -->
+
+  <h1>Quiz Questions</h1>
+  <form
+    #user_question_ans="ngForm"
+    (submit)="question_ans(user_question_ans.value)"
+  >
+    <div class="question-box" *ngIf="!isLoading">
+      <div
+        class="options"
+        *ngFor="
+          let item of question;
+          
+          let question_index = index
+        "
+      >
+        <div class="question">
+          <p>{{ item.name }}</p>
+          <input
+            type="hidden"
+            value="{{ item.tutorial_id }}"
+            ngModel="{{ item.tutorial_id }}"
+            name="question_id"
+          />
+          <input
+            type="hidden"
+            value="{{ question_index }}"
+            ngModel="{{ question_index }}"
+            name="question_index"
+          />
+          <input
+            type="hidden"
+            value="{{ item.user_id }}"
+            ngModel="{{ item.user_id }}"
+            name="user_id"
+          />
+        </div>
+
+        <ul class="list-class">
+          <li
+            *ngFor="
+              let data of item.option.split(',');
+              let i = index;
+              let all = index
+            "
+          >
+            <label class="option">
+              <input
+                type="radio"
+                name="answer"
+                ngModel
+                [checked]="[data]"
+                value="{{ item.option_id.split(',')[i] }}"
+              />
+              {{ data }}
+            </label>
+            <input
+              type="hidden"
+              value="{{ all }}"
+              ngModel="{{ all }}"
+              name="ans_id"
+            />
+          </li>
+        </ul>
+        <!-- <p>{{item.id}}</p> -->
+        <!-- <label class="option">
+              <input type="radio" name="answer" value="london">
+              London
+            </label>
+            <label class="option">
+              <input type="radio" name="answer" value="rome">
+              Rome
+            </label>
+            <label class="option">
+              <input type="radio" name="answer" value="berlin">
+              Berlin
+            </label> -->
+      </div>
+
+      <div *ngIf="question.length ;else noQuestion">
+        <div class="submit-btn">
+          <button class="button_primary bttn-submit" type="submit">
+            Submit
+          </button>
+        </div>
+      </div>
+
+      <ng-template #noQuestion>
+        <p>NO Questions</p>
+      </ng-template>
+    </div>
+    <hr class="hr-section" />
+
+    <!-- <div class="question-box">
+        <div class="question">
+            <p>What is the capital of France?</p>
+          </div>
+          <div class="options optns">
+            
+              <input type="text" name="answer" value="" ngModel class="answer-text"  placeholder="Enter Your Answer">
+          </div>
+    </div> -->
+
+  </form>
+</div>

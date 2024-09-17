@@ -1,0 +1,85 @@
+<danger *ngIf="this.rc_false_status "  [msg]="res_msg"></danger>
+  <sucess *ngIf="this.rc_status"  [msg]="this.res_msg"></sucess>
+<div class="page_wrapper">
+  <h1 class="page_heading">Create Task</h1>
+
+  <div class="tab_container">
+    <div class="for_summary_tab_content">
+      <div class="inpFields">
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+          <div class="on-select">
+            <select
+              name="task-topic"
+              id="topics"
+              formControlName="task_issue"
+              (change)="onSelectChange($event)"
+            >
+            <option value="Accessing Your Online Classes">Accessing Your Online Classes</option>
+            <option value="Troubleshooting Audio Issues in Abhyasa Archive">
+              Troubleshooting Audio Issues in Abhyasa Archive
+            </option>
+            <option value="Finding Class Materials">Finding Class Materials</option>
+            <option value="Managing Payments">Managing Payments</option>
+            <option value="Rescheduling Your Class">Rescheduling Your Class</option>
+            <option value="Staying Updated on Class Materials">Staying Updated on Class Materials</option>
+            <option value="Handling Unplanned Cancellations">Handling Unplanned Cancellations</option>
+            <option value="Requesting Leave">Requesting Leave</option>
+            <option value="Providing Feedback">Providing Feedback</option>
+            <option value="Accessing Teacher Notes">Accessing Teacher Notes</option>
+            <option value="Renewing Your Membership">Renewing Your Membership</option>
+            <option value="Changing Class Mode or Time">Changing Class Mode or Time</option>
+            <option value="Understanding Pricing">Understanding Pricing</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <ng-container *ngIf="this.msg_box">
+            <div class="sub">
+              <!-- <label for="subject">Subject</label> -->
+              <input
+                type="text"
+                class="theme_input"
+                id="subject"
+                placeholder="Subject"
+                formControlName="task_title"
+                required
+              />
+            </div>
+          </ng-container>
+          <div class="Inpmessage">
+            <!-- <label for="message">Message</label> -->
+            <textarea
+              name=""
+              id="message"
+              cols="30"
+              rows="10"
+              class="theme_textarea"
+              placeholder="Message"
+              formControlName="description"
+              required
+            ></textarea>
+          </div>
+
+          <!-- <div class="InpDate">
+              <label for="message">Message</label>
+              <input
+                type="date"
+                name="inpDate"
+                id="date"
+                class="theme_input"
+                placeholder="Enter date"
+                formControlName="inpDate"
+              />
+            </div> -->
+          <div class="subBtn">
+            <button class="button_primary createBtn">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="teask-add" *ngIf="taskMode">
+        <h2 class="task-textss"><b class="bold-text">Class Id:</b> {{ this.class_id_get }}</h2>
+        <h2 class="task-textss"> <b class="bold-text">Module Name:</b> {{ this.module_name_get }}</h2>
+        <h2 class="task-textss"><b class="bold-text">Class Time:</b> {{ this.start_time_get  |  date : "d MMM y, HH:mm a"  }}</h2>
+      </div>
+    </div>
+  </div>
+</div>

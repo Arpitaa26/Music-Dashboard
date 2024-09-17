@@ -1,0 +1,58 @@
+<div class="page_wrapper">
+    <div class="topHead">
+        <div class="leftHead">
+            <h1 class="page_heading">Support</h1>
+
+        </div>
+        <div class="rightHead">
+            <button class="button_secondary button_tab right-btn raise" routerLink="task-create" routerLinkActive="Active">
+        Create Task +
+      </button>
+        </div>
+    </div>
+    <div class="tab_container">
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Raised On</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let data of tableData | orderByDate:'created_on':'desc'">
+                        <!-- // orderByDate:'created_on':'desc'"  | orderByDate:'created_on':'desc -->
+                        <tr>
+                            <td>
+                                <span [routerLink]="['ticket-details', data.id]" routerLinkActive="Active" class="ticketId">{{ data.id }}</span
+                >
+              </td>
+              <td>{{ data.created_on | date:'d MMM y, HH:mm a' }}</td>
+              <td>{{ data.task_title }}</td>
+              <td *ngIf="data.status == 1">
+                Active <span class="logged-in">●</span>
+                            </td>
+                            <td *ngIf="data.status == 2">
+                                Complete <span class="logged-in">●</span>
+                            </td>
+                            <td *ngIf="data.status == 0">
+                                Closed <span class="logged-out">●</span>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+            <ng-container *ngIf="this.status=='203'">
+
+
+                <h4 class="center">
+                    Task Not Found
+                </h4>
+
+
+            </ng-container>
+        </div>
+    </div>
+</div>

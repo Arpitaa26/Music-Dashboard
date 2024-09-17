@@ -1,0 +1,49 @@
+<div class="header">
+    <h1 class="page_heading">Abhyasa Archive</h1>
+
+</div>
+
+
+<div class="inner_tab_filter">
+      <select [(ngModel)]="studentId" #myselect (change)="onSelectStudent(myselect.value)" class="theme_select col-m-100" name="studentname.value" >
+        <option value="">Select Student Name</option>
+        <option *ngFor="let data of allStudentsInfo_uniq" [value]="data.user_id">
+        {{ data.user_fullname }}
+        </option>
+    </select>
+</div>
+
+    <hr  class="linee"/>
+    <h1>{{this.messge_result}}</h1>
+    <div *ngIf="this.toDisplay">
+    <div class="music-lists"    *ngFor="let item of this.abhyasAudioArchiveInterface?.data">
+        <div class="audio-wrapper"  >
+            <div class="adio-title image-path">
+                <div class="audio-txt">
+                    <div class="audio-box">
+                        <!-- <img class="profile-image" src="https://thesvpacademy.com/admin/file/open/{{item.slug}}" alt="" srcset=""> -->
+                        <p class="audio-date">{{ item.created_on }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="adio-title">
+                <div class="audio-txt heading-h2">
+                        <p>{{ item.description }}</p>
+                </div>
+            </div>
+            <div class="audio-main">
+                <div class="container-audio">
+                    <audio controls loop muted paused>
+                            <source
+                            src="https://thesvpacademy.com/admin/file/open/{{ item.slug }}"
+                            type="audio/ogg"
+                            />
+                            Your browser dose not Support the audio Tag
+                    </audio>
+                </div>
+            </div>
+       
+        </div>
+    </div>
+</div>
+

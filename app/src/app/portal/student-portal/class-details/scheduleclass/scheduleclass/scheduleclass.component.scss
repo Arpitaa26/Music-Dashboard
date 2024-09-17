@@ -1,0 +1,246 @@
+// .for_scheduled_tab_content {
+//   border-radius: 13px;
+//   padding: 32px 20px;
+//   box-shadow: var(--default_box_shaddow);
+//   background: var(--secondary);
+//   margin-top: 27px;
+// }
+.inner_schedule_tiles {
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto;
+  padding: 26px;
+  margin-left: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,.09);
+  background: radial-gradient(113.36% 56.13% at 67.56% 56.53%,rgba(88,49,146,.12) 0%,rgba(255,255,255,.1) 100%);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+
+}
+.inner_schedule_tiles .button_secondary {
+  padding: 9px 16px;
+  border-radius: 5px;
+  font-size: 8.5px;
+  margin-right: 6px;
+}
+.tab_heading_name {
+  margin-bottom: 20px;
+    color: #fff;
+    /* font-family: Kumbh Sans; */
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    padding-top: 20px;
+}
+.class_time {
+  font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+    
+    font-size: 20px;
+}
+.bxx {
+  display: flex;
+  align-items: baseline;
+}
+
+h2.start-time {
+  color: #ffffff80;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+}
+p.active-data{
+  padding-left: 81px;
+  font-size: 10px;
+  font-family: Kumbh Sans;
+  color: #2ca842;
+  padding-top: 1px;
+}
+p.NOT_STARTED.active-data{
+  color: #747474;
+}
+.schedule_pop_cont{
+  padding: 20px;
+  overflow-y: scroll;
+}
+.type {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: var(--interactive);
+}
+.button_secondary.disabled {
+  opacity: 0.3;
+}
+.button_secondary.disabled:hover {
+  background: var(--interactive);
+  color: white;
+  border: 1px solid var(--border-color);
+}
+.schedule_pop_cont {
+  width: 29%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: var(--secondary);
+  box-shadow: var(--default_box_shaddow);
+}
+@media only screen and (max-width: 999px) and (min-width: 320px) {
+  .schedule_pop_cont {
+    width: 100%;
+    height: calc(100vh - 63px);
+    position: fixed;
+    top: unset;
+    bottom: 0;
+    right: 0%;
+  }
+}
+/* The container */
+.radio_cont {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 17px;
+  -webkit-user-select: none;
+  user-select: none;
+  text-align: left;
+}
+
+/* Hide the browser's default radio button */
+.radio_cont input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio_cont:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio_cont input:checked ~ .checkmark {
+  background-color: var(--interactive);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio_cont input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio_cont .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--secondary);
+}
+.schedule_slacc_radio_cont .schedule_ind {
+  background: var(--secondary);
+  // box-shadow: var(--default_box_shaddow);
+  width: 400px;
+  z-index: 2;
+  padding: 20px;
+  color: var(--text_color);
+  max-height: 100vh;
+  overflow: auto;
+  border-radius: 0;
+}
+
+.schedule_slacc_radio_cont .arrow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--secondary);
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  // isolation: isolate;
+}
+.close_schedule {
+  position: absolute;
+  left: -27px;
+  top: 0px;
+  cursor: pointer;
+  background: var(--interactive);
+  border: none;
+  color: var(--secondary);
+  width: 26px;
+  height: 26px;
+  border-radius: 0;
+  z-index: 5;
+  isolation: isolate;
+}
+.schedule_pop_cont {
+  padding: 20px;
+}
+
+a.button_secondary {
+  float: left;
+}
+button.close_schedule {
+  cursor: pointer;
+}
+
+h2.no-class {
+  padding-left: 10px;
+}
+.close_schedule{
+
+  left: -46px;
+  color: #ffffff;
+  position: relative;
+  z-index: 9999999999999999999999999999;
+  cursor: pointer;
+}
+.schedule_pop_cont{
+  overflow-Y: unset;
+}
+.schedule_pop_cont>form{
+  overflow-y: scroll;
+  height: 100%;
+}
+@media only screen and (max-width: 999px) and (min-width: 320px) {
+  .schedule_slacc_radio_cont .schedule_ind {
+    width: 100%;
+    padding: 38px 20px;
+    height: 100vh;
+  }
+  .close_schedule {
+    left: unset;
+    right: 0;
+    position: absolute;
+  }
+}

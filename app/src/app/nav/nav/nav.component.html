@@ -1,0 +1,149 @@
+<div class="top_nav_cont_inner for_nav">
+  <img class="sidebar_logo" src="./assets/img/logo.png" />
+  
+  <div class="handel" (click)="open_close_data()"
+  class="{{ nav_toggle_status ? 'open' : '' }}">
+    <div class="box_handel close_handel">
+      <span class="indicate">
+        <svg width="36" height="131"  id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 36 131" style="enable-background:new 0 0 36 131;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);fill-opacity:0.3;}
+	.st1{fill:#EE9C13;}
+</style>
+<g>
+	
+		<radialGradient id="SVGID_1_" cx="-399.4722" cy="463.2188" r="1" gradientTransform="matrix(-13.4694 -22.3868 -47.5295 28.597 16662.6426 -22116.2012)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#583192;stop-opacity:0.58"/>
+		<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0.48"/>
+	</radialGradient>
+	<path class="st0" d="M11.5,0.4c0,4.1,2,7.9,5.4,10.1l12.4,8.2c3.9,2.6,6.2,7,6.2,11.6v72c0,4.7-2.3,9.1-6.2,11.6l-13.5,9
+		c-2.6,1.8-4.2,4.7-4.2,7.9l0,0h-11V0.4H11.5L11.5,0.4z"/>
+</g>
+<path class="st1" d="M29.7,49.7v30v2l-11-16L29.7,49.7z"/>
+</svg>
+          
+      </span>
+     
+    </div>
+    <div class="box_handel  open_handel ">
+      <span class="indicate">
+        <svg width="36" height="131" viewBox="0 0 36 131" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#filter0_b_1697_190)">
+          <path d="M11.5 0.421021C11.5 4.48186 13.5295 8.27402 16.9083 10.5266L29.2658 18.7649C33.1606 21.3614 35.5 25.7326 35.5 30.4136V102.428C35.5 107.109 33.1606 111.481 29.2658 114.077L15.726 123.104C13.0858 124.864 11.5 127.827 11.5 131V131H0.5V0.421021H11.5V0.421021Z" fill="url(#paint0_radial_1697_190)" fill-opacity="0.3"/>
+          </g>
+          <path d="M18.6597 81.7104V51.7104V49.7104L29.6597 65.7104L18.6597 81.7104Z" fill="#EE9C13"/>
+          <defs>
+          <filter id="filter0_b_1697_190" x="-9.5" y="-9.57898" width="55" height="150.579" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feGaussianBlur in="BackgroundImageFix" stdDeviation="5"/>
+          <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1697_190"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1697_190" result="shape"/>
+          </filter>
+          <radialGradient id="paint0_radial_1697_190" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(26.7419 73.3702) rotate(-121.034) scale(26.1265 55.4693)">
+          <stop stop-color="#583192" stop-opacity="0.58"/>
+          <stop offset="1" stop-color="white" stop-opacity="0.48"/>
+          </radialGradient>
+          </defs>
+          </svg>
+          
+      </span>
+    </div>
+  </div>
+  <button class="mobile_top_nav_trigger">
+    <i class="fa fa-ellipsis-h" (click)="openCloseMoreMenu()"></i>
+  </button>
+  <div class="mob-wrap">
+    <a class="profile-image">
+      <img
+        class="profile_image_nav for_mob"
+        src="{{ profilePicObj.image }}"
+        
+      />
+    </a>
+    <div class="drop-down">
+      <ul class="drp-dn">
+        <li class="droop-don">
+          <a routerLink="/student-profile">Update Profile</a>
+        </li>
+        <li class="droop-don">
+          <a routerLink="/logout">Log Out</a>
+        </li>
+        <!-- <li class="droop-don">
+        <a href="">SignUp</a>
+      </li> -->
+      </ul>
+    </div>
+  </div>
+  <div class="top_nav_menu_cont {{ more_menu ? 'mob_active' : '' }}">
+<!-- 
+    <div class="notification">
+      <button type="button" class="icon-button">
+        <span class="material-icons">notifications</span>
+        <span class="icon-button__badge">2</span>
+      </button>
+    </div> -->
+    <div class="navDet">
+      <p class="type">Hello, {{ userType }}</p>
+      <ng-container *ngFor="let menu of topNavs">
+        <!-- <ng-container *ngIf="menu.type === 'link'">
+            <div
+              class="menu"
+              [routerLink]="[menu.link]"
+              routerLinkActive="active"
+              (click)="close_more_menu()"
+            >
+              {{ menu.name }}
+            </div>
+          </ng-container> -->
+        <!-- <ng-container *ngIf="menu.type === 'button'">
+            <button
+              class="menu"
+              [routerLink]="[menu.link]"
+              routerLinkActive="active"
+              (click)="close_more_menu()"
+            >
+              {{ menu.name }}
+            </button>
+          </ng-container> -->
+
+          
+        <ng-container *ngIf="menu.type === 'image'">
+          <div class="profile-wrap">
+            <img
+              class="profile_image_nav"
+              src="{{ menu.image }}"
+             
+            />
+        
+            <div class="drop-down">
+              <ul class="drp-dn">
+                <li class="droop-don" *ngIf="this.student==true" >
+                  <a routerLink="student-profile">Update Profile</a>
+                </li>
+                <li class="droop-don" *ngIf="this.teacher==true" >
+                  <a routerLink="/portal/teachers/profile/teacher-profile">Update Profile</a>
+                </li>
+                <li class="droop-don">
+                  <a routerLink="/logout">Log Out</a>
+                </li>
+                <!-- <li class="droop-don">
+                    <a href="">SignUp</a>
+                  </li> -->
+              </ul>
+           
+            </div>
+    
+         
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    
+  </div>
+
+
+
+</div>
+

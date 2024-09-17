@@ -1,0 +1,133 @@
+.dashboard_option {
+    display: block;
+    padding-bottom: 75px;
+    box-shadow: 1px 1px 31px rgba(0, 0, 0, 0.4);
+    border-radius: 30px;
+    border: 4px solid rgba(255, 255, 255, 0.09);
+    background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.18) 0%, rgba(255, 255, 255, 0.15) 100%);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.10);
+    background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.12) 0%, rgba(255, 255, 255, 0.10) 100%);
+    backdrop-filter: blur(5px);
+}
+
+h3 {
+    color: #fff;
+    line-height: 30px;
+}
+.dashboard_option {
+   
+}
+.inner_cols_heading>h4 {
+    padding: 0;
+    margin: 0;
+}
+.inner_cols_heading {
+    border-radius: 28px 28px 0px 0px;
+    background: rgba(23, 25, 28, 0.40);
+    backdrop-filter: blur(5px);
+    padding: 30px 60px;
+}
+
+.inner_cols_heading>h4 {
+    color: #EE9C13;
+    font-family: Kumbh Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 30px */
+}
+
+.dashBoardText {
+    padding-top: 25px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+h3.des {
+    color: #FFF;
+    font-family: Kumbh Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 180%;
+}
+
+.rest-four {
+    border-radius: 24px;
+    background: rgb(23 25 28 / 81%);
+    backdrop-filter: blur(5px);
+    padding: 15px;
+    display: flex;
+}
+
+.price {
+    padding: 25px 117px;
+    align-items: center;
+    text-align: center;
+}
+.apply_btn>input {
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: #232428;
+    padding: 12px 10px;
+    width: 100%;
+    color: #fff;
+}
+button.apply_btns {
+    border-radius: 0px 4px 4px 0px;
+    background: var(--59339170, #5E3A7D);
+    border: none;
+    outline: none;
+    border-radius: 0px 8px 8px 0px;
+    background: var(--59339170, #5E3A7D);
+    padding: 9px 12px;
+    color: #FFF;
+    font-family: Kumbh Sans;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 180%;
+    letter-spacing: 0.28px;
+    text-transform: uppercase;
+    position: absolute;
+    right: 1px;
+    top: 0px;
+}
+.apply_btn {
+    position: relative;
+    width: 200px;
+}
+.coupounn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.inner_courses_price_area>select {
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.10);
+    background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.12) 0%, rgba(255, 255, 255, 0.10) 100%);
+    backdrop-filter: blur(5px);
+    color: #FFF;
+    font-family: Kumbh Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 180%; /* 25.2px */
+    letter-spacing: 0.28px;
+    margin-left: 10px;
+    
+}
+
+.inner_courses_price_area {
+    display: flex;
+    /* padding-left: 8px; */
+}
+.dp_id{
+    margin-left: 0px;
+    margin-bottom: 12px;
+}

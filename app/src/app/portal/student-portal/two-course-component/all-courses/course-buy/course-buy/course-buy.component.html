@@ -1,0 +1,254 @@
+<danger *ngIf="this.rc_false_status "  [msg]="all_msgs"></danger>
+<sucess *ngIf="this.rc_status"  [msg]="this.all_msgs"></sucess>
+<danger *ngIf="this.status_error "  [msg]="st_msg"></danger>
+<sucess *ngIf="this.status_sucess" [msg]="st_msg"></sucess>
+<!-- <p>course-buy works!</p> -->
+<!-- 
+<div class="tab_container cont-tab">
+  <div class="tab_button  tab_section_area">
+    <ng-container *ngFor="let menu of  this.courses_response?.data; let i = index">
+      <button
+        class="custom_tab_section"
+        id="{{ menu.id }}"
+        routerLinkActive="active"
+        [class.active]="selectedIndex === i"
+        (click)="getModuleByLevel(menu.id, i)"
+      >
+        {{ menu.category }}
+      </button>
+    </ng-container>
+  </div>
+ -->
+
+
+<div class="course-detail">
+  <div class="detail-box">
+    <div
+      class="dashboard_option"
+      id=""
+      *ngFor="let price of this.courses_response"
+    >
+      <div class="column_heasding">
+        <div class="inner_cols_heading">
+          <h4>{{ price.name }}</h4>
+        </div>
+      </div>
+      <div class="dashBoardText">
+       <div class="parents_wrapes">
+        <div class="imgs_buy_box">
+          <img src="{{this.base_url+price.slug}}" alt="" class="card_imgs"/>
+        </div>
+       <div class="all_column_wrape">
+        <div class="about-course">
+          <div class="course-head">
+            <!-- <h3>About Course:</h3> -->
+            <h3 class="des" [innerHTML]="price.description"></h3>
+          </div>
+        </div>
+        <div class="rest-four">
+          <div class="price">
+            <div class="prices_icon">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="31"
+              viewBox="0 0 32 31"
+              fill="none"
+            >
+              <path
+                d="M22.2401 10.0176L22.2325 6.26763C22.2318 5.93611 22.0995 5.61844 21.8646 5.38449C21.6297 5.15054 21.3115 5.01949 20.98 5.02016L8.47998 5.04542C7.81694 5.04676 7.18158 5.31144 6.71369 5.78123C6.2458 6.25102 5.98369 6.88743 5.98503 7.55047M5.98503 7.55047C5.98637 8.21351 6.25105 8.84886 6.72084 9.31675C7.19062 9.78465 7.82704 10.0468 8.49008 10.0454L23.4901 10.0151C23.8216 10.0144 24.1398 10.1455 24.3747 10.3794C24.6096 10.6134 24.7419 10.931 24.7426 11.2626L24.7502 15.0126M5.98503 7.55047L6.01535 22.5504C6.01669 23.2135 6.28137 23.8488 6.75115 24.3167C7.22094 24.7846 7.85736 25.0467 8.5204 25.0454L23.5204 25.0151C23.8519 25.0144 24.1696 24.8821 24.4035 24.6472C24.6375 24.4123 24.7685 24.0941 24.7678 23.7625L24.7603 20.0126M26.0002 15.01L26.0103 20.01L21.0103 20.0201C20.3472 20.0215 19.7108 19.7594 19.241 19.2915C18.7712 18.8236 18.5066 18.1882 18.5052 17.5252C18.5039 16.8621 18.766 16.2257 19.2339 15.7559C19.7018 15.2862 20.3371 15.0215 21.0002 15.0201L26.0002 15.01Z"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            </div>
+            <div class="cols_contents">
+            <h3>Price</h3>
+            <h3>{{ price.price }} {{price.country_currency}}</h3>
+            </div>
+          </div>
+          <div class="price">
+            <div class="prices_icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="25"
+              viewBox="0 0 24 25"
+              fill="none"
+            >
+              <path
+                d="M12 5.03027C12 4.49984 11.7893 3.99113 11.4142 3.61606C11.0391 3.24099 10.5304 3.03027 10 3.03027H4C3.73478 3.03027 3.48043 3.13563 3.29289 3.32317C3.10536 3.5107 3 3.76506 3 4.03027V18.0303C3 18.2955 3.10536 18.5498 3.29289 18.7374C3.48043 18.9249 3.73478 19.0303 4 19.0303H10C10.5304 19.0303 11.0391 19.241 11.4142 19.6161C11.7893 19.9911 12 20.4998 12 21.0303M12 5.03027C12 4.49984 12.2107 3.99113 12.5858 3.61606C12.9609 3.24099 13.4696 3.03027 14 3.03027H20C20.2652 3.03027 20.5196 3.13563 20.7071 3.32317C20.8946 3.5107 21 3.76506 21 4.03027V18.0303C21 18.2955 20.8946 18.5498 20.7071 18.7374C20.5196 18.9249 20.2652 19.0303 20 19.0303H14C13.4696 19.0303 12.9609 19.241 12.5858 19.6161C12.2107 19.9911 12 20.4998 12 21.0303M12 5.03027V21.0303M7 7.03027H8M7 11.0303H8M16 7.03027H17M16 11.0303H17M16 15.0303H17"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            </div>
+            <div class="cols_contents">
+              <h3>Course Type</h3>
+            <!-- <h3>{{ price.type  }}</h3> -->
+            <h3>{{ price.type | camelCaseToTitleCaseTwo }}</h3>
+            </div>
+          </div>
+          <div class="price">
+            <div class="prices_icon">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_2031_14)">
+              <path d="M27.1459 16.5303C27.146 14.871 26.7428 13.2366 25.9711 11.7678L24.4282 13.3106C24.8617 14.3286 25.0845 15.4238 25.0834 16.5303H27.1459Z" fill="white"/>
+              <path d="M24.4793 10.3428L23.021 8.88446L18.159 13.7465C17.746 13.5449 17.293 13.439 16.8335 13.4365C16.2216 13.4365 15.6235 13.6179 15.1147 13.9579C14.6059 14.2978 14.2094 14.781 13.9752 15.3463C13.7411 15.9116 13.6798 16.5337 13.7992 17.1338C13.9186 17.7339 14.2132 18.2852 14.6459 18.7179C15.0786 19.1505 15.6298 19.4452 16.2299 19.5646C16.8301 19.6839 17.4521 19.6227 18.0174 19.3885C18.5827 19.1543 19.0659 18.7578 19.4059 18.249C19.7458 17.7403 19.9272 17.1421 19.9272 16.5303C19.9248 16.0708 19.8188 15.6177 19.6173 15.2048L24.4793 10.3428ZM16.8335 17.5615C16.6295 17.5615 16.4302 17.501 16.2606 17.3877C16.091 17.2744 15.9588 17.1133 15.8807 16.9249C15.8027 16.7365 15.7823 16.5291 15.8221 16.3291C15.8619 16.129 15.9601 15.9453 16.1043 15.801C16.2485 15.6568 16.4323 15.5586 16.6323 15.5188C16.8324 15.479 17.0397 15.4994 17.2281 15.5775C17.4166 15.6556 17.5776 15.7877 17.691 15.9573C17.8043 16.1269 17.8647 16.3263 17.8647 16.5303C17.8644 16.8036 17.7556 17.0657 17.5623 17.2591C17.369 17.4524 17.1069 17.5611 16.8335 17.5615Z" fill="white"/>
+              <path d="M16.8335 8.28029C17.94 8.27919 19.0353 8.50205 20.0534 8.93544L21.5962 7.39259C20.0256 6.57025 18.2692 6.16733 16.4971 6.22282C14.7251 6.27831 12.9974 6.79033 11.4812 7.70933C9.9651 8.62832 8.71188 9.92316 7.8429 11.4685C6.97391 13.0139 6.51859 14.7574 6.52101 16.5303H8.58351C8.58602 14.343 9.45602 12.2461 11.0026 10.6994C12.5493 9.1528 14.6462 8.2828 16.8335 8.28029Z" fill="white"/>
+              <path d="M16.8335 30.9678C13.978 30.9678 11.1867 30.121 8.81246 28.5346C6.43822 26.9482 4.58773 24.6934 3.49499 22.0553C2.40225 19.4172 2.11634 16.5143 2.67342 13.7137C3.23049 10.9131 4.60553 8.34055 6.62465 6.32143C8.64377 4.3023 11.2163 2.92727 14.0169 2.37019C16.8175 1.81312 19.7204 2.09903 22.3585 3.19177C24.9966 4.28451 27.2514 6.135 28.8378 8.50923C30.4243 10.8835 31.271 13.6748 31.271 16.5303C31.2667 20.358 29.7442 24.0277 27.0376 26.7344C24.331 29.441 20.6612 30.9635 16.8335 30.9678ZM16.8335 4.15528C14.386 4.15528 11.9934 4.88106 9.95832 6.24084C7.92326 7.60063 6.33713 9.53334 5.40049 11.7946C4.46386 14.0558 4.21879 16.544 4.69628 18.9445C5.17378 21.345 6.35238 23.5501 8.08306 25.2807C9.81373 27.0114 12.0187 28.19 14.4193 28.6675C16.8198 29.145 19.308 28.8999 21.5692 27.9633C23.8304 27.0267 25.7632 25.4405 27.1229 23.4055C28.4827 21.3704 29.2085 18.9778 29.2085 16.5303C29.2048 13.2494 27.8998 10.1039 25.5798 7.78396C23.2599 5.46401 20.1144 4.15902 16.8335 4.15528Z" fill="white"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_2031_14">
+              <rect width="33" height="33" fill="white" transform="translate(0.333496 0.0302734)"/>
+              </clipPath>
+              </defs>
+              </svg>
+              </div>
+              <div class="cols_contents">
+            <h3>Level</h3>
+            <h3>{{ price.level }}</h3>
+          </div>
+          </div>
+          <div class="price">
+            <div class="prices_icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="26"
+              viewBox="0 0 25 26"
+              fill="none"
+            >
+              <path
+                d="M9.37516 15.1136L15.6252 8.86361M10.4168 9.38444C10.4168 9.67209 10.1836 9.90527 9.896 9.90527C9.60835 9.90527 9.37516 9.67209 9.37516 9.38444C9.37516 9.09679 9.60835 8.86361 9.896 8.86361C10.1836 8.86361 10.4168 9.09679 10.4168 9.38444ZM15.6252 14.5928C15.6252 14.8804 15.392 15.1136 15.1043 15.1136C14.8167 15.1136 14.5835 14.8804 14.5835 14.5928C14.5835 14.3051 14.8167 14.0719 15.1043 14.0719C15.392 14.0719 15.6252 14.3051 15.6252 14.5928ZM5.2085 22.4053V5.73861C5.2085 5.18607 5.42799 4.65617 5.81869 4.26547C6.20939 3.87477 6.73929 3.65527 7.29183 3.65527H17.7085C18.261 3.65527 18.7909 3.87477 19.1816 4.26547C19.5723 4.65617 19.7918 5.18607 19.7918 5.73861V22.4053L16.6668 20.3219L14.5835 22.4053L12.5002 20.3219L10.4168 22.4053L8.3335 20.3219L5.2085 22.4053Z"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            </div>
+            <div class="cols_contents">
+            <h3>Desideratum</h3>
+            <h3>NA</h3>
+            </div>
+          </div>
+          <!--    
+    <h3>  </h3>
+    <h3 >Price: Level:  </h3>
+   
+    <h3>Tax:</h3> -->
+        </div>
+
+
+        <div class="next_rest">
+          <ng-container *ngFor="let price of this.courses_response">
+            <!-- <h2 >{{ this.selectedOption*price.price}}</h2> -->
+            <div class="coupounn">
+              <div class="left-boxs">
+              <form #myForm="ngForm" (ngSubmit)="apply_cuppon(myForm)">
+               <div class="all_wraper">
+                <div class="left_box">
+                  <div class="courses_price_area">
+                    <div class="inner_courses_price_area">
+                      <!-- <select name="" id="">
+            <option value="">test 1</option>
+            <option value="">test 1</option>
+            <option value="">test 1</option>
+            <option value="">test 1</option>
+          </select> -->
+                      <h2>No. of Classes:</h2>
+                      <select
+                        name="price_qut"
+                        ngModel
+                        id=""
+                        class="dp_id"
+                        (change)="onSelectChange($event)"
+                      >
+                        <!-- <option  disabled="disabled">Pleasew select class number:</option> -->
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                      </select>
+                    </div>
+    
+                    
+                  </div>
+                  <div class="apply_btn">
+                    <input
+                      type="text"
+                      id="coupon_code"
+                      name="coupon_code"
+                      ngModel
+                      required
+                    />
+                    <button class="apply_btns">Apply</button>
+                  </div>
+                 </div>
+                  
+                  
+
+               </div>
+              </form>
+</div>
+
+              <div class="right_boxs">
+                <h2>
+                  Your Total Price : {{ price.price * this.selectedOption }}
+                </h2>
+                <h2>Discounted Price : {{ this.final_price }}</h2>
+                
+                <div class="btn-btn-t">
+                  <button
+                    class="button_primary enroll"
+                    (click)="
+                      course_buy_api({
+                 
+                        course_id: price.course_id,
+                        course_level_id: price.course_level_id,
+                        session_type_id: price.session_type_id,
+                        no_of_class: this.selectedOption,
+                        coupon_code: this.cuppon_codes,
+               
+                      })
+                    "
+                  >
+                    Buy Now
+                  </button>
+                  <!-- <h3  *ngIf="this.status_not_found=='203'">{{this.msgss}}</h3> -->
+                </div>
+               </div>
+              <!-- <h2 class="coupon-msg" *ngIf="this.ress=='203'">{{this.result_message}}</h2> -->
+            </div>
+          
+
+  <!-- <div *ngIf="this.final_price=='', else discount_price">
+  <h1>{{price.price * this.selectedOption}}</h1>
+  </div>
+  <ng-template #discount_price>
+    <h1>{{ this.final_price}}</h1>
+  </ng-template> -->
+  
+  
+           
+          </ng-container>
+        </div>
+       </div>
+       </div>
+       
+      </div>
+    </div>
+  </div>
+</div>

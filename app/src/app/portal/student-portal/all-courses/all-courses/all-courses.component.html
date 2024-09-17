@@ -1,0 +1,83 @@
+<!-- drop-down -->
+
+<div class="courseList">
+  <h1 class="page_heading">List of Courses</h1>
+  <!-- <div class="row listItem">
+    <ng-container *ngFor="let item of all_courses">
+      <div routerLinkActive="active" class="col-25 col-m-50">
+        <div class="dashboard_option">
+          <div class="dashBoardText" id="{{ item.id }}">
+            <h3>Course Name:{{ item.name }}</h3>
+            <h3>Level: {{ item.level }}</h3>
+            <h3>Course Type:{{ item.type }}</h3>
+            <h3 >Price: ₹{{ item.price }}</h3>
+            <button class="button_primary enroll"  routerLink="couse-buy/{{item.course_id}}/{{item.course_level_id}}/{{item.session_type_id}}" >Enroll</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div> -->
+
+  <div class="filter_section">
+    <div class="inner_section">
+      <!-- <select >
+        <option *ngFor="let item of all_courses"> {{ item.level }}</option>
+      </select> -->
+    </div>
+  </div>
+
+
+  <div class="row listItem">
+    <form #myForm="ngForm"  (ngSubmit)="onSubmit(myForm.value)" *ngFor="let item of this.c_name" class="col-25">
+    
+     <input type="hidden" [(ngModel)]="item.course_id" name="course_id">
+      <div class="courses_redi_card " >
+      <!-- <div class="tag_label">
+        <h4>Registered</h4>
+      </div> -->
+      <div class="inner_redi_card">
+        <div class="card_image">
+          <img src="./assets/img/music.png" alt="" class="card_imgs"/>
+        </div>
+        <div class="card_crd_txt">
+          <div class="card_crd_inner_txt">
+            <h2>{{item.value}}</h2>
+            <p>Description is any type of communication that aims to make vivid a place,</p>
+            <div class="both-filter">
+               <div class="filter_box">
+              <select ngModel name="lavel" onchange="myFunction()" required>
+                <option value="">Select Level</option>
+                <option *ngFor="let data of item.uniqueArray_for_lavel" [value]="data.level_id">{{data.lavels }}</option>
+
+              </select>
+            </div>
+            <div class="filter_box">
+              <select  ngModel name="type"  required>
+                <option value="">Select Type</option>
+                <option *ngFor="let types of item.uniqueArray_for_type" [value]="types.session_type_id">{{types.type}}</option>
+
+              </select>
+            </div>
+            </div>
+           
+            <div class="author_section">
+              <!-- <div class="author_image">
+                <img src="../../../../../assets/img/people.png" alt="" srcset="">
+              </div> -->
+              <!-- <div class="author_content">
+                <h4>Sweta Ramakrishna</h4>
+              </div> -->
+
+              <button class="button_primary enroll" type="submit"  >View Details</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+
+
+<!-- (click)="enroll_class({user_id:this.user_id,course_id:item.course_id,course_level_id:item.course_level_id,category:item.type,price:item.price})" -->

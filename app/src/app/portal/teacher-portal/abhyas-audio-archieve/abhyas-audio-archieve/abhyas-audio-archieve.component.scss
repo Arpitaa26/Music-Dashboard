@@ -1,0 +1,64 @@
+.audio-wrapper{
+    width: 100%;
+}
+
+.adio-title {
+   float: left;
+   width: 20%;
+}
+
+.audio-main{
+    width: 58%;
+    float: left;
+}
+.audio-main>audio {
+    width: 100%;
+}
+h1 {
+    color: #FFF;
+    /* font-family: Kumbh Sans; */
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.container-audio {
+    width: 100%;
+    
+    height: auto;
+    padding: 7px;
+    border-radius: 10px;
+    background-color: #494949;
+    color: #080809;
+    margin: 4px auto;
+    overflow: hidden;
+}
+
+audio {
+  width:100%;
+}
+
+.container-audio .colum1 {
+    width: 23px;
+    height: 5em;
+    border-radius: 5px;
+    margin: 0 10px 0 0;
+    display: inline-block;
+    position: relative;
+}
+
+.button_primary {
+    border: none;
+    border-radius: 100px;
+    padding: 14px 25px;
+    text-transform: uppercase;
+    border: 1px solid #5E3A7D;
+    background: #5E3A7D;
+    color: #fdfdfd;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+    cursor: pointer;
+}

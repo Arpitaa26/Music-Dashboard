@@ -1,0 +1,30 @@
+<div class="page_wrapper">
+  <h1 class="page_heading">Profile</h1>
+
+  <div class="tab_container">
+    <div class="tab_button">
+      <button
+        class="button_secondary button_tab raise"
+        routerLink="teacher-profile"
+        routerLinkActive="active"
+      >
+        Teacher Profile
+      </button>
+      <button
+        class="button_secondary button_tab raise"
+        routerLink="additainal-details"
+        routerLinkActive="active"
+      >
+        Additional Details
+      </button>
+      <button
+        class="button_secondary button_tab raise"
+        routerLink="teacher-availability"
+        routerLinkActive="active"
+      >
+        Teacher Availability
+      </button>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

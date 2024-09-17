@@ -1,0 +1,269 @@
+https://svp.payrollease.in/api/course/get_all
+https://svp.payrollease.in/api/course/get/1
+
+https://svp.payrollease.in/api/module/get_all
+https://svp.payrollease.in/api/module/get/7
+https://svp.payrollease.in/api/module/get_all?course_id=1&course_level_id=1
+
+https://svp.payrollease.in/api/tutorial/get_all
+https://svp.payrollease.in/api/tutorial/get/1
+https://svp.payrollease.in/api/tutorial/get_all?module_id=7
+https://svp.payrollease.in/api/tutorial/fetch_gallerys?tutorial_id=1
+
+Madhav's Notes -:
+
+1) Calendar = schedule_class/get all
+
+2) On dayview click add join and reschedule event
+
+3) Day view try to do on own code.
+
+courseInfo route -: [routerLink]="['course-show', item.id]"
+
+
+course_id , lavel_id
+
+Take module_id, level_id to the url . To open module onInit.
+Make Course Details Tab instead of Q&A.
+Api call to get schedule list in calendar page
+
+--Auth Guard (Student for student route)
+--on login Call user/get Api
+--Task Details
+--CourseList Api data
+
+
+-- Tell back to send s
+-- common Service
+-- AppComponent
+
+-- Teacher profile -:
+
+Insta Test Token -: IGQVJWTFhpNVRmcTBtRTRKUDFhR0ttYzZAOMjZAXcVRzdXRpY0lQZAFdIaTQ4MldNd0JwR0h6a2hJS1hXOE5HTWsyZAmR0MV9USTFIcklmUm1LVUpNYTA3WFNONjhCaGc3SXZABR1UxTjBVaTFGLWx5MFNYdwZDZD
+    
+6/20/2023
+--Event Image scroll
+-- give task id instead to user id in comment 
+--ui comment 
+--teacher Dashboard
+
+
+Access Specifier
+Any removal
+Proper type defining
+dependency injection
+
+--Complete box in dashboard and wherever reuired
+--cookie and cutnip
+
+-- Performance Page , Api to call Level and enrollment
+-- Course Pricing
+-- Referral
+
+--login page validation
+--Forgot Password
+--signUp page - Name , Uname, email, pwd and validation
+-- Events page image problem
+-- http://localhost:4200/portal/students/course_info/module-list/1/course-show/1/1 btn to full screen
+-- Audio archieve audio upload issue
+
+dob
+email
+first_name
+last_name
+password
+phone_no
+user_pronoun_id
+user_type_id
+username
+
+IGQWRQemRuRUlmRjFFNnJwdkxnaUhCV0lGeldwcVA4eXBsT2w3Mk1BZAnY4eU5MYTg0dXNrT2RVLXNNV1ZAYZAVU2RVpqTW9kVjZAhVlJYaGYxNjdwU0ZA0MHB3eHd3UEhSR1JhRUpqdlBNRVk1SFd6Tkd1Wnp2NTNxUm8ZD
+
+IGQWRPZA1hXV2szeE5kRlpQSFdhMVJDRkdyVHpFd2p1UVg5dGRMS1FlYmFEX3dFOU5BWjZAkZAmNubmNwdXBKbnQ1dmx3UC1GT0lXUmNSLTZADM25iT2FJZAjFCZAmFXRWZAJeUNDUjV6OEE4RzlYeVJVT2FJNVNKUlFSdWsZD
+
+
+
+--http://localhost:4200/portal/students/course_info/module-list/5/course-show/5/13
+--http://localhost:4200/portal/students/assignments/performance_report
+
+
+ onChangeMon(e: any) {
+    const checkArray: FormArray = this.checkBoxform.get('Monday') as FormArray;
+    debugger;
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+
+  onChangeTue(e: any) {
+    const checkArray: FormArray = this.checkBoxform.get('Tuesday') as FormArray;
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+
+  onChangeWed(e: any) {
+    const checkArray: FormArray = this.checkBoxform.get(
+      'Wednesday'
+    ) as FormArray;
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+
+  onChangethus(e: any) {
+    const checkArray: FormArray = this.checkBoxform.get(
+      'Thursday'
+    ) as FormArray;
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+
+  onChangefri(e: any) {
+    const checkArray: FormArray = this.checkBoxform.get('Friday') as FormArray;
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+
+  onChangesatur(e: any) {
+    const checkArray: FormArray = this.checkBoxform.get(
+      'Saturday'
+    ) as FormArray;
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+
+  onChangesun(e: any) {
+    const checkArray: FormArray = this.checkBoxform.get('Sunday') as FormArray;
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+
+  onDayOffSelect(e: any, day: string) {
+    debugger;
+    let sumOfday = 0;
+    for (let dayName in this.weekdaysDayOffList) {
+      let val;
+      if (!isNaN(this.weekdaysDayOffList[dayName])) {
+        val = parseInt(this.weekdaysDayOffList[dayName], 10);
+        sumOfday += val;
+      }
+    }
+
+    if (sumOfday > 2) {
+      alert('More than two daysoff is not possible');
+    }
+
+    console.log('Sum val', sumOfday);
+    console.log(e, day);
+
+    if (this.btnDisable == false) {
+      this.counterWeekDayOff += 1;
+    } else {
+      this.counterWeekDayOff = 0;
+    }
+
+    console.log(this.counterWeekDayOff);
+    this.weekdaysDayOffList[day] = this.counterWeekDayOff;
+
+    if (e.target.value == day) {
+      this.btnDisable = true;
+    } else {
+      this.btnDisable = false;
+    }
+
+    // if (this.weekdaysDayOffList[day] >= 1) {
+    //   this.btnDisable = day;
+    // }
+    // if (this.weekdaysDayOffList[day] == 0) {
+    //   this.btnDisable = '';
+    // }
+
+    console.log(this.btnDisable);
+
+    console.log(this.weekdaysDayOffList[day]);
+
+    // this.weekdaysDayOffList[weekNum].Monday;
+    // console.log(numWeeek);
+  }
+
+  --chat issue (done)
+  --select drop down as same style as in home page 
+  -- no updates at the moment bulletin (done)
+  --My upcoming schedule (done)
+  --ss taken change as per given ss (Arpita)
+  --teachers course list (Arpita) (done)
+  --one issue in wp sent to sir performance report (Arpita)  (done)
+  --rout guard(M)
+  --student course changes (Arpita) (done)
+  --assignmwnt/abhasaya audio archieve (Arpita)
+
+  -- http://localhost:64307/portal/teachers/dashboard ist issue
+  -- issue in mac

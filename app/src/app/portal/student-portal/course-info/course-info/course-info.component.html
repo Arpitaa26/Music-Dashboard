@@ -1,0 +1,102 @@
+<!-- <p>course-info works!</p> -->
+
+<div class="page_wrapper">
+  <h1 class="page_heading">Courses List</h1>
+ <div class="course_list">
+  <div class="row listItem">
+    <ng-container *ngFor="let item of this.CourseEnrollmentInterface?.data">
+    <div class="courses_redi_card col-25"  (click)="moduleGet(item.description)"
+    [routerLink]="['module-list', item.course_id]"
+    routerLinkActive="active">
+      <!-- <div class="tag_label">
+        <h4>Registered</h4>
+      </div> -->
+      <!-- file_name -->
+      <div class="inner_redi_card" >
+        <div class="card_image"  >
+          <!-- <h4>{{this.base_url+item.slug}}</h4> style="background-image: url({{this.base_url+item.slug}});"-->
+          <img src="{{this.base_url+item.slug}}" alt="" class="card_imgs"/>
+        </div>
+        <div class="title">
+          <!-- <h2>{{ item.course_name }}</h2> -->
+        </div>
+        <div class="card_crd_txt">
+          <div class="card_crd_inner_txt">
+            <h2>{{ item.course_name }}</h2>
+            <p  class="course-description" [innerHTML]="item.description"></p>
+            
+            <!-- <div class="author_section">
+              <div class="author_image">|limitCharacters: 300
+                <img src="../../../../../assets/img/people.png" alt="" srcset="">
+              </div>
+              <div class="author_content">
+                <h4>Sweta Ramakrishna</h4>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  </div>
+  
+ </div>
+  <!-- <div class="tab_container">
+    <div class="tab_button">
+      <div class="row">
+        <ng-container *ngFor="let item of this.CourseEnrollmentInterface?.data">
+          <div
+            (click)="moduleGet(item.description)"
+            [routerLink]="['module-list', item.course_id]"
+            routerLinkActive="active"
+            class="col-25 col-m-50"
+          >
+
+
+       
+            <div class="dashboard_option remove_height "  *ngIf="item.description.length>10; else remove">
+              <div
+                class="dashBoardText"
+                id="{{ item.id }}"
+                attr.dataVal="{{ item.description }}"
+              >
+                <h3 id="{{ item.id }}" attr.dataVal="{{ item.description }}">
+                  {{ item.course_name }}
+                </h3>
+                <p attr.dataVal="{{ item.description }}">
+                  <b id="{{ item.id }}"> {{ item.short_description }}</b>
+                </p>
+                <p id="{{ item.id }}" attr.dataVal="{{ item.description }}">
+                
+                </p>
+              </div>
+            </div>
+          
+         <ng-template #remove>
+          
+          <div class="dashboard_option add_height" >
+            <div
+              class="dashBoardText"
+              id="{{ item.id }}"
+              attr.dataVal="{{ item.description }}"
+            >
+              <h3 id="{{ item.id }}" attr.dataVal="{{ item.description }}">
+                {{ item.course_name }}
+              </h3>
+              <p attr.dataVal="{{ item.description }}">
+                <b id="{{ item.id }}"> {{ item.short_description }}</b>
+              </p>
+              <p id="{{ item.id }}" attr.dataVal="{{ item.description }}">
+               
+              </p>
+            </div>
+          </div>
+         </ng-template>
+
+            
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div> -->
+</div>

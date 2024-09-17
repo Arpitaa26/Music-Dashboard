@@ -1,0 +1,46 @@
+<div class="page_wrapper">
+  <!-- <h1 class="page_heading">{{ course_name }}</h1>
+  <p class="page_para">{{ course_desc }}</p> -->
+  
+  <div class="tab_container">
+    <div class="tab_button  tab_section_area">
+      <div class="row">
+        <ng-container *ngFor="let level of courseLevel; let i = index">
+          <div class="">
+            <button
+              class="custom_tab_section"
+              id="{{ level.id }}"
+              [class.active]="selectedIndex === i"
+              (click)="getModuleByLevel(level.id, i)"
+            >
+              {{ level.level }}
+      
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="tab_body">
+      <div class="row">
+        <ng-container *ngFor="let item of courseList.data">
+          <div
+            [routerLink]="['course-show', item.course_level_id,item.id]"
+            routerLinkActive="active"
+            class="col-25 col-m-50"
+          >
+            <div class="dashboard_option">
+              <div class="dashBoardText" id="{{ item.id }}">
+                <h3>{{ item.name }}</h3>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="message_box">
+      <h1 *ngIf="this.response_lavel==200 else next_found;"></h1>
+  <ng-template  #next_found><h1 *ngIf="this.response_lavel==203 else elsedata">You are not enrolled yet</h1></ng-template>
+  <ng-template  #elsedata><h1></h1></ng-template>
+    </div>
+  </div>
+</div>

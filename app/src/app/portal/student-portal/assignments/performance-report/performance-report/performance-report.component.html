@@ -1,0 +1,174 @@
+<!-- <p>performance-report works!</p> -->
+<div class="tab_container cont-tab">
+  <div class="tab_button  tab_section_area">
+    <ng-container *ngFor="let menu of courseLevel?.data; let i = index">
+      <button
+        class="custom_tab_section"
+        id="{{ menu.id }}"
+        routerLinkActive="active"
+        [class.active]="selectedIndex === i"
+        (click)="getModuleByLevel(menu.id, i)"
+      >
+        {{ menu.level }}
+      </button>
+    </ng-container>
+  </div>
+
+  <div class="pageLoad" *ngIf="loading == true">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <h3>Loading.... Please wait</h3>
+  </div>
+
+  <div class="tab_body" *ngIf="loading == false">
+    <!-- <router-outlet></router-outlet> -->
+
+    <h3 *ngIf="courseName == null">The course is not enrolled</h3>
+    <ng-container *ngFor="let item of courseName let i = index">
+     
+      <div 
+        routerLinkActive="active"  (click)="selectTab(i)" [ngClass]="{ 'active': activeTab === i }"
+        class="col-25 col-m-50" (click)="coacwa({course_id:item.course_id,course_level_id:item.course_level_id})">
+        <div class="dashboard_option">
+          <div class="dashBoardText" id="{{ item.id }}">
+            <h3>{{ item.course_name }}</h3>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="tab_body">
+    <div class="container">   
+
+      <!-- table_design -->
+      <div class="full_width_wraper"  *ngIf="show_table">
+        <div class="full-tables"  *ngIf="this.status=='200' else coa_not_found;">
+          <div class="full_row" >
+            <div class="col_table">
+    
+              <table class="rwd-table">
+                <h2 class="cwaaa">COA</h2>
+                <tbody>
+                  <tr>
+                    <!-- <th>Id</th> -->
+                    <th>Course Name</th>
+                   
+                    <th>Result Type</th>
+                    <th>Batch Code</th>
+                    <th>Teacher name</th>
+                    <th>Level</th>
+                    <th>Certificate file</th>
+                  </tr>
+              
+                  <tr *ngFor="let item of this.report?.data" class="{{item.result_type}}-cwaaaa">
+                    
+                      <!-- <td data-th="Supplier Code">
+                        {{item.id}}
+                      </td> -->
+                      <td data-th="Supplier Name">
+                        {{item.course_name}}
+                      </td>
+                      <td data-th="Invoice Number">
+                        {{item.result_type}}
+                      </td>
+                      <td data-th="Invoice Date">
+                        {{item.batch_code}}
+                      </td>
+                      <td data-th="Due Date">
+                        {{item.teacher_name}}
+                      </td>
+                      <td>{{item.level}}</td>
+                      <td data-th="Net Amount">
+                        <div class="download_file" *ngIf="item.slug!=null"><a href="https://thesvpacademy.com/admin/file/open/{{item.slug}}" (click)="download_url(item.slug)"  class="download_link">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud-download" viewBox="0 0 16 16">
+                              <path d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z"/>
+                              <path d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
+                            </svg>
+                          </a></div>
+                      </td>
+               
+                   
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+  
+          <div class="full_row">
+            <div class="col_table"   >
+    
+              <table class="rwd-table">
+                <h2 class="cwaaa">CWA</h2>
+                <tbody>
+                  <tr>
+                    <!-- <th>Id</th> -->
+                    <th>Course Name</th>
+                   
+                    <th>Result Type</th>
+                    <th>Batch Code</th>
+                    <th>Teacher name</th>
+                    <th>Level</th>
+                    <th>Certificate file</th>
+                  </tr>
+              
+                  <tr *ngFor="let item of this.report?.data" class="{{item.result_type}}-coaa">
+<!--                     
+                      <td data-th="Supplier Code">
+                        {{item.id}}
+                      </td> -->
+                      <td data-th="Supplier Name">
+                        {{item.course_name}}
+                      </td>
+                      <td data-th="Invoice Number">
+                        {{item.result_type}}
+                      </td>
+                      <td data-th="Invoice Date">
+                        {{item.batch_code}}
+                      </td>
+                      <td data-th="Due Date">
+                        {{item.teacher_name}}
+                      </td>
+                      
+                      <td>{{item.level}}</td>
+                      <td data-th="Net Amount">
+                        <div class="download_file" *ngIf="item.slug!=null"><a href="https://thesvpacademy.com/admin/file/open/{{item.slug}}" (click)="download_url(item.slug)"  class="download_link">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud-download" viewBox="0 0 16 16">
+                              <path d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z"/>
+                              <path d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
+                            </svg>
+                          </a></div>
+                      </td>
+               
+                   
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+            
+        
+          </div>
+  
+  
+  
+        </div>
+        <ng-template #coa_not_found><h2>Report Not Found</h2></ng-template>
+      </div>
+     
+  </div>
+  </div>
+</div>

@@ -1,0 +1,189 @@
+<div class="audio-arcive">
+  <div class="first-txt">
+    <h2 class="fst-txt">Abhyasa Archive</h2>
+    <h3 class="scnd-txt">Upload your own music.</h3>
+  </div>
+  <div class="buttonss">
+    <div class="audio-txt">
+      <div class="tab_button">
+        <button class="button_primary filter" (click)="toggleData()">
+          Upload your song
+        </button>
+        <!-- <button class="button_secondary " > Video </button> -->
+      </div>
+    </div>
+  </div>
+
+  <hr />
+  <!-- <div class="music-lists">
+    <div class="audio-wrapper" *ngFor="let item of descendingItems">
+      <div class="adio-title image-path">
+        <div class="audio-txt">
+          <div class="audio-box">
+          
+            <p class="audio-date">
+              {{ item.created_on | date : "d MMM y, HH:mm a" }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="adio-title">
+        <div class="audio-txt heading-h2">
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+      <div class="audio-main">
+        <div class="container-audio">
+          <audio controls loop muted paused>
+            <source
+              src="https://thesvpacademy.com/admin/file/open/{{ item.slug }}"
+              type="audio/ogg"
+            />
+            Your browser dose not Support the audio Tag
+          </audio>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="music-lists">
+    <div class="audio-wrapper">
+      <div class="adio-title image-path">
+        <div class="audio-txt">
+          <div class="audio-box">
+            <!-- <img class="profile-image" src="https://thesvpacademy.com/admin/file/open/{{item.slug}}" alt="" srcset=""> -->
+            <h4>Submission Date</h4>
+          </div>
+        </div>
+      </div>
+      <div class="adio-title">
+        <div class="audio-txt heading-h2">
+          <h4>Title</h4>
+        </div>
+      </div>
+      <div class="audio-main">
+        <div class="audio-name">
+          <h4>Audio</h4>
+        </div>
+      </div>
+      <div class="comments-main" style="width: 15%">
+        <div class="comments">
+          <h2 class="textt">Feedback Date</h2>
+        </div>
+      </div>
+      <div class="feedback-main">
+        <div class="Feedback">
+          <h2 class="textt">Feedback</h2>
+        </div>
+      </div>
+    </div>
+   
+
+    <h1 *ngIf="allStatus == '203'">Data not found</h1>
+  </div>
+  <div
+    class="music-lists"
+    *ngFor="let item of descendingItems"
+  >
+    <div class="audio-wrapper">
+      <div class="adio-title image-path">
+        <div class="audio-txt">
+          <div class="audio-box">
+            <!-- <img class="profile-image" src="https://thesvpacademy.com/admin/file/open/{{item.slug}}" alt="" srcset=""> -->
+            <p class="audio-date">
+              {{ item.created_on | date : "d MMM y, HH:mm a" }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="adio-title">
+        <div class="audio-txt heading-h2">
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+      <div class="audio-main">
+        <div class="container-audio">
+          <audio controls loop muted paused>
+            <source
+              src="https://thesvpacademy.com/admin/file/open/{{ item.slug }}"
+              type="audio/ogg"
+            />
+            Your browser dose not Support the audio Tag
+          </audio>
+        </div>
+      </div>
+      <div class="comments-main">
+        <div class="comments">
+          <h2 class="textt">
+            {{ item.updated_on | date : "d MMM y, HH:mm a" }}
+          </h2>
+        </div>
+      </div>
+      <div class="feedback-main">
+        <div class="Feedback">
+                 
+            <p>{{ item.feedback }}</p>
+         
+
+            <!-- <div class="submitted"   >Submitted!</div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- file-upload-popup -->
+
+<div class="parent-of-popup">
+  <div class="file-upload-box popup" id="popup" *ngIf="toDisplay">
+    <button class="close-popup" (click)="popupoff()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="inner-popup-box">
+      <div class="input-box">
+        <!-- <span class="inval" *ngIf="file && file.invalid && file.touched"
+           >This Field is not valid</span
+         > -->
+      </div>
+      <div class="file-sub">
+        <input type="file" (change)="onFileSelected($event)" />
+        <!-- (change)="handleFileInput($event)" -->
+      </div>
+      <form
+        [formGroup]="audio_upload"
+        #usersFrom="ngForm"
+        (ngSubmit)="getUserFormData(usersFrom.value)"
+      >
+        <div class="filr-up-area">
+          <!-- <input class="cat" type="text" name="category"  ngModel placeholder="Category of your song">
+           -->
+          <!-- <select name="category"  ngModel  id="Category"> 
+            <option >ARCHIVE</option>
+            <option value="AUDIO_ARCHIVE" selected>AUDIO_ARCHIVE</option>
+            <option value="AUDIO_ARCHIVE" >AUDIO_ARCHIVE</option>
+          </select>
+           -->
+
+          <!-- <input type="hidden"     name="category" ngModel="category" value="AUDIO_ARCHIVE" id="Category"> -->
+
+          <div class="input-box">
+            <textarea
+              class="description"
+              formControlName="description"
+              ngModel
+              placeholder="Description of your song"
+            ></textarea>
+            <!-- <span class="inval" *ngIf="description && description.invalid"
+              >This Field is not valid</span
+            > -->
+          </div>
+
+          <div class="input-box">
+            <button [disabled]="audio_upload.invalid" class="file-submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- file-upload-popup end -->

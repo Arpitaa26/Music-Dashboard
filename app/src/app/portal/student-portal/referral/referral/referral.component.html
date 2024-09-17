@@ -1,0 +1,100 @@
+<div class="for_scheduled_tab_content">
+  <div class="textHead">
+    <h3 class="page_heading">Join our Affiliate Program</h3>
+  </div>
+  <div class="textMid">
+    <h3>Refer your friends and family members to The SVP Academy</h3>
+  </div>
+  <button class="button_primary" (click)="copyLink()">Start Sharing</button>
+  <input
+    type="text"
+    [value]="linkToCopy"
+    #linkInput
+    style="opacity: 0; position: absolute; left: -9999px"
+  />
+  <div
+    class="clip_copy_to"
+    [ngClass]="{ active: isActive, inactive: !isActive }"
+  >
+    <div class="inner_clip_copy_to">
+      <span>Link Copied</span>
+    </div>
+  </div>
+  <h4 class="copy-txt">{{ this.copy_txt }}</h4>
+</div>
+
+<!-- <div class="for_scheduled_tab_content">
+  <div class="textHead">
+    <h3 class="page_heading">SVP Academy</h3>
+  </div>
+  <div class="textMid">
+    <h3>
+      Give a Free Course<br />
+      Get a Free Course
+    </h3>
+  </div>
+  <div class="textExplain">
+    <h3>
+      Invite a friend to get started on SVP Academy with a free course! Once
+      your friend starts learning, you'll be able to earn a free SVP Academy
+      certificate from a special selection Of courses.
+    </h3>
+  </div>
+  <div class="textEmail">
+    <label for="">Enter your email to start sharing:</label>
+    <input
+      class="theme_input"
+      type="email"
+      name=""
+      id=""
+      placeholder="Enter your email"
+    />
+  </div>
+  <button class="button_primary" style="margin-top: 2rem">Start Sharing</button>
+</div> -->
+<div class="table_sections">
+  <div class="container">
+    <div class="row">
+      <table class="rwd-table">
+        <tbody>
+          <tr>
+            <th>Full Name</th>
+            <th>Email ID</th>
+            <th>Referal Code</th>
+            <th>Phone No</th>
+            <th>Type</th>
+          </tr>
+          <ng-container *ngIf="this.record_status == '200'; else notFound">
+            <tr *ngFor="let user of this.record_refral_user">
+              <td data-th="Supplier Code">
+                {{ user.full_name }}
+              </td>
+              <td data-th="Supplier Name">
+                {{ user.email }}
+              </td>
+                      <td data-th="Invoice Date">
+                {{ user.referal_code }}
+              </td>
+              <td data-th="Due Date">
+                {{ user.phone_no }}
+              </td>
+              <td data-th="Net Amount">
+                {{ user.type }}
+              </td>
+            </tr>
+          </ng-container>
+        
+        </tbody>
+       
+      </table>
+      <ng-template #notFound>
+       
+        <div style="width:100%">
+    <h4 style="color: #fff;text-align: center;">Data not found</h4>
+     
+        </div>
+   </ng-template>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,55 @@
+<div class="courses_card_of_custom" *ngIf="show">
+    <!-- <h2>{{ card.title }}</h2>
+    <p>{{ card.description }}</p> -->
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)"   class="">
+    
+        <input type="hidden" [(ngModel)]="card.course_id" name="course_id">
+         <div class="courses_redi_card " >
+         <!-- <div class="tag_label">
+           <h4>Registered</h4>
+         </div> -->
+         <!-- <h2>{{item.code}}</h2> -->
+         <div class="inner_redi_card">
+           <div class="card_image">
+            <img src="{{this.base_url+card.slug}}" alt="" class="card_imgs"/>
+           </div>
+           <div class="card_crd_txt">
+             <div class="card_crd_inner_txt">
+               <h2>{{card.value}}</h2>
+               <!-- <p>{{item.short_description }}</p> -->
+               <p>{{card.short_description | limitCharacters : 100}}</p>
+               <div class="both-filter">
+                  <div class="filter_box">
+                 <select ngModel name="lavel" onchange="myFunction()" required>
+                   <option value="">Level</option>
+                   <option *ngFor="let data of card.uniqueArray_for_lavel" [value]="data.level_id">{{data.lavels }}</option>
+   
+                 </select>
+               </div>
+               <div class="filter_box">
+                 <select  ngModel name="type"  required>
+                   <option value="">{{'Session'}}</option>
+                   <option *ngFor="let types of card.uniqueArray_for_type" [value]="types.session_type_id">{{types.type | camelCaseToTitleCase}}</option>
+                   <!-- <option *ngFor="let types of item.uniqueArray_for_type" [value]="types.session_type_id">{{types.type }}</option> -->
+   
+                 </select>
+               </div>
+               </div>
+              
+               <div class="author_section">
+                 <!-- <div class="author_image">
+                   <img src="../../../../../assets/img/people.png" alt="" srcset="">
+                 </div> -->
+                 <!-- <div class="author_content">
+                   <h4>Sweta Ramakrishna</h4>
+                 </div> -->
+   
+                 <button class="button_primary enroll" type="submit"  >View Details</button>
+   
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </form>
+</div>

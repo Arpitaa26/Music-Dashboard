@@ -1,0 +1,164 @@
+<!-- <p>scheduleclass works!</p> -->
+<div class="row for_scheduled_tab_content">
+  <p class="col col-100 tab_heading_name   heading-nm">
+     {{ currentDate | date : "fullDate" }}
+  </p>
+  <h2 *ngIf="this.scheduleList == null" style="margin-left: 10px">
+     No classes Today
+  </h2>
+  <ng-container #main_content *ngFor="let item of this.scheduleList">
+     <div class="col-25 col-m-100"   *ngIf="item.status=='NOT_STARTED'||item.status=='STARTED'">
+        <div class="inner_schedule_tiles">
+          
+           <div class="bxx">
+              <p class="class_time">{{ item.module_name }}</p>
+              <p class="active-data {{item.status}}">{{item.status}}</p>
+           </div>
+           <h2  class="start-time"> {{ item.start_time|  date:'medium' }}</h2>
+           <p class="type">{{ item.level }}</p>
+           
+           
+           <!-- <a class="button_secondary" (click)="joinclass({id:item.id,link:item.link});">Join Class</a>
+           <form
+           class="frm-submit"
+           #reschedule="ngForm"
+           (ngSubmit)="reschedule_post(reschedule.value)"
+           >
+           <input
+              type="hidden"
+              value="{{ item.id }}"
+              ngModel
+              name="class_id"
+              id="class_id"
+              />
+           <input
+              type="hidden"
+              value="lorem"
+              ngModel
+              name="reason_for_reschedule"
+              id="reason_for_reschedule"
+              />
+           <input
+              type="hidden"
+              value="2.05.2023"
+              ngModel
+              name="start_time"
+              id="start_time"
+              />
+           <input
+              type="hidden"
+              value="2.05.2024"
+              ngModel
+              name="end_time"
+              id="end_time"
+              />
+           <span class="schedule_button"  (click)="user_class_get(item.user_id)">
+           <button
+              class="button_secondary"
+              (click)="schedule_open()"
+              >
+           Reschedule
+           </button>
+           <a>
+           <button class="button_secondary" (click)="user_complete({END:'END',id:item.id})">Complete</button>
+           </a>
+           </span>
+           </form>
+        -->
+
+
+        <div class="button-box">
+        
+          <ng-container *ngIf="item.status=='NOT_STARTED'">
+            
+            <!-- <div class="combo">
+           
+              <a>
+        
+                <button class="button_secondary join-btn"  (click)="joinclass({id:item.id,link:item.link});">Join Class</button>
+              </a>
+        
+            </div>
+        
+            <div class="combo-2">
+              <a>
+                <button
+                  class="button_secondary   reschedule" (click)="user_class_get(item.user_id)"
+                  (click)="schedule_close = !schedule_close"
+                >
+                  Reschedule
+                </button>
+              </a>
+            </div> -->
+          </ng-container>
+          <ng-container *ngIf="item.status=='STARTED'">
+            <div class="combo">
+              
+              <a>
+        
+                <button class="button_secondary join-btn"  (click)="joinclass({id:item.id,link:item.link});">Join Class</button>
+              </a>
+        
+                <a>
+                <button class="button_secondary   complete" (click)="user_complete({END:'END',id:item.id})">Complete</button>
+              </a>
+        
+            </div>
+        
+          </ng-container>
+        </div>
+       
+       
+          </div>
+     </div>
+  </ng-container>
+</div>
+<!-- [ngClass]="{ disabled: item.reschedule == false }"
+  [disabled]="!item.reschedule"
+  (click)="open_reschedule_popup(item.reschedule)" -->
+  <div class="schedule_pop_cont" *ngIf="schedule_close">
+   <div class="arrow" (click)="close()"></div>
+   <div class="schedule_button_cont">
+     <button class="close_schedule" (click)="close()">
+       <i class="fa fa-close"></i>
+     </button>
+   </div>
+ 
+   <form #usersregisterFrom="ngForm" (ngSubmit)="class_rd_request_save(usersregisterFrom.value)">
+  
+     <ng-container *ngFor="let item of this.UserAvailableInterface?.data">
+       <div class="schedule_ind" >
+         <label class="radio_cont">
+           <input ngModel 
+             type="radio"
+             [checked]="[item]"
+             name="availability_id"
+             
+             value="{{ item.user_id }}"
+           />
+           <!-- (change)="change_radio(item.id)" -->
+           {{ item.from }}
+           <input type="hidden" name="start_time" ngModel="{{item.from}}">
+           <span class="checkmark"></span>
+         </label>
+       </div>
+     
+ 
+   </ng-container>
+   
+   <div class="reasn">
+     <textarea id="reason" ngModel name="reason_for_reschedule"></textarea>
+   </div>
+ 
+   <div class="submit-class-data">
+     <button
+       class="button_secondary">
+       Submit
+     </button>
+   </div>
+   </form>
+   <ng-container *ngIf="!this.UserAvailableInterface?.data">
+     <h2 class="null data">User Availability not found</h2>
+   </ng-container>
+ </div>
+ 

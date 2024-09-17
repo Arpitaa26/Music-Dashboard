@@ -1,0 +1,537 @@
+
+.dashboard_option{
+
+    padding: 0px 0px 20px;
+    text-align: left;
+  
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.5s;
+   
+    box-shadow: var(--default_box_shaddow);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.09);
+    background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.12) 0%, rgba(255, 255, 255, 0.10) 100%);
+    backdrop-filter: blur(5px);
+    width: 286px;
+    height: auto;
+    flex-shrink: 0;
+    font-size: 13px;
+    color: #fff;
+   }
+  
+   button.button_primary.enroll {
+  
+      width: 112px;
+      height: 34px;
+      /* line-height: 1; */
+      display: flex;
+      flex-shrink: 0;
+      border-radius: 105px;
+      background: var(--7040-b-560, #7040B5);
+      align-items: center;
+      justify-content: center;
+  
+  }
+    .dashboard_option:hover {
+      background: var(--secondary);
+      color: var(--interactive);
+      transition: all 0.5s;
+      border: 1px solid var(--interactive);
+    }
+    .dashboard_option i {
+      font-size: 45px;
+      color: var(--text_color);
+      transition: all 0.5s;
+    }
+    .dashboard_option:hover i {
+      transition: all 0.5s;
+      color: var(--interactive);
+    }
+    
+    .dashboard_option p {
+      font-size: 15px;
+      margin: 0;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: var(--text_color);
+    }
+    .dashBoardText {
+      padding-inline: 2rem;
+      text-align: left;
+      padding-block: 1rem;
+    }
+    .tab_body {
+      margin-top: 2rem;
+    }
+    .tab_button {
+      margin-left: 10px;
+    }
+    .tab_button button.button_tab {
+      background: transparent;
+      color: var(--border-color);
+      border: 1px solid var(--border-color);
+      transition: all 0.5s;
+      margin-inline: 5px;
+      margin-block: 5px;
+    }
+    .tab_button button.button_tab.active {
+      background: var(--interactive);
+      color: white;
+      padding: 11px 20px;
+      border: 1px solid var(--interactive);
+      font-weight: 600;
+      text-transform: uppercase;
+      border-radius: 5px;
+      font-size: 12px;
+      transition: all 0.5s;
+    }
+    .card_image>img{
+      width: 100%;
+    }
+    .card_crd_inner_txt>p {
+      color: #000;
+      font-family: Kumbh Sans;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px; /* 128.571% */
+      letter-spacing: -0.28px;
+  }
+  
+  .card_crd_txt {
+      padding: 20px 30px;
+  }
+  .author_section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .author_content>h4 {
+    color: #000;
+    font-family: Kumbh Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.28px;
+    margin-left: 10px;
+  }
+  .tag_label {
+    border-radius: 0px 22px 22px 0px;
+    background: #602DAB;
+    position: absolute;
+    padding: 0px 26px;
+    height: 40px;
+    top: 22px;
+  }
+  
+  .tag_label>h4 {
+    color: #FFF;
+    font-family: Kumbh Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 7px;
+    letter-spacing: -0.12px;
+  }
+  
+  .courses_redi_card {
+    position: relative;
+    margin-bottom:30px ;
+  }
+  
+  
+  
+  .inner_section>select {
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: radial-gradient(49.93% 90% at 49.93% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(17px);
+    padding: 10px 20px;
+    width: 286px;
+    color: #FFF;
+    font-family: Kumbh Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.2px;
+  }
+  .inner_section{
+    margin-bottom: 35px;
+  }
+  .filter_box>select{
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: radial-gradient(49.93% 90% at 49.93% 0%, rgb(60 59 59 / 54%) 0%, rgb(165 161 161 / 73%) 100%);
+    backdrop-filter: blur(17px);
+    padding: 8px 20px;
+   width: 100%;
+    color: #030303;
+    font-family: Kumbh Sans;
+    font-size:15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.2px;
+  }
+  
+  
+  .dashboard_option {
+    width: 100%;
+    background: var(--secondary);
+    padding: 0px 0px 20px;
+    text-align: left;
+    border-radius: 13px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    max-height: 25rem;
+    transition: all 0.5s;
+    border: 1px solid transparent;
+    box-shadow: var(--default_box_shaddow);
+  }
+  .dashboard_option:hover {
+    background: var(--secondary);
+    color: var(--interactive);
+    transition: all 0.5s;
+    border: 1px solid var(--interactive);
+  }
+  .dashboard_option i {
+    font-size: 45px;
+    color: var(--text_color);
+    transition: all 0.5s;
+  }
+  .dashboard_option:hover i {
+    transition: all 0.5s;
+    color: var(--interactive);
+  }
+  
+  .dashboard_option p {
+    font-size: 15px;
+    margin: 0;
+    margin-top: 25px;
+    margin-bottom: 8px;
+    color: var(--text_color);
+  }
+  .dashImg img {
+    width: 100%;
+    height: 10rem;
+  }
+  .dashBoardText {
+    padding-inline: 1rem;
+  }
+  
+  .dashboard_option {
+    min-height: 160px;
+    height: 160px;
+    overflow-y: scroll;
+  }
+  .owl-prev {left: 0 !important;position: absolute !important;top: 50% !important;transform: translateY(-50%) !important;}
+  /* width */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #864dd9; 
+    border-radius: 10px;
+  }
+  .dashboard_option.remove_height {
+    overflow-y: hidden;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #864dd9; 
+  }
+  .dashboard_option{
+  
+    padding: 0px 0px 20px;
+    text-align: left;
+  
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.5s;
+   
+    box-shadow: var(--default_box_shaddow);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.09);
+    background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.12) 0%, rgba(255, 255, 255, 0.10) 100%);
+    backdrop-filter: blur(5px);
+    width: 286px;
+    height: auto;
+    flex-shrink: 0;
+    font-size: 13px;
+    color: #fff;
+   }
+  
+   button.button_primary.enroll {
+  
+      width: 112px;
+      height: 34px;
+      /* line-height: 1; */
+      display: flex;
+      flex-shrink: 0;
+      border-radius: 105px;
+      background: var(--7040-b-560, #7040B5);
+      align-items: center;
+      justify-content: center;
+  
+  }
+    .dashboard_option:hover {
+      background: var(--secondary);
+      color: var(--interactive);
+      transition: all 0.5s;
+      border: 1px solid var(--interactive);
+    }
+    .dashboard_option i {
+      font-size: 45px;
+      color: var(--text_color);
+      transition: all 0.5s;
+    }
+    .dashboard_option:hover i {
+      transition: all 0.5s;
+      color: var(--interactive);
+    }
+    
+    .dashboard_option p {
+      font-size: 15px;
+      margin: 0;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: var(--text_color);
+    }
+    .dashBoardText {
+      padding-inline: 2rem;
+      text-align: left;
+      padding-block: 1rem;
+    }
+    .tab_body {
+      margin-top: 2rem;
+    }
+    .tab_button {
+      margin-left: 10px;
+    }
+    .tab_button button.button_tab {
+      background: transparent;
+      color: var(--border-color);
+      border: 1px solid var(--border-color);
+      transition: all 0.5s;
+      margin-inline: 5px;
+      margin-block: 5px;
+    }
+    .tab_button button.button_tab.active {
+      background: var(--interactive);
+      color: white;
+      padding: 11px 20px;
+      border: 1px solid var(--interactive);
+      font-weight: 600;
+      text-transform: uppercase;
+      border-radius: 5px;
+      font-size: 12px;
+      transition: all 0.5s;
+    }
+    .card_image>img{
+      width: 100%;
+    }
+    .card_crd_inner_txt>p {
+      color: #000;
+      font-family: Kumbh Sans;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px; /* 128.571% */
+      letter-spacing: -0.28px;
+  }
+  
+  .courses_redi_card {
+    border-radius: 20px;
+    background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.12) 0%, rgba(255, 255, 255, 0.10) 100%);
+    overflow: hidden;
+  }
+  
+  .card_crd_inner_txt>h2 {
+      color: #000;
+      font-family: Kumbh Sans;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: normal;
+      letter-spacing: -0.2px;
+      margin-bottom: 0px;
+  }
+  
+  .card_crd_txt {
+      padding: 20px 30px;
+  }
+  .author_section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .author_content>h4 {
+    color: #000;
+    font-family: Kumbh Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.28px;
+    margin-left: 10px;
+  }
+  .tag_label {
+    border-radius: 0px 22px 22px 0px;
+    background: #602DAB;
+    position: absolute;
+    padding: 0px 26px;
+    height: 40px;
+    top: 22px;
+  }
+  
+  .tag_label>h4 {
+    color: #FFF;
+    font-family: Kumbh Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 7px;
+    letter-spacing: -0.12px;
+  }
+  
+  .courses_redi_card {
+    position: relative;
+    margin-bottom:30px ;
+  }
+  
+  
+  
+  .inner_section>select {
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: radial-gradient(49.93% 90% at 49.93% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(17px);
+    padding: 10px 20px;
+    width: 286px;
+    color: #FFF;
+    font-family: Kumbh Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.2px;
+  }
+  .inner_section{
+    margin-bottom: 35px;
+  }
+  .filter_box>select{
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: radial-gradient(49.93% 90% at 49.93% 0%, rgb(60 59 59 / 54%) 0%, rgb(165 161 161 / 73%) 100%);
+    backdrop-filter: blur(17px);
+    padding: 8px 20px;
+   width: 100%;
+    color: #030303;
+    font-family: Kumbh Sans;
+    font-size:15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.2px;
+  }
+  .card_image {
+    padding: 20px;
+  }
+  .inner_redi_card {
+    height: 100px;
+  }
+  .inner_redi_card {
+    position: relative;
+  }
+  
+  .card_crd_txt {
+    position: absolute;
+    bottom: -112px;
+    left: 0;
+    right: 0;
+  
+    border-radius: 0px 0px 16px 16px;
+  background: linear-gradient(0deg, #5E3A7D -0.25%, rgb(94 58 125 / 23%) 79.69%);
+    backdrop-filter: blur(5px);
+    padding: 14px 20px !important;
+  }
+  .card_crd_inner_txt>h2 {
+    color: #FFF !important;
+    font-family: Kumbh Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px; /* 171.429% */
+    letter-spacing: -0.28px;
+  }
+  .card_crd_inner_txt>p {
+    color: #FFF !important;
+    font-family: Kumbh Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1; /* 171.429% */
+    letter-spacing: -0.28px;
+  }
+  .inner_redi_card {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transition: 0.5s;
+    cursor: pointer;
+    background-position-x: 50%;
+    background-position-y: 50%;
+  }
+  .inner_redi_card:hover .card_crd_txt{
+  
+  height: 100%;
+  bottom: 0;
+  transition: 0.5s;
+  
+  }
+  .inner_redi_card:hover{
+    background-size: 120%; 
+    transition: 0.5s;
+  }
+  .title{
+  position: absolute;
+  bottom: 20px;
+  left: 15px;
+  right: 15px;
+  }
+  .title>h2{
+    color: #FFF;
+  font-family: Kumbh Sans;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.35px;
+  }
+  
+  
+  
+  
+  
+  @media only screen and (max-width: 999px) and (min-width: 320px) {
+    .dashboard_option i {
+      font-size: 30px;
+    }
+    .dashboard_option {
+      padding: 0px 0px 11px;
+    }
+    .dashboard_option p {
+      font-size: 15px;
+      margin-top: 10px;
+    }
+    .dashImg img {
+      height: 7rem;
+    }
+  }
+  

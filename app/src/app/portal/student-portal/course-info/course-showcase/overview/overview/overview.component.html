@@ -1,0 +1,30 @@
+<ng-container>
+  <div class="detailsSec">
+    <ng-container *ngFor="let desc of data" >
+      <ng-container *ngIf="show_node; else dit" >
+          <div *ngIf="this.uId==desc.id; ">
+          <div class="detailsHead" >
+            <!-- <h1 >{{desc.id}}||{{this.uId}}||{{dId}}</h1> -->
+            <h2   [innerHTML]="desc.name"></h2>
+            <h3   [innerHTML]="desc.course_level" ></h3>
+          </div>
+          <div class="descBody">
+            <span [innerHTML]="desc.description" class="detailsDesc"> </span>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #dit >
+        <div *ngIf="desc.id==dId; ">
+        <div class="detailsHead" >
+          <!-- <h1 >{{desc.id}}||{{this.uId}}||{{dId}}</h1> -->
+          <h2  [innerHTML]="desc.name"></h2>
+          <h3   [innerHTML]="desc.course_level"></h3>
+        </div>
+        <div class="descBody">
+          <span [innerHTML]="desc.description" class="detailsDesc"> </span>
+        </div>
+      </div>
+    </ng-template>
+    </ng-container>
+  </div>
+</ng-container>

@@ -1,0 +1,27 @@
+<div class="image-popup-container" [ngClass]="{ 'active': popupVisible }" *ngIf="hide_comp">
+ 
+    <div class="image-popup-content">
+      <!-- <img src="https://thesvpacademy.com/admin/file/open/{{popupImageUrl}}" alt="Popup Image">
+      <button (click)="closePopup()" class="close"><i class="fa-solid fa-xmark"></i></button> -->
+      <owl-carousel-o [options]="popup_img_Options">
+        <ng-container *ngFor="let img of ImageFiles" >
+          <h1>{{img|json}}</h1>
+          <ng-template carouselSlide  *ngIf="img !== ''">
+
+            <div style="background-image: url('https://thesvpacademy.com/admin/file/open/{{ img}}'); width: 100%;
+            background-size: contain; background-repeat: no-repeat; background-position: center;">
+            
+              <img
+                class="slideImg"
+                src="https://thesvpacademy.com/admin/file/open/{{ img }}"
+                alt="" style="visibility: hidden;"
+              />
+            </div>
+          </ng-template>
+
+        </ng-container>
+      </owl-carousel-o>
+    
+    </div>
+  </div>
+  

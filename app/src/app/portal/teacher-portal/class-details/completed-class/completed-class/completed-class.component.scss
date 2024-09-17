@@ -1,0 +1,45 @@
+.re-schedule {
+    width: 70%;
+    float: left;
+  }
+
+  h2.schedule-txt {
+    color: white;
+    color: #fff;
+    font-family: Kumbh Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    padding-top: 20px;
+
+}
+  
+  .class-box {
+    width: auto;
+    float: left;
+  
+    height: auto;
+    padding: 26px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.09);
+    background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.12) 0%, rgba(255, 255, 255, 0.1) 100%);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    color: white;
+}
+
+.bxx {
+    font-size: 12px;
+    display: flex;
+}
+
+p.nt-started {
+    padding-left: 80px;
+}
+
+a.cancle {
+    margin-left: 15px;
+}

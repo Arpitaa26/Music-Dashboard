@@ -1,0 +1,168 @@
+.login_signup_outer_cont {
+    /* background: var(--qrcont_back_color); */
+    padding: 39px;
+    padding-bottom: 100px;
+    max-width: 1357px;
+    margin: 0 auto;
+}
+
+.logp {
+    width: 63px;
+    margin-top: 29px;
+    margin-bottom: 50px;
+}
+
+.log_sign_cont {
+    // width: 100%;
+    display: flex;
+    /* background: var(--home_back_color); */
+    background: var(--secondary);
+    padding: 12px;
+    border-radius: 27px;
+    box-shadow: 1px 1px 31px 0px #0006;
+}
+
+.log_sign_cont_left {
+    width: 40%;
+}
+
+.inner_log_sign_cont_left {
+    // width: 100%;
+    min-height: 86vh;
+    background: var(--interactive);
+    border-radius: 27px;
+    padding: 20px 30px;
+    position: sticky;
+    top: 0;
+}
+
+.inner_log_sign_cont_left h2 {
+    color: white;
+}
+
+.inner_log_sign_cont_left p {
+    color: white;
+}
+
+.log_sign_input_cont {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner_log_sign_input_cont {
+    width: 87%;
+    padding: 0px 72px;
+    padding-bottom: 49px;
+    /* min-height: 100%; */
+}
+
+.form_cont_log_sign {
+    width: 100%;
+}
+
+.inner_log_sign_input_cont h3 {
+    font-size: 30px;
+    margin-bottom: 0px;
+}
+
+.inner_log_sign_input_cont p {
+    margin-bottom: 38px;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.inner_log_sign_input_cont p span {
+    margin-bottom: 38px;
+    font-weight: 300;
+    font-size: 17px;
+}
+
+.log_sign_redirect_button {
+    border: 1px solid white;
+    background: transparent;
+    padding: 5px 15px 7px;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.form_cont_log_sign.for-register {
+    width: 100%;
+}
+
+.inner_log_sign_input_cont.for-register {
+    padding: 0px;
+    width: 100%;
+}
+
+.log_sign_input_cont.for-register {
+    width: 100%;
+}
+
+.form_col.col_fifty {
+    width:100%;
+    // float: left;
+    margin: 0px 5px;
+}
+.login_signup_outer_cont.update-form{
+    width: 600px;
+    margin: 0 auto;
+}
+.log_sign_cont{
+    padding: 34px;
+}
+@media only screen and (max-width: 999px) and (min-width: 300px) {
+    .login_signup_outer_cont {
+        padding: 15px;
+    }
+    .log_sign_cont {
+        flex-wrap: wrap;
+    }
+    .inner_log_sign_cont_left {
+        width: 100%;
+        min-height: auto;
+        /* padding-bottom: 56px; */
+        padding: 15px 23px 30px;
+        border-radius: 17px;
+    }
+    .log_sign_cont_left {
+        width: 100%;
+        min-height: auto;
+    }
+    .log_sign_input_cont {
+        width: 100%;
+    }
+    .inner_log_sign_input_cont {
+        padding: 0px 10px;
+    }
+    .col_fifty {
+        width: 100%;
+    }
+    .col_fifty input {
+        width: 100%;
+    }
+    .submit_button_cont {
+        margin-top: 23px;
+        margin-bottom: 50px;
+    }
+    .inner_log_sign_cont_left p {
+        color: white;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .inner_log_sign_cont_left img {
+        display: none;
+    }
+    .inner_log_sign_cont_left h2 {
+        color: white;
+        margin-bottom: 8px;
+    }
+    .log_sign_redirect_button {
+        margin-top: 4px;
+    }
+}

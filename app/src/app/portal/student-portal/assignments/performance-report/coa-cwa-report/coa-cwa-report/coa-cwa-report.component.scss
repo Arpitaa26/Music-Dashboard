@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+   
+    padding: 20px;
+}
+
+.box {
+    flex: 1;
+    margin: 0 10px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+.download_file {
+    /* float: right; */
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+td, th{
+    border: 1px solid #5e3a7d;
+    text-align: center;
+    padding: 6px 20px;
+  }
+  tr.COA-cwaaaa {
+    background: radial-gradient(113.36% 56.13% at 67.56% 56.53%, rgba(88, 49, 146, 0.12) 0%, rgba(255, 255, 255, 0.1) 100%);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+  
+  h2.cwaaa {
+    color: #ee9c13;
+    font-size: 20px;
+  }
+  
+  th {
+    color: #ee9c13;
+  }

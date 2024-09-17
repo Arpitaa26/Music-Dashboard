@@ -1,0 +1,294 @@
+<!-- <p>summary works!</p> -->
+
+<div>
+  <form [formGroup]="courseFilterForm" class="inner_tab_filter">
+    <select
+      formControlName="course_id"
+      class="theme_select col-m-100"
+      (ngModelChange)="onChangeCourse()"
+    >
+      <option selected value="">Select Course Name</option>
+      <option
+        *ngFor="let data of CourseEnrollment_uniq"
+        [value]="data.batch_id"
+      >
+        <!-- {{data.teacher_id}} -->
+        {{ data.course_name }}
+      </option>
+    </select>
+    <!-- <select formControlName="course_level_id" class="theme_select col-m-100">
+      <option selected value="">Select Level</option>
+      <option *ngFor="let datas of this.levels_uniq" [value]="datas.id">
+        {{ datas.level }}
+      </option>
+    </select>
+    <button [disabled]="courseFilterForm.invalid" class="button_primary">
+      Apply Filter
+    </button> -->
+  </form>
+</div>
+
+<div *ngIf="!isLoadingCourseType && courseFilterForm.valid">
+  <div class="tab_button tab_section_area">
+    <ng-container *ngFor="let menu of courseLevel; let i = index">
+      <button
+        class="custom_tab_section"
+        id="{{ menu.id }}"
+        routerLinkActive="active"
+        [class.active]="selectedIndex === i"
+        (click)="getModuleByLevel(menu.id, i)"
+      >
+        {{ menu.level }}
+      </button>
+    </ng-container>
+  </div>
+</div>
+
+<!-- [disabled]="courseFilterForm.invalid" -->
+
+<h2 *ngIf="this.msg">{{ this.msg }}</h2>
+
+<!-- <div class="module_section">
+  <div class="inner_module_section">
+    <div class="module_cols" *ngFor="let item of this.scheduleList">
+      <h2 class="module_heading">{{ item.module_name }}</h2>
+      <h2 class="module_subheading">{{ item.start_time |  date:'d MMM y, HH:mm a' }}</h2>
+      <a class="view-details" (click)="details_popup()">View Details   >></a>
+      
+    </div>
+   
+  </div>
+</div> -->
+
+<!--  new pop up design -->
+
+<div
+  class="pageLoad"
+  *ngIf="loading && !this.scheduleList.length && courseFilterForm.valid"
+>
+  <div class="lds-spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <h3>Loading.... Please wait</h3>
+</div>
+
+<div class="module_section" *ngIf="!loading">
+  <div class="inner_module_section">
+    <div *ngFor="let item of this.scheduleList; else: coa_not_found">
+      <div class="module_cols">
+        <div class="bxx">
+          <h2 class="boxx-txt">{{ item.batch_code }}</h2>
+          <h2 class="boxx-txt"> #{{ item.class_no }}</h2>
+      </div>
+   
+        <h2 class="module_subheading date-time">
+          {{ item.start_time | date : "d MMM y, HH:mm a" }}
+        </h2>
+        <a class="view-details" (click)="details_popup(item.id)"
+          >View Details >></a
+        >
+        <!-- this.scheduleList?.length -->
+      </div>
+      <div class="popup_bg_black" *ngIf="this.show_active == item.id"></div>
+      <div class="new_popup_box" *ngIf="this.show_active == item.id">
+        <div
+          class="details-popup"
+          [attr.id]="'box-' + item.id"
+          *ngIf="this.scheduleList.length"
+        >
+          <div class="back-popup">
+            <div class="popupp" id="poppup">
+              <button class="close_msg_popup" (click)="close_popups()">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+
+              <ng-container>
+                <div class="row for_summary_tab_content">
+                  <div class="row textarea_cont">
+                    <div class="col-50">
+                      <div class="Home-work">
+                        <h2 class="home-work-text">Homework:</h2>
+                      </div>
+                      <form
+                        [formGroup]="usertype"
+                        (ngSubmit)="Ussermsg(item.id, usertype.value)"
+                      >
+                        <textarea
+                          type="text"
+                          readonly
+                          formControlName="home_work"
+                          ngModel=" {{ item.home_work }}"
+                          class="theme_textarea textt-area"
+                          placeholder=""
+                        ></textarea>
+                        <!-- <button class="msg-submit" [disabled]="usertype.invalid">Submit</button> -->
+                      </form>
+                 
+                    </div>
+                    <div class="col-50">
+                      <div class="Home-work">
+                        <h2 class="home-work-text">Teacher's Notes:</h2>
+                      </div>
+
+                      <form
+                        [formGroup]="usertypedata"
+                        (ngSubmit)="Ussermsgdata(item.id, usertypedata.value)"
+                        class="tp-data"
+                      >
+                        <textarea
+                          type="text"
+                          readonly
+                          class="theme_textarea textt-area"
+                          ngModel=" {{ item.teacher_note }}"
+                          placeholder=""
+                          formControlName="teacher_note"
+                        ></textarea>
+                        <!-- <button class="msg-submit tp-btn" [disabled]="usertypedata.invalid">Submit</button> -->
+                      </form>
+                    </div>
+                  </div>
+                  <div class="extra-things">
+                    <div class="extra-texts">
+                      <li><b>Class No:</b> {{ item.class_no }}</li>
+                      <li><b>Student name:</b> {{ item.students }}</li>
+                      <li><b>Batch No:</b> {{ item.batch_code }}</li>
+                      <li><b>Schedule Class Time:</b> {{ item.start_time | date : "d MMM y, HH:mm a" }}</li>
+                     
+                      <div *ngIf="item.status == 'NOT_STARTED'">
+                        <h4 class="status_position">Class Status: Scheduled</h4>
+                      </div>
+                      <div *ngIf="item.status == 'STARTED'">
+                        <h4 class="status_position">Class Status: Scheduled</h4>
+                      </div>
+                      <div *ngIf="item.status == 'COMPLETED'">
+                        <h4 class="status_position">Class Status: Completed</h4>
+                      </div>
+                      <div class="rescheduled-class-data" *ngIf="item.status == 'RESCHEDULED'">
+                        <h4 class="status_position">Class Status: Rescheduled</h4>
+
+                        <li><b>Class Reschedule Date:</b> {{ item.rescheduled_date  | date : "d MMM y, HH:mm a" }}</li>
+                        <li><b>Reschedule By:</b> {{ item.rescheduled_by_name }}</li>
+                      </div>
+                    </div>
+                  
+                    <div class="page_questions">
+                      <button class="question-mark"   (click)="redirectToSupport(item)">
+                        <span  class="for-hover">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <path d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.09 8.00002C8.3251 7.33169 8.78915 6.76813 9.39995 6.40915C10.0108 6.05018 10.7289 5.91896 11.4272 6.03873C12.1255 6.15851 12.7588 6.52154 13.2151 7.06355C13.6713 7.60555 13.9211 8.29154 13.92 9.00002C13.92 11 10.92 12 10.92 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11 16H11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </span>
+                        <div class="question_tooltip">
+                          <span> Support </span>
+                        </div>
+                      </button>
+                    </div>
+
+                  </div>
+                  <div class="center_text">
+                    <h4>{{ this.res_msg }}</h4>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!scheduleList.length && !loading">
+      <h2>Course Not Found</h2>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="details-popup" *ngIf="show_popup==true">
+ 
+  <div class="popupp" id="poppup">
+  
+    <button class="close_msg_popup" (click)="close_popups()">
+      <i class="fa-solid fa-xmark"></i>
+    </button> -->
+
+<!-- <ng-container  *ngFor="let item of this.scheduleList">
+  <div class="row for_summary_tab_content">
+    <p class="col-100 tab_heading_name">{{ item.module_name }}</p>
+    <div class="row">
+      <div class="col-50 col-m-100">
+        <p class="paragraph_text">Scheduled Class: {{ item.start_time |  date:'medium'  }}</p>
+        <p class="paragraph_text">Teacher Name: {{ item.full_name }}</p>
+      </div>
+      
+    </div>
+    <div class="row textarea_cont">
+      <div class="col-50">
+        <textarea class="theme_textarea" placeholder="Hour Work" readonly>{{item.home_work}}</textarea>
+      </div>
+      <div class="col-50">
+        <textarea class="theme_textarea" placeholder="Teachers Note" readonly>{{item.teacher_note}}</textarea>
+      </div>
+    </div>
+
+    <div class="col-50 col-m-100">
+    
+      <ng-container *ngIf="item.status=='RESCHEDULED'">
+        <p class="paragraph_text">Rescheduled Date: {{ item.rescheduled_date |  date:'medium'  }}</p>
+        <p class="paragraph_text">Rescheduled By: {{item.rescheduled_by}}</p>
+      </ng-container>
+      
+      <p class="paragraph_text">Status: {{item.status}}</p>
+ </div>
+
+    </div>
+ 
+</ng-container>  -->
+
+<!-- 
+  </div>
+</div> -->
+
+<!-- <ng-container  *ngFor="let item of this.scheduleList">
+  <div class="row for_summary_tab_content">
+    <p class="col-100 tab_heading_name">{{ item.module_name }}</p>
+    <div class="row">
+      <div class="col-50 col-m-100">
+        <p class="paragraph_text">Scheduled Class: {{ item.start_time |  date:'medium'  }}</p>
+        <p class="paragraph_text">Teacher Name: {{ item.full_name }}</p>
+      </div>
+      
+    </div>
+    <div class="row textarea_cont">
+      <div class="col-50">
+        <textarea class="theme_textarea" placeholder="Hour Work" readonly>{{item.home_work}}</textarea>
+      </div>
+      <div class="col-50">
+        <textarea class="theme_textarea" placeholder="Teachers Note" readonly>{{item.teacher_note}}</textarea>
+      </div>
+    </div>
+
+    <div class="col-50 col-m-100">
+    
+      <ng-container *ngIf="item.status=='RESCHEDULED'">
+        <p class="paragraph_text">Rescheduled Date: {{ item.rescheduled_date |  date:'medium'  }}</p>
+        <p class="paragraph_text">Rescheduled By: {{item.rescheduled_by}}</p>
+      </ng-container>
+      
+      <p class="paragraph_text">Status: {{item.status}}</p>
+ </div>
+
+    </div>
+ 
+</ng-container>  -->

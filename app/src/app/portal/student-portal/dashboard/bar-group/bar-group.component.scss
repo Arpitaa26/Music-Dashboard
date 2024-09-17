@@ -1,0 +1,30 @@
+.ber_groupIinner > ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  display: flex
+}
+.ber_groupIinner > ul > li {
+  border-radius: 142px;
+  background: #585858 ;
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.3);
+  width: 6px;
+  height: 40px;
+  margin: 0px 6px;
+  &.active_green{
+    background: green;
+  }
+  &.active_purple{
+    background: purple;
+  }
+  &.active_yellow{
+    background: yellow;
+  }
+  &.active_orange{
+    background: orange;
+  }
+  &.active_red{
+    background: red;
+  }
+
+}

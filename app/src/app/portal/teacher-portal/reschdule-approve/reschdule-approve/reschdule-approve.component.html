@@ -1,0 +1,164 @@
+<!-- 
+<div class="approve-box">
+    <div class="re-schedule">
+   
+       <h2 class="schedule-txt">Reschedule Classes</h2>
+       <p class="col col-100 tab_heading_name"></p>
+     
+     
+       <div class="parent-box-wraper" >
+          <ng-container >
+             <div class="class-box" *ngFor="let item of this.reschedule_approve?.data" >
+                <div class="bxx">
+                   <h2 class="boxx-txt">Class Id: {{item.class_id}}</h2>
+                   <p class="nt-started">status: {{item.status}}</p>
+                </div>
+             
+
+                <p class="type"> Reschedule date: {{item.rescheduled_date}}</p>
+                <p class="type"> Reason for reschedule: {{item.reason_for_reschedule}}</p>
+                <p class="type"> Availabilityb Id: {{item.availability_id}}</p>
+                
+               
+                <div class="button-box">
+                    <ng-container >
+                      <div class="combo">
+                         <a class="approve">
+                         <button class="button_secondary join-btn" (click)="approve(item.id)" >Approve</button>
+                         </a>
+                         <a class="cancle">
+                         <button class="button_secondary" >Cancle</button>
+                         </a>
+                      </div>
+                   </ng-container>
+                </div>
+             </div>
+          </ng-container>
+       </div>
+    </div>
+ </div>    -->
+
+
+
+<!-- teacher availability -->
+<div class="teacher-container-area">
+   <div class="inner-teacher-container">
+      <div class="teacher-main-section">
+         <div class="teacher-header-section">
+            <h4>Availability of teachers</h4>
+         </div>
+         <div class="teacher-main-content-section">
+            <div class="section-th">
+               <label for="">Time Slots<span style="color: red;">*</span></label>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ut recusandae aliquid eum ipsam ratione, eaque cumque sapiente, inventore cum aut veniam, officiis distinctio voluptatum laborum porro assumenda nostrum quisquam?</p>
+            </div>
+            <div class="acess">
+              <form   #usertimetable="ngForm" (submit)="usertime(usertimetable.value)" >
+               <table>
+                  <tbody>
+                  <tr>
+                  <th><strong> </strong></th>
+                  <th><strong>Day Off</strong></th>
+                  <th ><strong>6:00<br>AM IST</strong></th>
+                  <th ><strong>6:15<br>AM IST</strong></th>
+                  <th ><strong>6:30<br>AM IST</strong></th>
+                  <th ><strong>6:45<br>AM IST</strong></th>
+                  <th ><strong>7:00<br>AM IST</strong></th>
+                  <th><strong>7:15<br>AM IST</strong></th>
+                  <th ><strong>7:30<br>AM IST</strong></th>
+                  <th ><strong>7:45<br>AM IST</strong></th>
+                  <th><strong>8:00<br>AM IST</strong></th>
+                  </tr>
+                
+                  <tr>
+                     <td>Monday</td>
+                     <ng-container *ngFor="let day_time of this.date_time">
+                        <ng-container  *ngFor="let day of day_time">
+                           <td *ngFor="let time of day.Monday">
+                              <span>
+                              <input id="{{time}}" type="checkbox" name="MonDay-{{time}}" value="{{time}}" ngModel>
+                              </span>
+                           </td>
+                     </ng-container>
+                    </ng-container>
+                  </tr>
+                  <!-- Tuesday -->
+                  <tr  >
+                     <td>Tuesday</td>
+                     <ng-container *ngFor="let day_time of this.date_time">
+                     <ng-container  *ngFor="let day of day_time">
+                  <td *ngFor="let time of day.Tuesday">
+                     <span>
+                     <input id="{{time}}" type="checkbox" name="Tuesday-{{time}}" value="{{time}}"  >
+                     </span>
+                    
+                  </td>
+               </ng-container>
+            </ng-container>
+                  </tr>
+                  <tr  >
+                     <td>Wednesday</td>
+                     <ng-container *ngFor="let day_time of this.date_time">
+                     <ng-container  *ngFor="let day of day_time">
+                  <td *ngFor="let time of day.Wednesday">
+                     <span>
+                     <input id="{{time}}" type="checkbox" name="Wednesday-{{time}}" value="{{time}}" ngModel>
+                     </span>
+                     
+                  </td>
+               </ng-container>
+            </ng-container>
+                  </tr>
+                  <!-- Thursday -->
+                  <tr  >
+                     <td>Thursday</td>
+                     <ng-container *ngFor="let day_time of this.date_time">
+                     <ng-container  *ngFor="let day of day_time">
+                  <td *ngFor="let time of day.Thursday">
+                     <span>
+                     <input id="{{time}}" type="checkbox" name="Thursday-{{time}}" value="{{time}}">
+                     </span>
+                    
+                  </td>
+               </ng-container>
+            </ng-container>
+                  </tr>
+                  <!-- Friday -->
+                  <tr  >
+                     <td>Friday</td>
+                     <ng-container *ngFor="let day_time of this.date_time">
+                     <ng-container  *ngFor="let day of day_time">
+                  <td *ngFor="let time of day.Friday">
+                     <span>
+                     <input id="{{time}}" type="checkbox" name="Friday-{{time}}" value="{{time}}" ngModel>
+                      
+                  </span>
+                  </td>
+               </ng-container>
+            </ng-container>
+                  </tr>  
+                  <!-- Saturday     -->
+                  <tr  >
+                     <td>Saturday </td>
+                     <ng-container *ngFor="let day_time of this.date_time">
+                     <ng-container  *ngFor="let day of day_time">
+                  <td *ngFor="let time of day.Saturday ">
+                     <span>
+                     <input id="{{time}}" type="checkbox" name="Saturday-{{time}}" value="{{time}}" ngModel >
+                    
+                  </span>
+                  </td>
+               </ng-container>
+            </ng-container>
+                  </tr>  
+                                    <button class="btn-submit" type="submit">Submit</button>
+                   </tbody>
+                  </table>
+              </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+

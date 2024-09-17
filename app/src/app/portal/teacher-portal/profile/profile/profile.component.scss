@@ -1,0 +1,38 @@
+// ::ng-deep body {
+//   background-image: url("https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100") !important;
+//   background-position: center;
+// }
+.card {
+  backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(90, 68, 68, 0.43);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 1rem;
+}
+.topSec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.bottomSec {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.imgSec2 {
+  //   border-radius: 2rem;
+  width: 60%;
+  border-radius: 100px;
+  cursor: pointer;
+}
+.displaySec {
+  padding: 10px;
+  text-align: center;
+  width: 25%;
+  margin-block: 1rem;
+  border-radius: 50px;
+  background: #53659a52;
+  box-shadow: 5px 5px 20px #00a3ac, -2px 0px 15px #fff;
+}

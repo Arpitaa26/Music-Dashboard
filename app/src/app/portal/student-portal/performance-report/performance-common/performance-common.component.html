@@ -1,0 +1,20 @@
+<!-- <p>performance-common works!</p> -->
+<div class="row common_cont">
+  <h1 class="performance_common_head">{{ performanceCommonObj.heading }}</h1>
+  <div class="row">
+    <ng-container *ngFor="let category of performanceCommonObj.category">
+      <div class="row">
+        <h1 class="performance_common_head_sub">{{ category.heading }}</h1>
+        <div class="row tiles_container">
+          <ng-container *ngFor="let subcat of category.subcatCategory">
+            <div class="col-20 col-m-100">
+              <div class="tiles pading_top_bottom0 flex flex_center">
+                {{subcat.name}}
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
